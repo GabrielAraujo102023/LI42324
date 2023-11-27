@@ -1,0 +1,16 @@
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\bin\Debug\net6.0-windows\SpinToWin.exe
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\bin\Debug\net6.0-windows\SpinToWin.deps.json
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\bin\Debug\net6.0-windows\SpinToWin.runtimeconfig.json
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\bin\Debug\net6.0-windows\SpinToWin.dll
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\bin\Debug\net6.0-windows\SpinToWin.pdb
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.Form1.resources
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.csproj.GenerateResource.cache
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.AssemblyInfoInputs.cache
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.AssemblyInfo.cs
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.dll
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\refint\SpinToWin.dll
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.pdb
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\SpinToWin.genruntimeconfig.cache
+C:\Users\Gabriel\Desktop\LI4\SpinToWin\obj\Debug\net6.0-windows\ref\SpinToWin.dll

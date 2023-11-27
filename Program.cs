@@ -1,4 +1,4 @@
-namespace Spin2Win
+namespace SpinToWin
 {
     internal static class Program
     {
