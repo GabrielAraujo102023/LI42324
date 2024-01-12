@@ -8,7 +8,6 @@ namespace SpinToWin
 {
     internal class Client
     {
-        public int Id { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
         public double Dinheiro { get; set; }
@@ -19,9 +18,8 @@ namespace SpinToWin
         }
 
         // Parameterized Constructor
-        public Client(int id, string email, string pass, double dinheiro)
+        public Client(string email, string pass, double dinheiro)
         {
-            Id = id;
             Email = email;
             Pass = pass;
             Dinheiro = dinheiro;
@@ -30,7 +28,6 @@ namespace SpinToWin
         // Copy Constructor (Cloning)
         public Client(Client other)
         {
-            Id = other.Id;
             Email = other.Email;
             Pass = other.Pass;
             Dinheiro = other.Dinheiro;
@@ -45,7 +42,7 @@ namespace SpinToWin
         // ToString method
         public override string ToString()
         {
-            return $"Id: {Id}, Email: {Email}, Pass: {Pass}, Dinheiro: {Dinheiro:C}";
+            return $"Email: {Email}, Pass: {Pass}, Dinheiro: {Dinheiro:C}";
         }
     }
 }

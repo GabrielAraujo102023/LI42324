@@ -14,6 +14,8 @@ namespace SpinToWin
     {
 
         BindingSource clientBinding = new BindingSource();
+        ClientDAO clientDAO = new ClientDAO();
+
 
         public FormTests()
         {
@@ -22,15 +24,25 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClientDAO clientDAO = new ClientDAO();
             clientBinding.DataSource = clientDAO.GetClients();
-
             dataGridView1.DataSource = clientBinding;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Client client = new Client("user", "321", 1212);
+            clientDAO.InsertClient(client);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Client c = new Client("user", "321", 121212122);
+            clientDAO.UpdateClient(c);
         }
     }
 }
