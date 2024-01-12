@@ -74,5 +74,12 @@ namespace SpinToWin
         {
             Application.Exit();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormTests formTests = new FormTests();
+            formTests.Show();
+        }
     }
 }
