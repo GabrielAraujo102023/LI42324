@@ -31,7 +31,7 @@
             btn_leiloes = new Button();
             btn_comprar = new Button();
             btn_vender = new Button();
-            button4 = new Button();
+            logout_button = new Button();
             button5 = new Button();
             button6 = new Button();
             label1 = new Label();
@@ -98,7 +98,11 @@
             txtBox_pesquisar = new TextBox();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
+            button1 = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
             flowLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btn_leiloes
@@ -130,14 +134,15 @@
             btn_vender.Text = "Vender";
             btn_vender.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // logout_button
             // 
-            button4.Location = new Point(1058, 35);
-            button4.Name = "button4";
-            button4.Size = new Size(115, 50);
-            button4.TabIndex = 3;
-            button4.Text = "Logout";
-            button4.UseVisualStyleBackColor = true;
+            logout_button.Location = new Point(1058, 35);
+            logout_button.Name = "logout_button";
+            logout_button.Size = new Size(115, 50);
+            logout_button.TabIndex = 3;
+            logout_button.Text = "Login";
+            logout_button.UseVisualStyleBackColor = true;
+            logout_button.Click += button4_Click;
             // 
             // button5
             // 
@@ -169,6 +174,7 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.BackColor = Color.Teal;
             flowLayoutPanel1.Controls.Add(checkBox1);
             flowLayoutPanel1.Controls.Add(checkBox2);
             flowLayoutPanel1.Controls.Add(button7);
@@ -759,7 +765,7 @@
             // 
             // pesquisar
             // 
-            pesquisar.Location = new Point(67, 143);
+            pesquisar.Location = new Point(3, 2);
             pesquisar.Name = "pesquisar";
             pesquisar.Size = new Size(75, 23);
             pesquisar.TabIndex = 10;
@@ -790,27 +796,60 @@
             comboBox2.Size = new Size(121, 23);
             comboBox2.TabIndex = 13;
             // 
+            // button1
+            // 
+            button1.ForeColor = SystemColors.ControlText;
+            button1.Location = new Point(1264, 6);
+            button1.Name = "button1";
+            button1.Size = new Size(30, 23);
+            button1.TabIndex = 14;
+            button1.Text = "X";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Teal;
+            panel1.Controls.Add(pesquisar);
+            panel1.Location = new Point(68, 141);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1182, 100);
+            panel1.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Teal;
+            panel2.Location = new Point(1216, 141);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(34, 570);
+            panel2.TabIndex = 16;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1306, 723);
+            Controls.Add(panel2);
+            Controls.Add(button1);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Controls.Add(txtBox_pesquisar);
-            Controls.Add(pesquisar);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(logout_button);
             Controls.Add(btn_vender);
             Controls.Add(btn_comprar);
             Controls.Add(btn_leiloes);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Form1";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -820,7 +859,7 @@
         private Button btn_leiloes;
         private Button btn_comprar;
         private Button btn_vender;
-        private Button button4;
+        private Button logout_button;
         private Button button5;
         private Button button6;
         private Label label1;
@@ -887,5 +926,8 @@
         private TextBox txtBox_pesquisar;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
+        private Button button1;
+        private Panel panel1;
+        private Panel panel2;
     }
 }
