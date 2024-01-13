@@ -49,5 +49,33 @@ namespace SpinToWin
             return leiloes;
         }
 
+        public void InsertLeilao(Leilao leilao)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES (@Estado, @Comprador, @Valor_base, @Valor_minimo, @Preco_venda, @Vendedor)";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Estado", leilao.Estado);
+                        cmd.Parameters.AddWithValue("@Comprador", leilao.Comprador);
+                        cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
+                        cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
+                        cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
+                        cmd.Parameters.AddWithValue("@Vendedor", leilao.Vendedor);
+                        cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+        }
+
     }
 }
