@@ -24,8 +24,9 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //vinilBinding.DataSource = vinilDAO.GetListVinis();
-            List<Vinil> vinis = vinilDAO.GetListVinis();
+            vinilBinding.DataSource = vinilDAO.GetListVinis();
+            dataGridView2.DataSource = vinilBinding;
+
 
 
 

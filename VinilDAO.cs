@@ -54,12 +54,8 @@ namespace SpinToWin
                             {
                                 leilao = null;
                             }
-
-                            // Use the retrieved data as needed
-                            Console.WriteLine($"Artista: {artista}, Album: {album}, AnoLancamento: {anoLancamento}, CondicaoDisco: {condicaoDisco}, CondicaoCapa: {condicaoCapa}, Categoria: {categoria}, Duracao: {duracao}, Tamanho: {tamanho}, Rotacoes: {rotacoes}, Tipo: {tipo}, Gravadora: {gravadora}, EdicaoEspecial: {edicaoEspecial}, Remasterizado: {remasterizado}, FotosVinil: {fotosVinil}, Cliente: {cliente}, Leilao: {leilao}");
                             vinil = new Vinil(artista, album, anoLancamento, condicaoDisco, condicaoCapa, categoria, duracao, tamanho, rotacoes, tipo, gravadora, edicaoEspecial, remasterizado, fotosVinil, cliente, leilao);
                             vinis.Add(vinil);
-                            
                         }
                     }
                     connection.Close();

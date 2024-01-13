@@ -49,7 +49,7 @@
             dataGridView2.Location = new Point(259, 33);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(350, 367);
+            dataGridView2.Size = new Size(962, 367);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -57,7 +57,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1262, 450);
             Controls.Add(dataGridView2);
             Controls.Add(button1);
             Name = "VinilTests";
