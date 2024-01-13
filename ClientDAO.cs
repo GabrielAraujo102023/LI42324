@@ -105,5 +105,66 @@ namespace SpinToWin
         }
         
 
+        //Atenção: este dele só funca se cliente não tiver vinis nem leilões
+        public void DeleteClient(string email)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "DELETE FROM Cliente WHERE Email = @Email";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+        }
+
+        public Client GetClient(string email)
+        {
+            Client client = null;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Cliente WHERE Email = @Email";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access data using reader
+                                int id = reader.GetInt32(reader.GetOrdinal("idCliente"));
+                                string pass = reader.GetString(reader.GetOrdinal("Pass"));
+                                double dinheiro = reader.GetDouble(reader.GetOrdinal("Dinheiro"));
+
+                                // Use the retrieved data as needed
+                                Console.WriteLine($"ID: {id}, Email: {email}, Pass: {pass}, Dinheiro: {dinheiro}");
+                                client = new Client(email, pass, dinheiro);
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return client;  
+        }
     }
 }
