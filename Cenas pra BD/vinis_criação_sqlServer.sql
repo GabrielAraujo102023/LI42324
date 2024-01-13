@@ -29,8 +29,8 @@ CREATE TABLE Leilao (
     idLeilao INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	Estado VARCHAR(45) NOT NULL,
 	Comprador INT NULL,
-    Valor_base FLOAT NULL,
-    Valor_minimo FLOAT NULL,
+    Valor_base FLOAT NOT NULL,
+    Valor_minimo FLOAT NOT NULL,
 	Preco_venda FLOAT NULL,
 	Vendedor INT NOT NULL,
 	CONSTRAINT fk_Leilao_Cliente1 FOREIGN KEY (Vendedor)

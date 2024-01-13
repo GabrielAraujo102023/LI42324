@@ -4,6 +4,9 @@ SELECT * FROM Vinil;
 SELECT * FROM Cliente;
 SELECT DB_NAME() AS CurrentDatabase;
 
+
+UPDATE Leilao SET  Comprador = 4, Preco_venda = 15 WHERE idLeilao = 10;
+
 Use VinilDB;
 
 -- Insert data into Cliente
