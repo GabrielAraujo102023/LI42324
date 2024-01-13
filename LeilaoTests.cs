@@ -14,7 +14,7 @@ namespace SpinToWin
     {
 
         private string userInput;
-        //BindingSource leilaoBinding = new BindingSource();
+        BindingSource leilaoBinding = new BindingSource();
         LeilaoDAO leilaoDAO = new LeilaoDAO();
 
         public LeilaoTests()
@@ -31,7 +31,9 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            leilaoDAO.GetListLeiloes();
+            leilaoBinding.DataSource = leilaoDAO.GetListLeiloes();
+            dataGridView1.DataSource = leilaoBinding;
+
         }
     }
 }
