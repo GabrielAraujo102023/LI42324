@@ -44,7 +44,16 @@ namespace SpinToWin
                             bool? remasterizado = remasterizadoByte != 0;
                             string fotosVinil = reader.GetString(reader.GetOrdinal("Fotos_vinil"));
                             int cliente = reader.GetInt32(reader.GetOrdinal("Cliente"));
-                            int? leilao = reader.GetInt32(reader.GetOrdinal("Leilao"));
+                            int? leilao;
+                            int leilaoOrdinal = reader.GetOrdinal("Leilao");
+                            if (!reader.IsDBNull(leilaoOrdinal))
+                            {
+                                leilao = reader.GetInt32(leilaoOrdinal);
+                            }
+                            else
+                            {
+                                leilao = null;
+                            }
 
                             // Use the retrieved data as needed
                             Console.WriteLine($"Artista: {artista}, Album: {album}, AnoLancamento: {anoLancamento}, CondicaoDisco: {condicaoDisco}, CondicaoCapa: {condicaoCapa}, Categoria: {categoria}, Duracao: {duracao}, Tamanho: {tamanho}, Rotacoes: {rotacoes}, Tipo: {tipo}, Gravadora: {gravadora}, EdicaoEspecial: {edicaoEspecial}, Remasterizado: {remasterizado}, FotosVinil: {fotosVinil}, Cliente: {cliente}, Leilao: {leilao}");
