@@ -42,6 +42,9 @@
             textBox4 = new TextBox();
             textBox5 = new TextBox();
             textBox6 = new TextBox();
+            button2 = new Button();
+            button3 = new Button();
+            textBox7 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -160,11 +163,40 @@
             textBox6.Size = new Size(111, 23);
             textBox6.TabIndex = 13;
             // 
+            // button2
+            // 
+            button2.Location = new Point(73, 288);
+            button2.Name = "button2";
+            button2.Size = new Size(82, 30);
+            button2.TabIndex = 14;
+            button2.Text = "add leilao";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(121, 351);
+            button3.Name = "button3";
+            button3.Size = new Size(87, 27);
+            button3.TabIndex = 15;
+            button3.Text = "update leilao";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(11, 350);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(99, 23);
+            textBox7.TabIndex = 16;
+            // 
             // LeilaoTests
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox7);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(textBox6);
             Controls.Add(textBox5);
             Controls.Add(textBox4);
@@ -203,5 +235,8 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private TextBox textBox6;
+        private Button button2;
+        private Button button3;
+        private TextBox textBox7;
     }
 }

@@ -60,10 +60,22 @@ namespace SpinToWin
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@Estado", leilao.Estado);
-                        cmd.Parameters.AddWithValue("@Comprador", leilao.Comprador);
+
+                        // Check for null before setting the parameter value
+                        if (leilao.Comprador.HasValue)
+                            cmd.Parameters.AddWithValue("@Comprador", leilao.Comprador.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@Comprador", DBNull.Value);
+
                         cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
                         cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
-                        cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
+
+                        // Check for null before setting the parameter value
+                        if (leilao.PrecoVenda.HasValue)
+                            cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@Preco_venda", DBNull.Value);
+
                         cmd.Parameters.AddWithValue("@Vendedor", leilao.Vendedor);
                         cmd.ExecuteNonQuery();
                     }
@@ -76,6 +88,7 @@ namespace SpinToWin
                 // Handle the exception as needed
             }
         }
+
 
     }
 }

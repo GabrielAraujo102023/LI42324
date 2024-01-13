@@ -35,5 +35,37 @@ namespace SpinToWin
             dataGridView1.DataSource = leilaoBinding;
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int? comprador = null;
+            float? precoVenda = null;
+            string estado = textBox1.Text;
+            // Check if textBox2.Text is not empty and parse the value
+            if (!string.IsNullOrEmpty(textBox2.Text) && int.TryParse(textBox2.Text, out int parsedComprador))
+            {
+                comprador = parsedComprador;
+            }
+
+            // Check if textBox1.Text is not empty
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                estado = textBox1.Text;
+            }
+
+            float valorBase = float.Parse(textBox3.Text);
+            float valorMinimo = float.Parse(textBox4.Text);
+            // Check if textBox5.Text is not empty and parse the value
+            if (!string.IsNullOrEmpty(textBox5.Text) && float.TryParse(textBox5.Text, out float parsedPrecoVenda))
+            {
+                // Parsing successful, set the value
+                precoVenda = parsedPrecoVenda;
+            }
+            int vendedor = int.Parse(textBox6.Text);
+            Leilao leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+            leilaoDAO.InsertLeilao(leilao);
+
+
+        }
     }
 }
