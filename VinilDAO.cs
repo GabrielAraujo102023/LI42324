@@ -8,7 +8,7 @@ namespace SpinToWin
 {
     internal class VinilDAO
     {
-        private static string connectionString = "Data Source=DESKTOP-AQDL94R;Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;";
+        private static string connectionString = "Data Source=(local);Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;";
 
 
         public List<Vinil> GetListVinis()

@@ -4,14 +4,13 @@ using Microsoft.Identity.Client;
 
 
 // adicionar este nugget pra não dar erro Microsoft.Data.SqlClient
-// mudar o DESKTOP-AQDL94R em "Data Source=DESKTOP-AQDL94R;Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;" para o vosso servername;
 
 
 namespace SpinToWin
 {
     internal class ClientDAO
     {
-        private static string connectionString = "Data Source=DESKTOP-AQDL94R;Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;";
+        private static string connectionString = "Data Source=(local);Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;";
 
         public List<Client> GetListClients()
         {
@@ -94,6 +93,32 @@ namespace SpinToWin
                     string query = "UPDATE Cliente SET Email = @Email, Pass = @Pass, Dinheiro = @Dinheiro WHERE Email = @Email";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
+                        cmd.Parameters.AddWithValue("@Email", client.Email);
+                        cmd.Parameters.AddWithValue("@Pass", client.Pass);
+                        cmd.Parameters.AddWithValue("@Dinheiro", client.Dinheiro);
+                        cmd.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+        }
+
+        public void UpdateClientByID (int clientId, Client client)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE Cliente SET Email = @Email, Pass = @Pass, Dinheiro = @Dinheiro WHERE idCliente = @idCliente";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idCliente", clientId);
                         cmd.Parameters.AddWithValue("@Email", client.Email);
                         cmd.Parameters.AddWithValue("@Pass", client.Pass);
                         cmd.Parameters.AddWithValue("@Dinheiro", client.Dinheiro);

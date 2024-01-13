@@ -181,6 +181,7 @@
             button3.TabIndex = 15;
             button3.Text = "update leilao";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // textBox7
             // 

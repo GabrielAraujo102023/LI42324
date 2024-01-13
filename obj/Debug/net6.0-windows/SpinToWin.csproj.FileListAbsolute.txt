@@ -488,3 +488,5 @@ C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\refint\S
 C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\SpinToWin.pdb
 C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\SpinToWin.genruntimeconfig.cache
 C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\ref\SpinToWin.dll
+C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.LeilaoTests.resources
+C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.VinilTests.resources
