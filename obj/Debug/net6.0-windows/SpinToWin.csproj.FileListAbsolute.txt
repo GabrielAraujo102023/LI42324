@@ -429,3 +429,4 @@ C:\Users\rcrd_\Documents\uni\LI4\trabalho15.40\obj\Debug\net6.0-windows\refint\S
 C:\Users\rcrd_\Documents\uni\LI4\trabalho15.40\obj\Debug\net6.0-windows\SpinToWin.pdb
 C:\Users\rcrd_\Documents\uni\LI4\trabalho15.40\obj\Debug\net6.0-windows\SpinToWin.genruntimeconfig.cache
 C:\Users\rcrd_\Documents\uni\LI4\trabalho15.40\obj\Debug\net6.0-windows\ref\SpinToWin.dll
+C:\Users\rcrd_\Documents\uni\LI4\trabalho15.40\obj\Debug\net6.0-windows\SpinToWin.LeilaoTests.resources
