@@ -120,8 +120,10 @@ namespace SpinToWin
             string email = textBox1.Text;
             string pass = textBox2.Text;
             double dinheiro = Convert.ToDouble(textBox3.Text);
-            Client client = new Client(email, pass, dinheiro);
-            clientDAO.InsertClient(client);
+            Client clienttmp = new Client(email, pass, dinheiro);
+            int idcliente = clientDAO.InsertClient(clienttmp);
+            Client client = new Client(idcliente, email, pass, dinheiro);
+            MessageBox.Show(client.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)

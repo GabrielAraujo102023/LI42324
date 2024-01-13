@@ -69,9 +69,7 @@ namespace SpinToWin
                         cmd.Parameters.AddWithValue("@Dinheiro", client.Dinheiro);
 
                         // Execute the query and get the inserted id
-                        insertedId = (int)cmd.ExecuteScalar();
-                        MessageBox.Show($"Inserted id: {insertedId}");
-                    }
+                        insertedId = (int)cmd.ExecuteScalar();                    }
                     connection.Close();
                 }
             }

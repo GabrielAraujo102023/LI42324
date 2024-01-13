@@ -4,6 +4,7 @@ namespace SpinToWin
 {
     internal class Leilao
     {
+        public int? IdLeilao { get; set; }
         public string Estado { get; set; }
         public int? Comprador { get; set; }
         public float ValorBase { get; set; }
@@ -16,9 +17,21 @@ namespace SpinToWin
         {
         }
 
-        // Constructor with parameters
+        // Constructor without id
         public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
         {
+            Estado = estado;
+            Comprador = comprador;
+            ValorBase = valorBase;
+            ValorMinimo = valorMinimo;
+            PrecoVenda = precoVenda;
+            Vendedor = vendedor;
+        }
+
+        // Constructor with id
+        public Leilao(int? idLeilao, string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
+        {
+            IdLeilao = idLeilao;
             Estado = estado;
             Comprador = comprador;
             ValorBase = valorBase;
@@ -30,6 +43,7 @@ namespace SpinToWin
         // Copy constructor
         public Leilao(Leilao other)
         {
+            IdLeilao = other.IdLeilao;
             Estado = other.Estado;
             Comprador = other.Comprador;
             ValorBase = other.ValorBase;
@@ -40,7 +54,7 @@ namespace SpinToWin
 
         public override string ToString()
         {
-            return $"Estado: {Estado}, Comprador: {Comprador}, " +
+            return $"Id : {IdLeilao}, Estado: {Estado}, Comprador: {Comprador}, " +
                    $"ValorBase: {ValorBase}, ValorMinimo: {ValorMinimo}, PrecoVenda: {PrecoVenda}, Vendedor: {Vendedor}";
         }
     }
