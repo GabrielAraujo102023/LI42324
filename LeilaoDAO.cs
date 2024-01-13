@@ -25,14 +25,15 @@ namespace SpinToWin
                         while (reader.Read())
                         {
                             // Access data using reader
+                            int id = reader.GetInt32(reader.GetOrdinal("idLeilao"));
                             string estado = reader.GetString(reader.GetOrdinal("Estado"));
                             int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                             float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                             float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
                             float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                             int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-                            leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
-                            Console.WriteLine($"Estado: {estado}, Comprador: {comprador}, " +
+                            leilao = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+                            Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
                                               $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
                             
                             leiloes.Add(leilao);
@@ -147,6 +148,28 @@ namespace SpinToWin
                         cmd.Parameters.AddWithValue("@idLeilao", idLeilao);
                         cmd.Parameters.AddWithValue("@Comprador", idComprador);
                         cmd.Parameters.AddWithValue("@Preco_venda", precoVenda);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+        }
+
+        public void DeleteLeilao(int idLeilao)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "DELETE FROM Leilao WHERE idLeilao = @idLeilao";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idLeilao", idLeilao);
                         cmd.ExecuteNonQuery();
                     }
                 }

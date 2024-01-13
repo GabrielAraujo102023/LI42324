@@ -70,7 +70,7 @@ namespace SpinToWin
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
             int idLeilao = int.Parse(textBox7.Text);
             int? comprador = null;
             float? precoVenda = null;
@@ -98,9 +98,15 @@ namespace SpinToWin
             int vendedor = int.Parse(textBox6.Text);
             Leilao leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
             leilaoDAO.UpdateLeilao(idLeilao, leilao);
-            
+
             //leilaoDAO.UpdateLeilaoComprado(idLeilao, 4, 30);
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int idLeilao = int.Parse(textBox7.Text);
+            leilaoDAO.DeleteLeilao(idLeilao);
         }
     }
 }

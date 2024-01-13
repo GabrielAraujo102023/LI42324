@@ -45,6 +45,7 @@
             button2 = new Button();
             button3 = new Button();
             textBox7 = new TextBox();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -185,16 +186,27 @@
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(11, 350);
+            textBox7.Location = new Point(12, 368);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(99, 23);
             textBox7.TabIndex = 16;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(121, 384);
+            button4.Name = "button4";
+            button4.Size = new Size(87, 23);
+            button4.TabIndex = 17;
+            button4.Text = "remove leilao";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // LeilaoTests
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button4);
             Controls.Add(textBox7);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -239,5 +251,6 @@
         private Button button2;
         private Button button3;
         private TextBox textBox7;
+        private Button button4;
     }
 }
