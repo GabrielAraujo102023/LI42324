@@ -180,5 +180,46 @@ namespace SpinToWin
                 // Handle the exception as needed
             }
         }
+
+        public Leilao GetLeilaoById (int idLeilao)
+        {
+            Leilao res = new Leilao();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Leilao WHERE idLeilao = @idLeilao";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idLeilao", idLeilao);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access data using reader
+                                int id = reader.GetInt32(reader.GetOrdinal("idLeilao"));
+                                string estado = reader.GetString(reader.GetOrdinal("Estado"));
+                                int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
+                                float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
+                                float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
+                                int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
+                                res = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+                                Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
+                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return res;
+        }
     }
 }

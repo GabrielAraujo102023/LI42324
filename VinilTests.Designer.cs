@@ -30,6 +30,10 @@
         {
             button1 = new Button();
             dataGridView2 = new DataGridView();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
@@ -53,11 +57,55 @@
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // button2
+            // 
+            button2.Location = new Point(51, 104);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "add vinil";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(62, 167);
+            button3.Name = "button3";
+            button3.Size = new Size(93, 31);
+            button3.TabIndex = 3;
+            button3.Text = "update vinil";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(80, 233);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 4;
+            button4.Text = "delete vinil";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(73, 296);
+            button5.Name = "button5";
+            button5.Size = new Size(95, 41);
+            button5.TabIndex = 5;
+            button5.Text = "getViniolById";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // VinilTests
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1262, 450);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(dataGridView2);
             Controls.Add(button1);
             Name = "VinilTests";
@@ -70,5 +118,9 @@
 
         private Button button1;
         private DataGridView dataGridView2;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
     }
 }

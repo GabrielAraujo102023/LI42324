@@ -5,6 +5,7 @@ namespace SpinToWin
     internal class Vinil
     {
         // Attributes
+        public int? IdVinil { get; set; }
         public string Artista { get; set; }
         public string Album { get; set; }
         public DateTime? AnoLancamento { get; set; }
@@ -28,6 +29,7 @@ namespace SpinToWin
             // Default constructor
         }
 
+        // Constructor without id
         public Vinil(string artista, string album, DateTime? anoLancamento,
                      int? condicaoDisco, int? condicaoCapa, string categoria, int? duracao,
                      int? tamanho, int? rotacoes, string tipo, string gravadora,
@@ -52,11 +54,38 @@ namespace SpinToWin
             Leilao = leilao;
         }
 
+        // Constructor with id
+        public Vinil(int? idVinil, string artista, string album, DateTime? anoLancamento,
+                    int? condicaoDisco, int? condicaoCapa, string categoria, int? duracao,
+                    int? tamanho, int? rotacoes, string tipo, string gravadora,
+                    bool? edicaoEspecial, bool? remasterizado, string fotosVinil,
+                    int cliente, int? leilao)
+        {
+            IdVinil = idVinil;
+            Artista = artista;
+            Album = album;
+            AnoLancamento = anoLancamento;
+            CondicaoDisco = condicaoDisco;
+            CondicaoCapa = condicaoCapa;
+            Categoria = categoria;
+            Duracao = duracao;
+            Tamanho = tamanho;
+            Rotacoes = rotacoes;
+            Tipo = tipo;
+            Gravadora = gravadora;
+            EdicaoEspecial = edicaoEspecial;
+            Remasterizado = remasterizado;
+            FotosVinil = fotosVinil;
+            Cliente = cliente;
+            Leilao = leilao;
+        }
+
         // Clone method
         public Vinil Clone()
         {
             return new Vinil
             {
+                IdVinil = this.IdVinil,
                 Artista = this.Artista,
                 Album = this.Album,
                 AnoLancamento = this.AnoLancamento,
@@ -79,7 +108,7 @@ namespace SpinToWin
         // ToString method
         public override string ToString()
         {
-            return $"Artista={Artista}, Album={Album}, AnoLancamento={AnoLancamento}, " +
+            return $"Id={IdVinil}, Artista={Artista}, Album={Album}, AnoLancamento={AnoLancamento}, " +
                    $"CondicaoDisco={CondicaoDisco}, CondicaoCapa={CondicaoCapa}, Categoria={Categoria}, " +
                    $"Duracao={Duracao}, Tamanho={Tamanho}, Rotacoes={Rotacoes}, Tipo={Tipo}, Gravadora={Gravadora}, " +
                    $"EdicaoEspecial={EdicaoEspecial}, Remasterizado={Remasterizado}, FotosVinil={FotosVinil}, " +

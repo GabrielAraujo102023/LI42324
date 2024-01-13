@@ -37,7 +37,6 @@ C:\Users\rcrd_\Documents\uni\LI4\Trabalho\bin\Debug\net6.0-windows\SpinToWin.dep
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\bin\Debug\net6.0-windows\SpinToWin.runtimeconfig.json
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\bin\Debug\net6.0-windows\SpinToWin.dll
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\bin\Debug\net6.0-windows\SpinToWin.pdb
-C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.Form1.resources
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.Login_Form.resources
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.Properties.Resources.resources
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.csproj.GenerateResource.cache
@@ -490,3 +489,4 @@ C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\SpinToWi
 C:\Users\rcrd_\Documents\uni\LI4\trabalho17.30\obj\Debug\net6.0-windows\ref\SpinToWin.dll
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.LeilaoTests.resources
 C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.VinilTests.resources
+C:\Users\rcrd_\Documents\uni\LI4\Trabalho\obj\Debug\net6.0-windows\SpinToWin.Home_Form.resources

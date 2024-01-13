@@ -45,4 +45,5 @@ INSERT INTO Vinil (Artista, Album, AnoLancamento, Condicao_disco, Condicao_capa,
 INSERT INTO Vinil (Artista, Album, AnoLancamento, Condicao_disco, Condicao_capa, Categoria, Duracao, Tamanho, Rotacoes, Tipo, Gravadora, Edicao_especial, Remasterizado, Fotos_Vinil, Cliente, Leilao) VALUES ('David Bowie', 'The Rise and Fall of Ziggy Stardust', '1972-01-01', 4, 5, 'Rock', 42, 12, 33, 'LP', 'RCA Records', 1, 1, 'ziggy_stardust.jpg', 9, NULL);
 INSERT INTO Vinil (Artista, Album, AnoLancamento, Condicao_disco, Condicao_capa, Categoria, Duracao, Tamanho, Rotacoes, Tipo, Gravadora, Edicao_especial, Remasterizado, Fotos_Vinil, Cliente, Leilao) VALUES ('The Who', 'Whos Next', '1971-01-01', 5, 4, 'Rock', 42, 12, 33, 'LP', 'Track Records', 1, 1, 'whos_next.jpg', 10, 1);
 INSERT INTO Vinil (Artista, Album, AnoLancamento, Condicao_disco, Condicao_capa, Categoria, Duracao, Tamanho, Rotacoes, Tipo, Gravadora, Edicao_especial, Remasterizado, Fotos_Vinil, Cliente, Leilao) VALUES ('Elvis Presley', 'Elvis Presley', '1956-01-01', 3, 4, 'Rock', 33, 12, 33, 'LP', 'RCA Records', 1, 1, 'elvis_presley.jpg', 11, NULL);
+INSERT INTO Vinil (Cliente) VALUES (3);
 GO

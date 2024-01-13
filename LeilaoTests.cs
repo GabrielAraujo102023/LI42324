@@ -108,5 +108,12 @@ namespace SpinToWin
             int idLeilao = int.Parse(textBox7.Text);
             leilaoDAO.DeleteLeilao(idLeilao);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int idLeilao = int.Parse(textBox7.Text);
+            Leilao leilao = leilaoDAO.GetLeilaoById(idLeilao);
+            MessageBox.Show(leilao.ToString());
+        }
     }
 }
