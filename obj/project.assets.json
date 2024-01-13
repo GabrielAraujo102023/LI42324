@@ -2210,11 +2210,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rcrd_\\Desktop\\TrabalhoDesktop\\SpinToWin.csproj",
+      "projectUniqueName": "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\TrabalhoDia13Manha\\SpinToWin.csproj",
       "projectName": "SpinToWin",
-      "projectPath": "C:\\Users\\rcrd_\\Desktop\\TrabalhoDesktop\\SpinToWin.csproj",
+      "projectPath": "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\TrabalhoDia13Manha\\SpinToWin.csproj",
       "packagesPath": "C:\\Users\\rcrd_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rcrd_\\Desktop\\TrabalhoDesktop\\obj\\",
+      "outputPath": "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\TrabalhoDia13Manha\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
