@@ -845,6 +845,7 @@
             button3.TabIndex = 18;
             button3.Text = "testLeilaoDB";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 

@@ -12,7 +12,7 @@ namespace SpinToWin
         public List<Leilao> GetListLeiloes()
         {
             List<Leilao> leiloes = new List<Leilao>();
-            Leilao leilao = null;
+            Leilao leilao = new Leilao();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -27,13 +27,14 @@ namespace SpinToWin
                             // Access data using reader
                             string estado = reader.GetString(reader.GetOrdinal("Estado"));
                             int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
-                            float? valorBase = reader.IsDBNull(reader.GetOrdinal("Valor_base")) ? (float?)null : reader.GetFloat(reader.GetOrdinal("Valor_base"));
-                            float? valorMinimo = reader.IsDBNull(reader.GetOrdinal("Valor_minimo")) ? (float?)null : reader.GetFloat(reader.GetOrdinal("Valor_minimo"));
-                            float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : reader.GetFloat(reader.GetOrdinal("Preco_venda"));
+                            float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
+                            float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                            float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                             int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-
                             leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
-                            MessageBox.Show(leilao.ToString());
+                            Console.WriteLine($"Estado: {estado}, Comprador: {comprador}, " +
+                                              $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+                            
                             leiloes.Add(leilao);
                         }
                     }

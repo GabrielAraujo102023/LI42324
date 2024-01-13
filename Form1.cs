@@ -88,5 +88,12 @@ namespace SpinToWin
             VinilTests vinilTests = new VinilTests();
             vinilTests.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            LeilaoTests leilaoTests = new LeilaoTests();
+            leilaoTests.Show();
+        }
     }
 }
