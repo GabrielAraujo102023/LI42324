@@ -52,20 +52,25 @@ namespace SpinToWin
         }
 
 
-        public void InsertClient(Client client)
+        public int InsertClient(Client client)
         {
+            int insertedId = -1; // Default value if insertion fails
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES (@Email, @Pass, @Dinheiro)";
+                    string query = "INSERT INTO Cliente (Email, Pass, Dinheiro) OUTPUT INSERTED.idCliente VALUES (@Email, @Pass, @Dinheiro)";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@Email", client.Email);
                         cmd.Parameters.AddWithValue("@Pass", client.Pass);
                         cmd.Parameters.AddWithValue("@Dinheiro", client.Dinheiro);
-                        cmd.ExecuteNonQuery();
+
+                        // Execute the query and get the inserted id
+                        insertedId = (int)cmd.ExecuteScalar();
+                        MessageBox.Show($"Inserted id: {insertedId}");
                     }
                     connection.Close();
                 }
@@ -75,8 +80,10 @@ namespace SpinToWin
                 MessageBox.Show($"Error: {ex.Message}");
                 // Handle the exception as needed
             }
+
+            return insertedId;
         }
-        
+
 
         //fazer update pelo email
         public void UpdateClient(Client client)
@@ -103,7 +110,7 @@ namespace SpinToWin
                 // Handle the exception as needed
             }
         }
-        
+
 
         //Atenção: este dele só funca se cliente não tiver vinis nem leilões
         public void DeleteClient(string email)
@@ -129,7 +136,8 @@ namespace SpinToWin
             }
         }
 
-        public Client GetClient(string email)
+        //Getclient by email
+        public Client GetClientByEmail(string email)
         {
             Client client = null;
             try
@@ -164,7 +172,46 @@ namespace SpinToWin
                 MessageBox.Show($"Error: {ex.Message}");
                 // Handle the exception as needed
             }
-            return client;  
+            return client;
+        }
+
+        //Getclient by id
+        public Client GetClientbyID(int id)
+        {
+            Client client = null;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Cliente WHERE idCliente = @idCliente";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idCliente", id);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access data using reader
+                                string email = reader.GetString(reader.GetOrdinal("Email"));
+                                string pass = reader.GetString(reader.GetOrdinal("Pass"));
+                                double dinheiro = reader.GetDouble(reader.GetOrdinal("Dinheiro"));
+
+                                // Use the retrieved data as needed
+                                Console.WriteLine($"ID: {id}, Email: {email}, Pass: {pass}, Dinheiro: {dinheiro}");
+                                client = new Client(email, pass, dinheiro);
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return client;
         }
     }
 }

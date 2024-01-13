@@ -149,7 +149,7 @@ namespace SpinToWin
         private void button5_Click(object sender, EventArgs e)
         {
             string email = textBox5.Text;
-            Client client = clientDAO.GetClient(email);
+            Client client = clientDAO.GetClientByEmail(email);
             MessageBox.Show(client.ToString());
         }
     }
