@@ -13,7 +13,7 @@ namespace SpinToWin
     {
         private static string connectionString = "Data Source=DESKTOP-AQDL94R;Initial Catalog=VinilDB;Integrated Security=True;TrustServerCertificate=True;";
 
-        public List<Client> GetClients()
+        public List<Client> GetListClients()
         {
             List<Client> clients = new List<Client>();
             Client client = null;
