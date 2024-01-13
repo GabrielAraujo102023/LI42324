@@ -12,9 +12,16 @@ namespace SpinToWin
 {
     public partial class LeilaoTests : Form
     {
+
+        private string userInput;
+        //BindingSource leilaoBinding = new BindingSource();
+        LeilaoDAO leilaoDAO = new LeilaoDAO();
+
         public LeilaoTests()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void LeilaoTests_Load(object sender, EventArgs e)
@@ -24,7 +31,7 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            leilaoDAO.GetListLeiloes();
         }
     }
 }
