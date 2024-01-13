@@ -30,17 +30,19 @@ namespace SpinToWin
                             string artista = reader.GetString(reader.GetOrdinal("Artista"));
                             string album = reader.GetString(reader.GetOrdinal("Album"));
                             DateTime? anoLancamento = reader.GetDateTime(reader.GetOrdinal("AnoLancamento"));
-                            int? condicaoDisco = reader.GetInt32(reader.GetOrdinal("CondicaoDisco"));
-                            int? condicaoCapa = reader.GetInt32(reader.GetOrdinal("CondicaoCapa"));
+                            int? condicaoDisco = reader.GetInt32(reader.GetOrdinal("Condicao_disco"));
+                            int? condicaoCapa = reader.GetInt32(reader.GetOrdinal("Condicao_capa"));
                             string categoria = reader.GetString(reader.GetOrdinal("Categoria"));
                             int? duracao = reader.GetInt32(reader.GetOrdinal("Duracao"));
                             int? tamanho = reader.GetInt32(reader.GetOrdinal("Tamanho"));
                             int? rotacoes = reader.GetInt32(reader.GetOrdinal("Rotacoes"));
                             string tipo = reader.GetString(reader.GetOrdinal("Tipo"));
                             string gravadora = reader.GetString(reader.GetOrdinal("Gravadora"));
-                            bool? edicaoEspecial = reader.GetBoolean(reader.GetOrdinal("EdicaoEspecial"));
-                            bool? remasterizado = reader.GetBoolean(reader.GetOrdinal("Remasterizado"));
-                            string fotosVinil = reader.GetString(reader.GetOrdinal("FotosVinil"));
+                            byte edicaoEspecialByte = reader.GetByte(reader.GetOrdinal("Edicao_especial"));
+                            bool? edicaoEspecial = edicaoEspecialByte != 0;
+                            byte remasterizadoByte = reader.GetByte(reader.GetOrdinal("Remasterizado"));
+                            bool? remasterizado = remasterizadoByte != 0;
+                            string fotosVinil = reader.GetString(reader.GetOrdinal("Fotos_vinil"));
                             int cliente = reader.GetInt32(reader.GetOrdinal("Cliente"));
                             int? leilao = reader.GetInt32(reader.GetOrdinal("Leilao"));
 
@@ -48,6 +50,7 @@ namespace SpinToWin
                             Console.WriteLine($"Artista: {artista}, Album: {album}, AnoLancamento: {anoLancamento}, CondicaoDisco: {condicaoDisco}, CondicaoCapa: {condicaoCapa}, Categoria: {categoria}, Duracao: {duracao}, Tamanho: {tamanho}, Rotacoes: {rotacoes}, Tipo: {tipo}, Gravadora: {gravadora}, EdicaoEspecial: {edicaoEspecial}, Remasterizado: {remasterizado}, FotosVinil: {fotosVinil}, Cliente: {cliente}, Leilao: {leilao}");
                             vinil = new Vinil(artista, album, anoLancamento, condicaoDisco, condicaoCapa, categoria, duracao, tamanho, rotacoes, tipo, gravadora, edicaoEspecial, remasterizado, fotosVinil, cliente, leilao);
                             vinis.Add(vinil);
+                            
                         }
                     }
                     connection.Close();
