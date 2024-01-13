@@ -38,13 +38,14 @@
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             button2 = new Button();
+            registar_button = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.FlatAppearance.BorderSize = 0;
-            button1.Location = new Point(330, 450);
+            button1.Location = new Point(311, 437);
             button1.Name = "button1";
             button1.Size = new Size(90, 38);
             button1.TabIndex = 16;
@@ -70,9 +71,9 @@
             label2.ForeColor = Color.Teal;
             label2.Location = new Point(311, 321);
             label2.Name = "label2";
-            label2.Size = new Size(95, 25);
+            label2.Size = new Size(58, 25);
             label2.TabIndex = 14;
-            label2.Text = "Username:";
+            label2.Text = "Email:";
             // 
             // label1
             // 
@@ -122,7 +123,7 @@
             // button2
             // 
             button2.FlatAppearance.BorderSize = 0;
-            button2.Location = new Point(484, 450);
+            button2.Location = new Point(521, 437);
             button2.Name = "button2";
             button2.Size = new Size(90, 38);
             button2.TabIndex = 17;
@@ -130,12 +131,23 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // registar_button
+            // 
+            registar_button.Location = new Point(416, 437);
+            registar_button.Name = "registar_button";
+            registar_button.Size = new Size(90, 38);
+            registar_button.TabIndex = 18;
+            registar_button.Text = "Register";
+            registar_button.UseVisualStyleBackColor = true;
+            registar_button.Click += registar_button_Click;
+            // 
             // Login_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(750, 500);
             Controls.Add(button2);
+            Controls.Add(registar_button);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -163,5 +175,6 @@
         private PictureBox pictureBox1;
         private Panel panel1;
         private Button button2;
+        private Button registar_button;
     }
 }

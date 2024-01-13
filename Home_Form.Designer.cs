@@ -1,6 +1,6 @@
 ﻿namespace SpinToWin
 {
-    partial class Form1
+    partial class Home_Form
     {
         /// <summary>
         ///  Required designer variable.
