@@ -101,6 +101,8 @@
             button1 = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
+            button2 = new Button();
+            button3 = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -155,11 +157,11 @@
             // 
             // button6
             // 
-            button6.Location = new Point(1243, 35);
+            button6.Location = new Point(285, 91);
             button6.Name = "button6";
-            button6.Size = new Size(58, 50);
+            button6.Size = new Size(185, 44);
             button6.TabIndex = 5;
-            button6.Text = "testBD";
+            button6.Text = "testClienteDB";
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
@@ -825,12 +827,33 @@
             panel2.Size = new Size(34, 570);
             panel2.TabIndex = 16;
             // 
+            // button2
+            // 
+            button2.Location = new Point(505, 93);
+            button2.Name = "button2";
+            button2.Size = new Size(202, 40);
+            button2.TabIndex = 17;
+            button2.Text = "testVinilDB";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(737, 92);
+            button3.Name = "button3";
+            button3.Size = new Size(202, 45);
+            button3.TabIndex = 18;
+            button3.Text = "testLeilaoDB";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1306, 723);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(panel2);
             Controls.Add(button1);
             Controls.Add(comboBox2);
@@ -930,5 +953,7 @@
         private Button button1;
         private Panel panel1;
         private Panel panel2;
+        private Button button2;
+        private Button button3;
     }
 }

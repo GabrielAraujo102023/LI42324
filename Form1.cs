@@ -81,5 +81,12 @@ namespace SpinToWin
             FormTests formTests = new FormTests();
             formTests.Show();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Hide();
+            VinilTests vinilTests = new VinilTests();
+            vinilTests.Show();
+        }
     }
 }
