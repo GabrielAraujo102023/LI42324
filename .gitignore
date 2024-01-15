@@ -1,0 +1,17 @@
+
+obj/Debug/net6.0-windows/apphost.exe
+obj/Debug/net6.0-windows/ref/SpinToWin.dll
+obj/Debug/net6.0-windows/refint/SpinToWin.dll
+obj/Debug/net6.0-windows/SpinToWin.assets.cache
+obj/Debug/net6.0-windows/SpinToWin.csproj.AssemblyReference.cache
+obj/Debug/net6.0-windows/SpinToWin.csproj.CoreCompileInputs.cache
+obj/Debug/net6.0-windows/SpinToWin.csproj.FileListAbsolute.txt
+obj/Debug/net6.0-windows/SpinToWin.csproj.GenerateResource.cache
+obj/Debug/net6.0-windows/SpinToWin.designer.runtimeconfig.json
+obj/Debug/net6.0-windows/SpinToWin.dll
+obj/Debug/net6.0-windows/SpinToWin.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net6.0-windows/SpinToWin.genruntimeconfig.cache
+obj/Debug/net6.0-windows/SpinToWin.pdb
+obj/project.assets.json
+obj/project.nuget.cache
+obj/SpinToWin.csproj.nuget.dgspec.json
