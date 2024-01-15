@@ -298,7 +298,7 @@ namespace SpinToWin
 
         public Vinil GetVinilById(int idVinil)
         {
-            Vinil vinil;
+            Vinil vinil = null;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
