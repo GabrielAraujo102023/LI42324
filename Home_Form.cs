@@ -141,10 +141,11 @@ namespace SpinToWin
 
         private bool matchesSearch(Leilao l)
         {
+            string text = txtBox_pesquisar.Text.ToLower();
             List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
             foreach(Vinil v in vinis)
             {
-                if (v.Album.Contains(txtBox_pesquisar.Text) || v.Artista.Contains(txtBox_pesquisar.Text))
+                if (v.Album.ToLower().Contains(text) || v.Artista.ToLower().Contains(text))
                     return true;
             }
             return false;
