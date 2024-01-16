@@ -83,8 +83,7 @@ namespace SpinToWin
         {
             Hide();
             Global.isLoggedIn = false;
-            Login_Form login_Form = new Login_Form(this);
-            login_Form.Show();
+            new Login_Form(this).Show();
         }
 
         // BOTÃO DE SAIR
@@ -143,12 +142,30 @@ namespace SpinToWin
         {
             string text = txtBox_pesquisar.Text.ToLower();
             List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-            foreach(Vinil v in vinis)
+            foreach (Vinil v in vinis)
             {
                 if (v.Album.ToLower().Contains(text) || v.Artista.ToLower().Contains(text))
                     return true;
             }
             return false;
+        }
+
+        private void Home_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_vender_Click(object sender, EventArgs e)
+        {
+            if(Global.isLoggedIn)
+            {
+                Hide();
+                new CriarLeilao_Form(this).Show();
+            }
+            else
+            {
+                MessageBox.Show("Necessita de uma conta para criar um leilão.");
+            }
         }
     }
 }

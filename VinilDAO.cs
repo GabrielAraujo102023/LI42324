@@ -350,6 +350,35 @@ namespace SpinToWin
             }
             return vinis;
         }
+
+        public List<Vinil> GetVinisByCliente(int idClient)
+        {
+            List<Vinil> vinis = new List<Vinil>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Vinil WHERE Cliente = @idClient";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idClient", idClient);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            vinis = readVinis(reader);
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return vinis;
+        }
+
         private List<Vinil> readVinis(SqlDataReader reader)
         {
             List<Vinil> vinis = new List<Vinil>();

@@ -159,6 +159,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login_Form";
             Text = "Form2";
+            Load += Login_Form_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

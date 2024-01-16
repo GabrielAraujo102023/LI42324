@@ -32,6 +32,7 @@ namespace SpinToWin
             }
             else
             {
+                Global.accountID = (int)client.Id;
                 showHomeForm(true);
             }
         }
@@ -79,6 +80,11 @@ namespace SpinToWin
                 return true;
             }
             return false;
+        }
+
+        private void Login_Form_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -183,7 +183,7 @@ namespace SpinToWin
 
                                 // Use the retrieved data as needed
                                 Console.WriteLine($"ID: {id}, Email: {email}, Pass: {pass}, Dinheiro: {dinheiro}");
-                                client = new Client(email, pass, dinheiro);
+                                client = new Client(id, email, pass, dinheiro);
                             }
                         }
                     }
@@ -222,7 +222,7 @@ namespace SpinToWin
 
                                 // Use the retrieved data as needed
                                 Console.WriteLine($"ID: {id}, Email: {email}, Pass: {pass}, Dinheiro: {dinheiro}");
-                                client = new Client(email, pass, dinheiro);
+                                client = new Client(id, email, pass, dinheiro);
                             }
                         }
                     }

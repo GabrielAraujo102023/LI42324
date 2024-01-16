@@ -77,8 +77,9 @@
             btn_vender.Name = "btn_vender";
             btn_vender.Size = new Size(228, 50);
             btn_vender.TabIndex = 2;
-            btn_vender.Text = "Vender";
+            btn_vender.Text = "Criar leilão";
             btn_vender.UseVisualStyleBackColor = true;
+            btn_vender.Click += btn_vender_Click;
             // 
             // logout_button
             // 
@@ -265,6 +266,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Home_Form";
             Text = "Form1";
+            Load += Home_Form_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
