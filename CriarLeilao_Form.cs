@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -90,7 +91,7 @@ namespace SpinToWin
         private void logout_button_Click(object sender, EventArgs e)
         {
             Global.isLoggedIn = false;
-            Login_Form login_Form = new Login_Form(this);
+            Login_Form login_Form = new Login_Form(home_form);
             login_Form.Show();
             Close();
         }
@@ -114,7 +115,7 @@ namespace SpinToWin
 
         private void criar_button_Click(object sender, EventArgs e)
         {
-            if (selectedVinis.Count == 0 || selectedVinis.Count > 50) 
+            if (selectedVinis.Count == 0 || selectedVinis.Count > 50)
             {
                 MessageBox.Show("Selecione pelo menos 1 viníl e no máximo 50");
             }
@@ -137,14 +138,27 @@ namespace SpinToWin
                 else
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
-                    Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, null, Global.accountID);
+                    Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, valorBase, Global.accountID);
                     if (new LeilaoDAO().InsertLeilao(leilao) != -1)
                         MessageBox.Show("Leilão criado com sucesso!");
                     else
                         MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde.");
                 }
             }
-            
+
+        }
+
+        private void pesquisar_button_Click(object sender, EventArgs e)
+        {
+            vinis = !pesquisar_textBox.Text.IsNullOrEmpty() ? vinilDAO.GetListVinis().FindAll(matchesSearch) : vinilDAO.GetListVinis();
+            curPagina = 0;
+            carregarVinis();
+        }
+
+        private bool matchesSearch(Vinil v)
+        {
+            string text = pesquisar_textBox.Text.ToLower();
+            return v.Album.ToLower().Contains(text) || v.Artista.ToLower().Contains(text);
         }
     }
 }

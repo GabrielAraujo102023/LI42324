@@ -134,6 +134,7 @@ namespace SpinToWin
         private void pesquisar_button_Click(object sender, EventArgs e)
         {
             leiloes = !txtBox_pesquisar.Text.IsNullOrEmpty() ? leilaoDAO.GetListLeiloes().FindAll(matchesSearch) : leilaoDAO.GetListLeiloes();
+            ordenarLeiloes();
             curPagina = 0;
             carregarLeiloes();
         }
@@ -150,6 +151,45 @@ namespace SpinToWin
             return false;
         }
 
+        private void ordenarLeiloes()
+        {
+            switch (ordenar_combo.SelectedItem)
+            {
+                case "Preço (Asc.)":
+                    leiloes.Sort((a, b) => b.PrecoVenda.CompareTo(a.PrecoVenda));
+                    break;
+                case "Preço (Des.)":
+                    leiloes.Sort((a, b) => a.PrecoVenda.CompareTo(b.PrecoVenda));
+                    break;
+                case "Nº Vinis (Asc.)":
+                    leiloes.Sort((a, b) => vinilDAO.GetVinisByLeilao((int)b.IdLeilao).Count.CompareTo(vinilDAO.GetVinisByLeilao((int)a.IdLeilao).Count));
+                    break;
+                case "Nº Vinis (Des.)":
+                    leiloes.Sort((a, b) => vinilDAO.GetVinisByLeilao((int)a.IdLeilao).Count.CompareTo(vinilDAO.GetVinisByLeilao((int)b.IdLeilao).Count));
+                    break;
+                case "Tempo restante (Asc.)":
+                    leiloes.Sort((a, b) => tempoRestante(b.ValorBase, b.ValorMinimo, b.PrecoVenda).CompareTo(tempoRestante(a.ValorBase, a.ValorMinimo, a.PrecoVenda)));
+                    break;
+                case "Tempo restante (Des.)":
+                    leiloes.Sort((a, b) => tempoRestante(a.ValorBase, a.ValorMinimo, a.PrecoVenda).CompareTo(tempoRestante(b.ValorBase, b.ValorMinimo, b.PrecoVenda)));
+                    break;
+                default: break;
+            }
+        }
+
+        public int tempoRestante(float valorBase, float valorMinimo, float valorAtual)
+        {
+            float decrescimo = valorBase * 0.02f;
+            int horas = 0;
+            while (valorAtual > valorMinimo)
+            {
+                valorAtual -= decrescimo;
+                horas++;
+            }
+            horas += 12;
+            return horas;
+        }
+
         private void Home_Form_Load(object sender, EventArgs e)
         {
 
@@ -157,7 +197,7 @@ namespace SpinToWin
 
         private void btn_vender_Click(object sender, EventArgs e)
         {
-            if(Global.isLoggedIn)
+            if (Global.isLoggedIn)
             {
                 Hide();
                 new CriarLeilao_Form(this).Show();

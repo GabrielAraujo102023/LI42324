@@ -36,7 +36,7 @@
             btn_comprar = new Button();
             btn_leiloes = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            textBox1 = new TextBox();
+            pesquisar_textBox = new TextBox();
             pesquisar_button = new Button();
             nextPage_button = new Button();
             prevPage_button = new Button();
@@ -137,12 +137,12 @@
             tableLayoutPanel1.TabIndex = 27;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
-            // textBox1
+            // pesquisar_textBox
             // 
-            textBox1.Location = new Point(103, 136);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(398, 23);
-            textBox1.TabIndex = 28;
+            pesquisar_textBox.Location = new Point(103, 136);
+            pesquisar_textBox.Name = "pesquisar_textBox";
+            pesquisar_textBox.Size = new Size(398, 23);
+            pesquisar_textBox.TabIndex = 28;
             // 
             // pesquisar_button
             // 
@@ -152,6 +152,7 @@
             pesquisar_button.TabIndex = 29;
             pesquisar_button.Text = "pesquisar";
             pesquisar_button.UseVisualStyleBackColor = true;
+            pesquisar_button.Click += pesquisar_button_Click;
             // 
             // nextPage_button
             // 
@@ -229,7 +230,7 @@
             Controls.Add(prevPage_button);
             Controls.Add(nextPage_button);
             Controls.Add(pesquisar_button);
-            Controls.Add(textBox1);
+            Controls.Add(pesquisar_textBox);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -255,7 +256,7 @@
         private Button btn_comprar;
         private Button btn_leiloes;
         private TableLayoutPanel tableLayoutPanel1;
-        private TextBox textBox1;
+        private TextBox pesquisar_textBox;
         private Button pesquisar_button;
         private Button nextPage_button;
         private Button prevPage_button;

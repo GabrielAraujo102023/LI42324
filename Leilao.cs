@@ -9,7 +9,7 @@ namespace SpinToWin
         public int? Comprador { get; set; }
         public float ValorBase { get; set; }
         public float ValorMinimo { get; set; }
-        public float? PrecoVenda { get; set; }
+        public float PrecoVenda { get; set; }
         public int Vendedor { get; set; }
 
         // Default constructor
@@ -18,7 +18,7 @@ namespace SpinToWin
         }
 
         // Constructor without id
-        public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
+        public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float precoVenda, int vendedor)
         {
             Estado = estado;
             Comprador = comprador;
@@ -29,7 +29,7 @@ namespace SpinToWin
         }
 
         // Constructor with id
-        public Leilao(int? idLeilao, string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
+        public Leilao(int? idLeilao, string estado, int? comprador, float valorBase, float valorMinimo, float precoVenda, int vendedor)
         {
             IdLeilao = idLeilao;
             Estado = estado;

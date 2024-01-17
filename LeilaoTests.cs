@@ -39,7 +39,6 @@ namespace SpinToWin
         private void button2_Click(object sender, EventArgs e)
         {
             int? comprador = null;
-            float? precoVenda = null;
             string estado = textBox1.Text;
             // Check if textBox2.Text is not empty and parse the value
             if (!string.IsNullOrEmpty(textBox2.Text) && int.TryParse(textBox2.Text, out int parsedComprador))
@@ -55,12 +54,7 @@ namespace SpinToWin
 
             float valorBase = float.Parse(textBox3.Text);
             float valorMinimo = float.Parse(textBox4.Text);
-            // Check if textBox5.Text is not empty and parse the value
-            if (!string.IsNullOrEmpty(textBox5.Text) && float.TryParse(textBox5.Text, out float parsedPrecoVenda))
-            {
-                // Parsing successful, set the value
-                precoVenda = parsedPrecoVenda;
-            }
+            float precoVenda = float.Parse(textBox5.Text);
             int vendedor = int.Parse(textBox6.Text);
             Leilao leilaotmp = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
             int leilaoid = leilaoDAO.InsertLeilao(leilaotmp);
@@ -73,7 +67,6 @@ namespace SpinToWin
 
             int idLeilao = int.Parse(textBox7.Text);
             int? comprador = null;
-            float? precoVenda = null;
             string estado = textBox1.Text;
             // Check if textBox2.Text is not empty and parse the value
             if (!string.IsNullOrEmpty(textBox2.Text) && int.TryParse(textBox2.Text, out int parsedComprador))
@@ -89,12 +82,7 @@ namespace SpinToWin
 
             float valorBase = float.Parse(textBox3.Text);
             float valorMinimo = float.Parse(textBox4.Text);
-            // Check if textBox5.Text is not empty and parse the value
-            if (!string.IsNullOrEmpty(textBox5.Text) && float.TryParse(textBox5.Text, out float parsedPrecoVenda))
-            {
-                // Parsing successful, set the value
-                precoVenda = parsedPrecoVenda;
-            }
+            float precoVenda = float.Parse(textBox5.Text);
             int vendedor = int.Parse(textBox6.Text);
             Leilao leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
             leilaoDAO.UpdateLeilao(idLeilao, leilao);

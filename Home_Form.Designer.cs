@@ -37,7 +37,7 @@
             label1 = new Label();
             pesquisar_button = new Button();
             txtBox_pesquisar = new TextBox();
-            comboBox1 = new ComboBox();
+            ordenar_combo = new ComboBox();
             comboBox2 = new ComboBox();
             button1 = new Button();
             panel1 = new Panel();
@@ -138,13 +138,15 @@
             txtBox_pesquisar.Size = new Size(354, 23);
             txtBox_pesquisar.TabIndex = 11;
             // 
-            // comboBox1
+            // ordenar_combo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(540, 143);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 12;
+            ordenar_combo.FormattingEnabled = true;
+            ordenar_combo.Items.AddRange(new object[] { "Preço (Asc.)", "Preço (Des.)", "Nº Vinis (Asc.)", "Nº Vinis (Des.)", "Tempo restante (Asc.)", "Tempo restante (Des.)" });
+            ordenar_combo.Location = new Point(540, 143);
+            ordenar_combo.Name = "ordenar_combo";
+            ordenar_combo.Size = new Size(121, 23);
+            ordenar_combo.TabIndex = 12;
+            ordenar_combo.Text = "Ordenar por";
             // 
             // comboBox2
             // 
@@ -253,7 +255,7 @@
             Controls.Add(panel2);
             Controls.Add(button1);
             Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(ordenar_combo);
             Controls.Add(txtBox_pesquisar);
             Controls.Add(label1);
             Controls.Add(button6);
@@ -284,7 +286,7 @@
         private Label label1;
         private Button pesquisar_button;
         private TextBox txtBox_pesquisar;
-        private ComboBox comboBox1;
+        private ComboBox ordenar_combo;
         private ComboBox comboBox2;
         private Button button1;
         private Panel panel1;

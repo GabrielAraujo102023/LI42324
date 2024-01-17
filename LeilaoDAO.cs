@@ -30,7 +30,7 @@ namespace SpinToWin
                             int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                             float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                             float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
-                            float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
+                            float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                             int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
                             leilao = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
                             Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
@@ -72,11 +72,7 @@ namespace SpinToWin
                         cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
                         cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
 
-                        // Check for null before setting the parameter value
-                        if (leilao.PrecoVenda.HasValue)
-                            cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda.Value);
-                        else
-                            cmd.Parameters.AddWithValue("@Preco_venda", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
 
                         cmd.Parameters.AddWithValue("@Vendedor", leilao.Vendedor);
 
@@ -116,11 +112,8 @@ namespace SpinToWin
                         cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
                         cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
 
-                        // Check for null before setting the parameter value
-                        if (leilao.PrecoVenda.HasValue)
-                            cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda.Value);
-                        else
-                            cmd.Parameters.AddWithValue("@Preco_venda", DBNull.Value);
+
+                        cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
 
                         cmd.Parameters.AddWithValue("@Vendedor", leilao.Vendedor);
                         cmd.ExecuteNonQuery();
@@ -203,7 +196,7 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
-                                float? precoVenda = reader.IsDBNull(reader.GetOrdinal("Preco_venda")) ? (float?)null : (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
+                                float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
                                 res = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
                                 Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
