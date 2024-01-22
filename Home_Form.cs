@@ -15,6 +15,7 @@ namespace SpinToWin
         {
             InitializeComponent();
             carregarLeiloes();
+            Refresh();
         }
 
         private void carregarLeiloes()
@@ -63,17 +64,17 @@ namespace SpinToWin
 
         }
 
-        private void Form1_Load() { }
-
-        public override void Refresh()
+         public override void Refresh()
         {
             if (Global.isLoggedIn)
             {
                 logout_button.Text = "Logout";
+                perfil_button.Visible = true;
             }
             else
             {
                 logout_button.Text = "Login";
+                perfil_button.Visible = false;
             }
             base.Refresh();
         }
@@ -206,6 +207,12 @@ namespace SpinToWin
             {
                 MessageBox.Show("Necessita de uma conta para criar um leilão.");
             }
+        }
+
+        // Perfil
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new Perfil_Form().Show();
         }
     }
 }

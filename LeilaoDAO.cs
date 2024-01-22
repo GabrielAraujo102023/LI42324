@@ -214,5 +214,87 @@ namespace SpinToWin
             }
             return res;
         }
+
+        public List<Leilao> GetLeilaoByVendedor(int idClient)
+        {
+            List<Leilao> res = new List<Leilao>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Leilao WHERE Vendedor = @idClient";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idClient", idClient);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access data using reader
+                                int id = reader.GetInt32(reader.GetOrdinal("idLeilao"));
+                                string estado = reader.GetString(reader.GetOrdinal("Estado"));
+                                int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
+                                float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
+                                float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
+                                int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
+                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor));
+                                Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
+                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return res;
+        }
+
+        public List<Leilao> GetLeilaoByComprador(int idClient)
+        {
+            List<Leilao> res = new List<Leilao>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Leilao WHERE Comprador = @idClient";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idClient", idClient);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Access data using reader
+                                int id = reader.GetInt32(reader.GetOrdinal("idLeilao"));
+                                string estado = reader.GetString(reader.GetOrdinal("Estado"));
+                                int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
+                                float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
+                                float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
+                                int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
+                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor));
+                                Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
+                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                // Handle the exception as needed
+            }
+            return res;
+        }
     }
 }

@@ -32,7 +32,7 @@
             btn_comprar = new Button();
             btn_vender = new Button();
             logout_button = new Button();
-            button5 = new Button();
+            perfil_button = new Button();
             button6 = new Button();
             label1 = new Label();
             pesquisar_button = new Button();
@@ -91,14 +91,15 @@
             logout_button.UseVisualStyleBackColor = true;
             logout_button.Click += button4_Click;
             // 
-            // button5
+            // perfil_button
             // 
-            button5.Location = new Point(1179, 35);
-            button5.Name = "button5";
-            button5.Size = new Size(58, 50);
-            button5.TabIndex = 4;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            perfil_button.Location = new Point(1179, 35);
+            perfil_button.Name = "perfil_button";
+            perfil_button.Size = new Size(58, 50);
+            perfil_button.TabIndex = 4;
+            perfil_button.Text = "Perfil";
+            perfil_button.UseVisualStyleBackColor = true;
+            perfil_button.Click += button5_Click;
             // 
             // button6
             // 
@@ -259,7 +260,7 @@
             Controls.Add(txtBox_pesquisar);
             Controls.Add(label1);
             Controls.Add(button6);
-            Controls.Add(button5);
+            Controls.Add(perfil_button);
             Controls.Add(logout_button);
             Controls.Add(btn_vender);
             Controls.Add(btn_comprar);
@@ -281,7 +282,7 @@
         private Button btn_comprar;
         private Button btn_vender;
         private Button logout_button;
-        private Button button5;
+        private Button perfil_button;
         private Button button6;
         private Label label1;
         private Button pesquisar_button;
