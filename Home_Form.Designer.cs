@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btn_leiloes = new Button();
-            btn_comprar = new Button();
+            ajuda_button = new Button();
             btn_vender = new Button();
             logout_button = new Button();
             perfil_button = new Button();
@@ -61,15 +61,15 @@
             btn_leiloes.UseVisualStyleBackColor = true;
             btn_leiloes.Click += button1_Click;
             // 
-            // btn_comprar
+            // ajuda_button
             // 
-            btn_comprar.Location = new Point(519, 35);
-            btn_comprar.Name = "btn_comprar";
-            btn_comprar.Size = new Size(228, 50);
-            btn_comprar.TabIndex = 1;
-            btn_comprar.Text = "Comprar";
-            btn_comprar.UseVisualStyleBackColor = true;
-            btn_comprar.Click += button2_Click;
+            ajuda_button.Location = new Point(519, 35);
+            ajuda_button.Name = "ajuda_button";
+            ajuda_button.Size = new Size(228, 50);
+            ajuda_button.TabIndex = 1;
+            ajuda_button.Text = "Ajuda";
+            ajuda_button.UseVisualStyleBackColor = true;
+            ajuda_button.Click += button2_Click;
             // 
             // btn_vender
             // 
@@ -263,7 +263,7 @@
             Controls.Add(perfil_button);
             Controls.Add(logout_button);
             Controls.Add(btn_vender);
-            Controls.Add(btn_comprar);
+            Controls.Add(ajuda_button);
             Controls.Add(btn_leiloes);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -279,7 +279,7 @@
         #endregion
 
         private Button btn_leiloes;
-        private Button btn_comprar;
+        private Button ajuda_button;
         private Button btn_vender;
         private Button logout_button;
         private Button perfil_button;

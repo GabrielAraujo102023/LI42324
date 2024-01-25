@@ -40,6 +40,7 @@
             totalGanho_label = new Label();
             lucro_label = new Label();
             Voltar_button = new Button();
+            levantar_button = new Button();
             SuspendLayout();
             // 
             // accountName_label
@@ -154,11 +155,22 @@
             Voltar_button.UseVisualStyleBackColor = true;
             Voltar_button.Click += Voltar_button_Click;
             // 
+            // levantar_button
+            // 
+            levantar_button.Location = new Point(93, 122);
+            levantar_button.Name = "levantar_button";
+            levantar_button.Size = new Size(75, 38);
+            levantar_button.TabIndex = 13;
+            levantar_button.Text = "Levantar Saldo";
+            levantar_button.UseVisualStyleBackColor = true;
+            levantar_button.Click += levantar_button_Click;
+            // 
             // Perfil_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(levantar_button);
             Controls.Add(Voltar_button);
             Controls.Add(lucro_label);
             Controls.Add(totalGanho_label);
@@ -192,5 +204,6 @@
         private Label totalGanho_label;
         private Label lucro_label;
         private Button Voltar_button;
+        private Button levantar_button;
     }
 }

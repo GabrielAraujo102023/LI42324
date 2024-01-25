@@ -64,7 +64,7 @@ namespace SpinToWin
 
         }
 
-         public override void Refresh()
+        public override void Refresh()
         {
             if (Global.isLoggedIn)
             {

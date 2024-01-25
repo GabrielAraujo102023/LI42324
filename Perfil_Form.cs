@@ -35,7 +35,7 @@ namespace SpinToWin
                 {
                     totalGanho += l.PrecoVenda;
                     List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                    foreach(Vinil v in vinis)
+                    foreach (Vinil v in vinis)
                     {
                         if (generosVendidos.ContainsKey(v.Categoria))
                             generosVendidos[v.Categoria] += 1;
@@ -79,7 +79,7 @@ namespace SpinToWin
             {
                 generoComprado_label.Text += "N/A";
             }
-            
+
             totalGanho_label.Text += totalGanho.ToString();
             totalGasto_label.Text += totalGasto.ToString();
             lucro_label.Text += (totalGanho - totalGasto).ToString();
@@ -93,6 +93,12 @@ namespace SpinToWin
 
         private void Voltar_button_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void levantar_button_Click(object sender, EventArgs e)
+        {
+            new levantarSaldo_Form().Show();
             Close();
         }
     }

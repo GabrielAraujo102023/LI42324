@@ -72,12 +72,19 @@ namespace SpinToWin
             else
             {
                 MessageBox.Show("Dados validados com sucesso.");
-                ClientDAO clientDAO = new ClientDAO();
-                Client thisClient = clientDAO.GetClientbyID(Global.accountID);
-                thisClient.Dinheiro += double.Parse(valor_textBox.Text);
-                clientDAO.UpdateClientByID(Global.accountID, thisClient);
-                new Perfil_Form().Show();
-                Close();
+                try
+                {
+                    ClientDAO clientDAO = new ClientDAO();
+                    Client thisClient = clientDAO.GetClientbyID(Global.accountID);
+                    thisClient.Dinheiro += double.Parse(valor_textBox.Text);
+                    clientDAO.UpdateClientByID(Global.accountID, thisClient);
+                    MessageBox.Show("Montante adicionado com sucesso!");
+                }
+                finally
+                {
+                    new Perfil_Form().Show();
+                    Close();
+                }
             }
         }
 
