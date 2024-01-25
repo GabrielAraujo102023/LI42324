@@ -120,6 +120,7 @@
             label1.Size = new Size(230, 54);
             label1.TabIndex = 7;
             label1.Text = "Spin to Win";
+            label1.Click += label1_Click;
             // 
             // pesquisar_button
             // 

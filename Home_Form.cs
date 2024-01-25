@@ -44,9 +44,11 @@ namespace SpinToWin
 
         }
 
+        //Botão de Ajuda
         private void button2_Click(object sender, EventArgs e)
         {
-
+            new Ajuda_Form(this).Show();
+            Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -213,6 +215,11 @@ namespace SpinToWin
         private void button5_Click(object sender, EventArgs e)
         {
             new Perfil_Form().Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
