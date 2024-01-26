@@ -101,5 +101,11 @@ namespace SpinToWin
             new levantarSaldo_Form().Show();
             Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Vinil_Form().Show();
+            Close();
+        }
     }
 }

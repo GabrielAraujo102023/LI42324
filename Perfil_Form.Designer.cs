@@ -41,6 +41,7 @@
             lucro_label = new Label();
             Voltar_button = new Button();
             levantar_button = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // accountName_label
@@ -165,11 +166,22 @@
             levantar_button.UseVisualStyleBackColor = true;
             levantar_button.Click += levantar_button_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(673, 392);
+            button1.Name = "button1";
+            button1.Size = new Size(115, 46);
+            button1.TabIndex = 14;
+            button1.Text = "Adicionar vinil";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Perfil_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(levantar_button);
             Controls.Add(Voltar_button);
             Controls.Add(lucro_label);
@@ -205,5 +217,6 @@
         private Label lucro_label;
         private Button Voltar_button;
         private Button levantar_button;
+        private Button button1;
     }
 }
