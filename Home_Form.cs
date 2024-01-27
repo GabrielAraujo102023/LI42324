@@ -7,6 +7,7 @@ namespace SpinToWin
 {
     public partial class Home_Form : Form
     {
+        private static ClientDAO clientDAO = new ClientDAO();
         private static LeilaoDAO leilaoDAO = new LeilaoDAO();
         private static VinilDAO vinilDAO = new VinilDAO();
         private static List<Leilao> leiloes = leilaoDAO.GetListLeiloes();
@@ -54,14 +55,14 @@ namespace SpinToWin
 
                 PictureBox pict = new PictureBox();
                 List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                // Set up a click event handler for the PictureBox
+                // Set up a
+                // click event handler for the PictureBox
                 pict.Click += (sender, e) =>
                 {
-                    if (vinis.Any())
-                    {
-                        Vinil selectedVinil = vinis.First();
-                        MessageBox.Show($"Clicked on Vinil {selectedVinil.FotosVinil}");
-                    }
+                    //TODO: por aqui o gajo que esta logado
+                    Client c = clientDAO.GetClientbyID(1);
+                    String emailVendedor = clientDAO.GetClientbyID(l.Vendedor).Email;
+                    new Comprar_Leilao_Form(l, emailVendedor, c, vinis).Show();
                 };
                 
                 //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
@@ -154,21 +155,18 @@ namespace SpinToWin
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Hide();
             FormTests formTests = new FormTests();
             formTests.Show();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Hide();
             VinilTests vinilTests = new VinilTests();
             vinilTests.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Hide();
             LeilaoTests leilaoTests = new LeilaoTests();
             leilaoTests.Show();
         }

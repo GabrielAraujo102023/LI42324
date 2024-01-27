@@ -2,7 +2,7 @@
 
 namespace SpinToWin
 {
-    internal class Vinil
+    public class Vinil
     {
         // Attributes
         public int? IdVinil { get; set; }

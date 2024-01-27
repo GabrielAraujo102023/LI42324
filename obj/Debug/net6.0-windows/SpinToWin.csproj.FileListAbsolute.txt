@@ -622,3 +622,5 @@ C:\Users\filip\OneDrive\Ambiente de Trabalho\LI42324\obj\Debug\net6.0-windows\Sp
 C:\Users\filip\OneDrive\Ambiente de Trabalho\LI42324\obj\Debug\net6.0-windows\SpinToWin.genruntimeconfig.cache
 C:\Users\filip\OneDrive\Ambiente de Trabalho\LI42324\obj\Debug\net6.0-windows\ref\SpinToWin.dll
 C:\Users\filip\OneDrive\Ambiente de Trabalho\LI42324\obj\Debug\net6.0-windows\SpinToWin.Leilao_Info_Form.resources
+C:\Users\rcrd_\Documents\uni\LI4\Trabalho\LI42324\obj\Debug\net6.0-windows\SpinToWin.Comprar_Leilao_Form.resources
+C:\Users\rcrd_\Documents\uni\LI4\Trabalho\LI42324\obj\Debug\net6.0-windows\SpinToWin.Leilao_Info_Form.resources
