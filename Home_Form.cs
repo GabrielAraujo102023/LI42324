@@ -1,6 +1,7 @@
 using Microsoft.Identity.Client.NativeInterop;
 using Microsoft.IdentityModel.Tokens;
 using System.Windows.Forms;
+using System.Net;
 
 namespace SpinToWin
 {
@@ -18,6 +19,29 @@ namespace SpinToWin
             carregarLeiloes();
             Refresh();
         }
+
+        private Image LoadImageFromUrl(string imageUrl)
+        {
+            try
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] data = webClient.DownloadData(imageUrl);
+                    using (MemoryStream ms = new MemoryStream(data))
+                    {
+                        // Load the image from the MemoryStream and return it
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions, such as network errors or invalid image format.
+                MessageBox.Show($"Error loading image from URL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null; // Return null if there's an error
+            }
+        }
+
 
         private void carregarLeiloes()
         {
@@ -67,8 +91,12 @@ namespace SpinToWin
                 //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
 
                 //TODO mudar isto
-                pict.Image = new Bitmap(175, 190, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                Graphics.FromImage(pict.Image).FillRectangle(Brushes.Black, 0, 0, pict.Width, pict.Height);
+                Image loadedImage = LoadImageFromUrl("https://media.licdn.com/dms/image/C4D03AQFV8KKpmds25w/profile-displayphoto-shrink_800_800/0/1517584979708?e=2147483647&v=beta&t=Z0ninSDSOLK5nre3h0cFjq7CkiQ7X42PhWkcVIkB7yM");
+                if (loadedImage != null){
+                    pict.Image = loadedImage;
+                }
+                //pict.Image = new Bitmap(175, 190, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                //Graphics.FromImage(pict.Image).FillRectangle(Brushes.Black, 0, 0, pict.Width, pict.Height);
 
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
