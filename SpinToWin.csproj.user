@@ -13,6 +13,9 @@
     <Compile Update="ClientTests.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Comprar_Leilao_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CriarLeilao_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -23,6 +26,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Leilao_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Leilao_Info_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="levantarSaldo_Form.cs">

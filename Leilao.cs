@@ -2,7 +2,7 @@
 
 namespace SpinToWin
 {
-    internal class Leilao
+    public class Leilao
     {
         public int? IdLeilao { get; set; }
         public string Estado { get; set; }
