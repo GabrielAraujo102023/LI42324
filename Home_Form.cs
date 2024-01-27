@@ -46,8 +46,9 @@ namespace SpinToWin
                 // Botao de Info
                 btn.Click += (sender, e) =>
                 {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
                     // Passa o leilão 'l' para o formulário
-                    new Leilao_Info_Form(l).Show();
+                    new Leilao_Info_Form(l,vinis).Show();
                 };
 
 
