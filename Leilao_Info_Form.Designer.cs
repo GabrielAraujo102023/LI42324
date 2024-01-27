@@ -28,32 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
             SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 9);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
             // 
             // Leilao_Info_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(428, 450);
-            Controls.Add(label2);
+            ClientSize = new Size(148, 45);
             Name = "Leilao_Info_Form";
             Text = "Leilao_Info_Form";
             Load += Leilao_Info_Form_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
+
         private Label label2;
     }
 }

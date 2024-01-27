@@ -20,7 +20,7 @@ namespace SpinToWin
             carregarLeiloes();
             Refresh();
         }
-        
+
 
         private void carregarLeiloes()
         {
@@ -37,18 +37,29 @@ namespace SpinToWin
                 //TODO: ADICIONAR IMAGENS
                 FlowLayoutPanel p = new FlowLayoutPanel();
                 p.Size = new Size(700, 700);
+                p.FlowDirection = FlowDirection.LeftToRight;
+
                 Button btn = new Button();
                 btn.Text = "Info";
+                btn.Size = new Size(88, 30); // Defina o tamanho desejado aqui
+                btn.Margin = new Padding(0); // Remove a margem ao redor do botão
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+
                 Label estado = new Label();
                 estado.Text = l.Estado;
                 estado.BackColor = colorText(estado.Text);
+                estado.Size = btn.Size;
+                estado.Margin = new Padding(0); // Remove a margem ao redor do label
+                estado.TextAlign = ContentAlignment.MiddleCenter;
+
 
 
                 // Botao de Info
                 btn.Click += (sender, e) =>
                 {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
                     // Passa o leilão 'l' para o formulário
-                    new Leilao_Info_Form(l).Show();
+                    new Leilao_Info_Form(l, vinis).Show();
                 };
 
 
@@ -64,19 +75,21 @@ namespace SpinToWin
                     String emailVendedor = clientDAO.GetClientbyID(l.Vendedor).Email;
                     new Comprar_Leilao_Form(l, emailVendedor, c, vinis).Show();
                 };
-                
+
                 //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
 
                 //Imagens por url. Mudar?
                 Image loadedImage = LoadImageFromUrl("https://media.licdn.com/dms/image/C4D03AQFV8KKpmds25w/profile-displayphoto-shrink_800_800/0/1517584979708?e=2147483647&v=beta&t=Z0ninSDSOLK5nre3h0cFjq7CkiQ7X42PhWkcVIkB7yM");
-                if (loadedImage != null){
+                if (loadedImage != null)
+                {
                     pict.Image = loadedImage;
                 }
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
-                pict.Size = new Size(175, 190);
+                pict.Size = new Size(176, 190);
                 p.Controls.Add(estado);
                 pict.Location = estado.Location;
+                pict.Margin = new Padding(0); // Remove a margem ao redor do label
                 p.Controls.Add(btn);
                 p.Controls.Add(pict);
                 tableLayoutPanel1.Controls.Add(p);
@@ -90,7 +103,7 @@ namespace SpinToWin
                 case "fechado":
                     return Color.Red;
                 case "aberto":
-                    return Color.Blue;
+                    return Color.Green;
                 case "catalogado":
                     return Color.Yellow;
                 default: return Color.Red;
