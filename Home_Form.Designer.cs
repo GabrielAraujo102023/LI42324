@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home_Form));
             btn_leiloes = new Button();
             ajuda_button = new Button();
             btn_vender = new Button();
@@ -47,13 +48,15 @@
             button2 = new Button();
             button3 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // btn_leiloes
             // 
-            btn_leiloes.Location = new Point(326, 47);
+            btn_leiloes.Location = new Point(325, 107);
             btn_leiloes.Margin = new Padding(3, 4, 3, 4);
             btn_leiloes.Name = "btn_leiloes";
             btn_leiloes.Size = new Size(261, 67);
@@ -64,7 +67,7 @@
             // 
             // ajuda_button
             // 
-            ajuda_button.Location = new Point(593, 47);
+            ajuda_button.Location = new Point(594, 107);
             ajuda_button.Margin = new Padding(3, 4, 3, 4);
             ajuda_button.Name = "ajuda_button";
             ajuda_button.Size = new Size(261, 67);
@@ -75,7 +78,7 @@
             // 
             // btn_vender
             // 
-            btn_vender.Location = new Point(861, 47);
+            btn_vender.Location = new Point(861, 107);
             btn_vender.Margin = new Padding(3, 4, 3, 4);
             btn_vender.Name = "btn_vender";
             btn_vender.Size = new Size(261, 67);
@@ -108,10 +111,10 @@
             // 
             // button6
             // 
-            button6.Location = new Point(326, 121);
+            button6.Location = new Point(325, 31);
             button6.Margin = new Padding(3, 4, 3, 4);
             button6.Name = "button6";
-            button6.Size = new Size(211, 59);
+            button6.Size = new Size(92, 53);
             button6.TabIndex = 5;
             button6.Text = "testClienteDB";
             button6.UseVisualStyleBackColor = true;
@@ -120,10 +123,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(33, 47);
+            label1.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Turquoise;
+            label1.Location = new Point(604, 3);
             label1.Name = "label1";
-            label1.Size = new Size(286, 67);
+            label1.Size = new Size(427, 100);
             label1.TabIndex = 7;
             label1.Text = "Spin to Win";
             label1.Click += label1_Click;
@@ -192,7 +196,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Honeydew;
+            panel2.BackColor = Color.LightCyan;
             panel2.Controls.Add(prevPage_button);
             panel2.Controls.Add(nextPage_button);
             panel2.Location = new Point(1390, 188);
@@ -224,10 +228,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(577, 124);
+            button2.Location = new Point(1346, 123);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(231, 53);
+            button2.Size = new Size(91, 51);
             button2.TabIndex = 17;
             button2.Text = "testVinilDB";
             button2.UseVisualStyleBackColor = true;
@@ -235,10 +239,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(842, 123);
+            button3.Location = new Point(1215, 121);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(231, 60);
+            button3.Size = new Size(125, 54);
             button3.TabIndex = 18;
             button3.Text = "testLeilaoDB";
             button3.UseVisualStyleBackColor = true;
@@ -263,12 +267,24 @@
             tableLayoutPanel1.Size = new Size(1315, 757);
             tableLayoutPanel1.TabIndex = 19;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 8);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(298, 166);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 21;
+            pictureBox2.TabStop = false;
+            // 
             // Home_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PowderBlue;
+            BackColor = Color.White;
             ClientSize = new Size(1493, 1003);
+            Controls.Add(pictureBox2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -292,6 +308,7 @@
             Load += Home_Form_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -317,5 +334,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Button prevPage_button;
         private Button nextPage_button;
+        private PictureBox pictureBox2;
     }
 }
