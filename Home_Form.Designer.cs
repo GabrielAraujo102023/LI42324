@@ -56,35 +56,44 @@
             // 
             // btn_leiloes
             // 
+            btn_leiloes.BackColor = Color.PaleTurquoise;
+            btn_leiloes.ForeColor = SystemColors.ButtonHighlight;
             btn_leiloes.Location = new Point(325, 107);
             btn_leiloes.Margin = new Padding(3, 4, 3, 4);
             btn_leiloes.Name = "btn_leiloes";
             btn_leiloes.Size = new Size(261, 67);
+            btn_leiloes.Font = new Font(btn_leiloes.Font.FontFamily, 20, FontStyle.Regular);
             btn_leiloes.TabIndex = 0;
             btn_leiloes.Text = "Leilões";
-            btn_leiloes.UseVisualStyleBackColor = true;
+            btn_leiloes.UseVisualStyleBackColor = false;
             btn_leiloes.Click += button1_Click;
             // 
             // ajuda_button
             // 
+            ajuda_button.BackColor = Color.PaleTurquoise;
+            ajuda_button.ForeColor = SystemColors.ButtonHighlight;
             ajuda_button.Location = new Point(594, 107);
             ajuda_button.Margin = new Padding(3, 4, 3, 4);
             ajuda_button.Name = "ajuda_button";
             ajuda_button.Size = new Size(261, 67);
+            ajuda_button.Font = new Font(ajuda_button.Font.FontFamily, 20, FontStyle.Regular);
             ajuda_button.TabIndex = 1;
             ajuda_button.Text = "Ajuda";
-            ajuda_button.UseVisualStyleBackColor = true;
+            ajuda_button.UseVisualStyleBackColor = false;
             ajuda_button.Click += button2_Click;
             // 
             // btn_vender
             // 
+            btn_vender.BackColor = Color.PaleTurquoise;
+            btn_vender.ForeColor = SystemColors.ControlLightLight;
             btn_vender.Location = new Point(861, 107);
             btn_vender.Margin = new Padding(3, 4, 3, 4);
             btn_vender.Name = "btn_vender";
             btn_vender.Size = new Size(261, 67);
+            btn_vender.Font = new Font(btn_vender.Font.FontFamily, 20, FontStyle.Regular);
             btn_vender.TabIndex = 2;
             btn_vender.Text = "Criar leilão";
-            btn_vender.UseVisualStyleBackColor = true;
+            btn_vender.UseVisualStyleBackColor = false;
             btn_vender.Click += btn_vender_Click;
             // 
             // logout_button
