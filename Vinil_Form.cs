@@ -51,7 +51,7 @@ namespace SpinToWin
             // Show the dialog and check if the user clicked OK
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                nomeImagem_label.Text = openFileDialog.FileName;
+                nomeImagem_label.Text = openFileDialog.SafeFileName;
                 try
                 {
                     // Load the selected image into the PictureBox

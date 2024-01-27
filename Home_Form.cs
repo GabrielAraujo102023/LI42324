@@ -1,5 +1,6 @@
 using Microsoft.Identity.Client.NativeInterop;
 using Microsoft.IdentityModel.Tokens;
+using System.Windows.Forms;
 
 namespace SpinToWin
 {
@@ -32,10 +33,33 @@ namespace SpinToWin
             {
                 //TODO: ADICIONAR IMAGENS
                 FlowLayoutPanel p = new FlowLayoutPanel();
+                p.Size = new Size(700, 700);
                 Label estado = new Label();
                 estado.Text = l.Estado;
+                estado.BackColor = colorText(estado.Text);
+                PictureBox pict = new PictureBox();
+                List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
+                pict.SizeMode = PictureBoxSizeMode.Zoom;
+                pict.Size = new Size(175, 190);
                 p.Controls.Add(estado);
+                pict.Location = estado.Location;
+                p.Controls.Add(pict);
                 tableLayoutPanel1.Controls.Add(p);
+            }
+        }
+
+        Color colorText(string estado)
+        {
+            switch (estado)
+            {
+                case "fechado":
+                    return Color.Red;
+                case "aberto":
+                    return Color.Blue;
+                case "catalogado":
+                    return Color.Yellow;
+                default: return Color.Red;
             }
         }
 

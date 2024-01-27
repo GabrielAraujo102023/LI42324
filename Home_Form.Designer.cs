@@ -185,7 +185,7 @@
             panel2.Controls.Add(nextPage_button);
             panel2.Location = new Point(1216, 141);
             panel2.Name = "panel2";
-            panel2.Size = new Size(50, 570);
+            panel2.Size = new Size(50, 599);
             panel2.TabIndex = 16;
             // 
             // prevPage_button
@@ -242,7 +242,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Size = new Size(1151, 539);
+            tableLayoutPanel1.Size = new Size(1151, 568);
             tableLayoutPanel1.TabIndex = 19;
             // 
             // Home_Form
@@ -250,7 +250,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1306, 723);
+            ClientSize = new Size(1306, 752);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(button3);
             Controls.Add(button2);
