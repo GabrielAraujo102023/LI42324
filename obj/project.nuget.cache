@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OpBhG5HS/PDngPPJsS7BOO6RpQrfYPmiqqrB/zGc1KQNIBUwZ1OeDNiMcYyzHSP0Uqhe2+o/AnW7CmEccOQylg==",
+  "dgSpecHash": "waf2dfoVdCQAokNak9V63rUjU80CN01yuPe2TK5IF9MphOifpd6LMCK5dlp2jxcm1McuSepp+uCvXg75Izfupg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\Trabalho\\SpinToWin.csproj",
+  "projectFilePath": "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\Trabalho\\LI42324\\SpinToWin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rcrd_\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\rcrd_\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

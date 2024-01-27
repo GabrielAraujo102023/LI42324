@@ -34,16 +34,40 @@ namespace SpinToWin
                 //TODO: ADICIONAR IMAGENS
                 FlowLayoutPanel p = new FlowLayoutPanel();
                 p.Size = new Size(700, 700);
+                Button btn = new Button();
+                btn.Text = "Info";
                 Label estado = new Label();
                 estado.Text = l.Estado;
                 estado.BackColor = colorText(estado.Text);
+
+
+
                 PictureBox pict = new PictureBox();
                 List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
+                // Set up a click event handler for the PictureBox
+                pict.Click += (sender, e) =>
+                {
+                    // Handle the click event here
+                    // For example, show a message with the Vinil details
+                    if (vinis.Any())
+                    {
+                        Vinil selectedVinil = vinis.First();
+                        MessageBox.Show($"Clicked on Vinil {selectedVinil.FotosVinil}");
+                    }
+                };
+                
+                //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
+
+                //TODO mudar isto
+                pict.Image = new Bitmap(175, 190, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                Graphics.FromImage(pict.Image).FillRectangle(Brushes.Black, 0, 0, pict.Width, pict.Height);
+
+
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(175, 190);
                 p.Controls.Add(estado);
                 pict.Location = estado.Location;
+                p.Controls.Add(btn);
                 p.Controls.Add(pict);
                 tableLayoutPanel1.Controls.Add(p);
             }
