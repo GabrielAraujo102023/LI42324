@@ -30,13 +30,13 @@ namespace SpinToWin
         }
 
 
-
+        // Ajusta o tamanho do formulário de acordo com a quantidade de vinis
         private void AjustarTamanhoDoFormulario()
         {
-            const int alturaPorVinil = 30; // Altura estimada por linha de vinil
-            const int alturaMinima = 100;  // Altura mínima do formulário
-            const int alturaMaxima = 500;  // Altura máxima do formulário
-            const int larguraFormulario = 300; // Largura do formulário
+            const int alturaPorVinil = 30;
+            const int alturaMinima = 100;
+            const int alturaMaxima = 500;
+            const int larguraFormulario = 300;
 
             int alturaCalculada = 100 + vinis.Count * alturaPorVinil;
 
@@ -47,21 +47,35 @@ namespace SpinToWin
         }
 
 
+        private RichTextBox richTextBoxVinis;
 
+        private void InitializeRichTextBox()
+        {
+            richTextBoxVinis = new RichTextBox();
+            richTextBoxVinis.Location = new Point(10, 10); // Ajustar a localização conforme necessário
+            richTextBoxVinis.Size = new Size(280, 200); // Ajustar o tamanho conforme necessário
+            richTextBoxVinis.ReadOnly = true; // Torna o RichTextBox somente leitura
+            richTextBoxVinis.BorderStyle = BorderStyle.None;
+
+            this.Controls.Add(richTextBoxVinis);
+        }
 
         private void Leilao_Info_Form_Load(object sender, EventArgs e)
         {
-            StringBuilder nomesVinis = new StringBuilder();
-            nomesVinis.AppendLine("Lista de Vinis:\n");
+            InitializeRichTextBox();
 
+            // Adiciona o título
+            richTextBoxVinis.SelectionFont = new Font("Arial", 12, FontStyle.Bold);
+            richTextBoxVinis.AppendText("Lista de Vinis:\n\n");
+
+            // Adiciona a lista de vinis
+            richTextBoxVinis.SelectionFont = new Font("Arial", 10, FontStyle.Regular);
             int contador = 1;
             foreach (var vinil in vinis)
             {
-                nomesVinis.AppendLine($"{contador}. {vinil.Album}");
+                richTextBoxVinis.AppendText($"{contador} - {vinil.Album}\n");
                 contador++;
             }
-
-            label2.Text = nomesVinis.ToString();
         }
 
 
