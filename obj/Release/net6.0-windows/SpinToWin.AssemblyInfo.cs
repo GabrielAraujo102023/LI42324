@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpinToWin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb313b639282c5bab1e481b41042e2a6af4a5b21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2406e44065362b13fdc21f8410392c78aea8cb3b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpinToWin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpinToWin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

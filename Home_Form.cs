@@ -19,29 +19,7 @@ namespace SpinToWin
             carregarLeiloes();
             Refresh();
         }
-
-        private Image LoadImageFromUrl(string imageUrl)
-        {
-            try
-            {
-                using (WebClient webClient = new WebClient())
-                {
-                    byte[] data = webClient.DownloadData(imageUrl);
-                    using (MemoryStream ms = new MemoryStream(data))
-                    {
-                        // Load the image from the MemoryStream and return it
-                        return Image.FromStream(ms);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions, such as network errors or invalid image format.
-                MessageBox.Show($"Error loading image from URL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null; // Return null if there's an error
-            }
-        }
-
+        
 
         private void carregarLeiloes()
         {
@@ -71,8 +49,6 @@ namespace SpinToWin
                 // Set up a click event handler for the PictureBox
                 pict.Click += (sender, e) =>
                 {
-                    // Handle the click event here
-                    // For example, show a message with the Vinil details
                     if (vinis.Any())
                     {
                         Vinil selectedVinil = vinis.First();
@@ -82,14 +58,11 @@ namespace SpinToWin
                 
                 //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
 
-                //TODO mudar isto
+                //Imagens por url. Mudar?
                 Image loadedImage = LoadImageFromUrl("https://media.licdn.com/dms/image/C4D03AQFV8KKpmds25w/profile-displayphoto-shrink_800_800/0/1517584979708?e=2147483647&v=beta&t=Z0ninSDSOLK5nre3h0cFjq7CkiQ7X42PhWkcVIkB7yM");
                 if (loadedImage != null){
                     pict.Image = loadedImage;
                 }
-                //pict.Image = new Bitmap(175, 190, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                //Graphics.FromImage(pict.Image).FillRectangle(Brushes.Black, 0, 0, pict.Width, pict.Height);
-
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(175, 190);
@@ -296,6 +269,40 @@ namespace SpinToWin
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private Image LoadImageFromUrl(string imageUrl)
+        {
+            try
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] data = webClient.DownloadData(imageUrl);
+                    using (MemoryStream ms = new MemoryStream(data))
+                    {
+                        // Load the image from the MemoryStream and return it
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // If an error occurs, return a default image or handle the error as needed
+                Console.WriteLine($"Error loading image: {ex.Message}");
+
+                // Example: Return a default image (you can replace it with your own default image)
+                using (WebClient webClient = new WebClient())
+                {
+                    // Corrected URL and encoded characters
+                    string defaultImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU";
+
+                    byte[] data = webClient.DownloadData(defaultImageUrl);
+                    using (MemoryStream ms = new MemoryStream(data))
+                    {
+                        // Load the default image from the MemoryStream and return it
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
         }
     }
 }
