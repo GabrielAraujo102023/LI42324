@@ -6,6 +6,8 @@ SELECT DB_NAME() AS CurrentDatabase;
 
 
 UPDATE Leilao SET  Comprador = 4, Preco_venda = 15 WHERE idLeilao = 10;
+UPDATE Vinil SET Leilao = 2 WHERE idLeilao = 4;
+UPDATE Vinil SET Leilao = 5 WHERE idLeilao = 11;
 
 Use VinilDB;
 
