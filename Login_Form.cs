@@ -32,7 +32,7 @@ namespace SpinToWin
             }
             else
             {
-                Global.accountID = (int)client.Id;
+                Global.accountID = client.Email.Equals("admin") ? 0 : (int)client.Id;
                 showHomeForm(true);
             }
         }

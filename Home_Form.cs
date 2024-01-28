@@ -22,8 +22,15 @@ namespace SpinToWin
             Refresh();
         }
 
+        public void reloadLeiloes()
+        {
+            leilaoDAO = new LeilaoDAO();
+            leiloes = leilaoDAO.GetListLeiloes();
+            carregarLeiloes();
+        }
 
-        private void carregarLeiloes()
+
+        public void carregarLeiloes()
         {
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
@@ -156,11 +163,20 @@ namespace SpinToWin
             {
                 logout_button.Text = "Logout";
                 perfil_button.Visible = true;
+                if (Global.accountID == 0)
+                {
+                    editlei_button.Visible = true;
+                    editvin_button.Visible = true;
+                    editcl_button.Visible = true;
+                }
             }
             else
             {
                 logout_button.Text = "Login";
                 perfil_button.Visible = false;
+                editlei_button.Visible = false;
+                editvin_button.Visible = false;
+                editcl_button.Visible = false;
             }
             base.Refresh();
         }
@@ -202,15 +218,6 @@ namespace SpinToWin
             if (curPagina < maxPaginas)
             {
                 curPagina++;
-                carregarLeiloes();
-            }
-        }
-
-        private void prevPage_button_Click(object sender, EventArgs e)
-        {
-            if (curPagina > 0)
-            {
-                curPagina--;
                 carregarLeiloes();
             }
         }
@@ -420,7 +427,7 @@ namespace SpinToWin
         {
 
         }
-        private Image LoadImageFromUrl(string imageUrl)
+        public static Image LoadImageFromUrl(string imageUrl)
         {
             try
             {
@@ -452,6 +459,16 @@ namespace SpinToWin
                         return Image.FromStream(ms);
                     }
                 }
+            }
+        }
+
+        private void prevPage_button_Click_1(object sender, EventArgs e)
+        {
+            if (curPagina > 0)
+            {
+                curPagina--;
+                carregarLeiloes();
+            }
             }
         }
 

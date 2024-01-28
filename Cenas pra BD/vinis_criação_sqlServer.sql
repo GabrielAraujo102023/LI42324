@@ -41,7 +41,7 @@ CREATE TABLE Leilao (
 CREATE TABLE Vinil (
     idVinil INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Artista VARCHAR(45) NULL,
-    Album VARCHAR(45) NOT NULL,
+    Album VARCHAR(45) NULL,
     AnoLancamento DATE NULL,
 	Condicao_disco INT NULL,
 	Condicao_capa INT NULL,

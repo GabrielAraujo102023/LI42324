@@ -34,7 +34,7 @@
             btn_vender = new Button();
             logout_button = new Button();
             perfil_button = new Button();
-            button6 = new Button();
+            editcl_button = new Button();
             label1 = new Label();
             pesquisar_button = new Button();
             txtBox_pesquisar = new TextBox();
@@ -48,6 +48,8 @@
             label11 = new Label();
             button2 = new Button();
             button3 = new Button();
+            editvin_button = new Button();
+            editlei_button = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox2 = new PictureBox();
             genero_musical = new ComboBox();
@@ -137,15 +139,15 @@
             perfil_button.UseVisualStyleBackColor = true;
             perfil_button.Click += button5_Click;
             // 
-            // button6
+            // editcl_button
             // 
-            button6.Location = new Point(284, 23);
-            button6.Name = "button6";
-            button6.Size = new Size(80, 40);
-            button6.TabIndex = 5;
-            button6.Text = "testClienteDB";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            editcl_button.Location = new Point(1264, 92);
+            editcl_button.Name = "editcl_button";
+            editcl_button.Size = new Size(80, 40);
+            editcl_button.TabIndex = 5;
+            editcl_button.Text = "Editar Clientes";
+            editcl_button.UseVisualStyleBackColor = true;
+            editcl_button.Click += button6_Click;
             // 
             // label1
             // 
@@ -228,6 +230,7 @@
             prevPage_button.TabIndex = 21;
             prevPage_button.Text = "<";
             prevPage_button.UseVisualStyleBackColor = true;
+            prevPage_button.Click += prevPage_button_Click_1;
             // 
             // nextPage_button
             // 
@@ -259,23 +262,23 @@
             // 
             // button2
             // 
-            button2.Location = new Point(1178, 92);
-            button2.Name = "button2";
-            button2.Size = new Size(80, 38);
-            button2.TabIndex = 17;
-            button2.Text = "testVinilDB";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            editvin_button.Location = new Point(1178, 92);
+            editvin_button.Name = "editvin_button";
+            editvin_button.Size = new Size(80, 38);
+            editvin_button.TabIndex = 17;
+            editvin_button.Text = "Editar Vinis";
+            editvin_button.UseVisualStyleBackColor = true;
+            editvin_button.Click += button2_Click_1;
             // 
-            // button3
+            // editlei_button
             // 
-            button3.Location = new Point(1063, 91);
-            button3.Name = "button3";
-            button3.Size = new Size(109, 40);
-            button3.TabIndex = 18;
-            button3.Text = "testLeilaoDB";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            editlei_button.Location = new Point(1063, 91);
+            editlei_button.Name = "editlei_button";
+            editlei_button.Size = new Size(109, 40);
+            editlei_button.TabIndex = 18;
+            editlei_button.Text = "Editar Leilões";
+            editlei_button.UseVisualStyleBackColor = true;
+            editlei_button.Click += button3_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -556,8 +559,8 @@
             Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(tableLayoutPanel1);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(editlei_button);
+            Controls.Add(editvin_button);
             Controls.Add(panel2);
             Controls.Add(num_max_vinis);
             Controls.Add(button1);
@@ -568,7 +571,7 @@
             Controls.Add(a_partir_ano);
             Controls.Add(txtBox_pesquisar);
             Controls.Add(label1);
-            Controls.Add(button6);
+            Controls.Add(editcl_button);
             Controls.Add(perfil_button);
             Controls.Add(logout_button);
             Controls.Add(btn_vender);
@@ -594,7 +597,7 @@
         private Button btn_vender;
         private Button logout_button;
         private Button perfil_button;
-        private Button button6;
+        private Button editcl_button;
         private Label label1;
         private Button pesquisar_button;
         private TextBox txtBox_pesquisar;
@@ -602,8 +605,8 @@
         private Button button1;
         private Panel panel1;
         private Panel panel2;
-        private Button button2;
-        private Button button3;
+        private Button editvin_button;
+        private Button editlei_button;
         private TableLayoutPanel tableLayoutPanel1;
         private Button prevPage_button;
         private Button nextPage_button;

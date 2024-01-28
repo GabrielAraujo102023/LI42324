@@ -74,7 +74,7 @@
             button5.Name = "button5";
             button5.Size = new Size(58, 50);
             button5.TabIndex = 23;
-            button5.Text = "button5";
+            button5.Text = "Perfil";
             button5.UseVisualStyleBackColor = true;
             // 
             // logout_button

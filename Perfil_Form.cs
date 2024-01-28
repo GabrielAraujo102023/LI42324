@@ -107,5 +107,15 @@ namespace SpinToWin
             new Vinil_Form().Show();
             Close();
         }
+
+        private void editleiloes_button_Click(object sender, EventArgs e)
+        {
+            new editarEscolha_Form('l').Show();
+        }
+
+        private void editvinis_button_Click(object sender, EventArgs e)
+        {
+            new editarEscolha_Form('v').Show();
+        }
     }
 }

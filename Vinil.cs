@@ -80,6 +80,30 @@ namespace SpinToWin
             Leilao = leilao;
         }
 
+        public Vinil ChangeLeilao(int leilaoId)
+        {
+            return new Vinil
+            {
+                IdVinil = this.IdVinil,
+                Artista = this.Artista,
+                Album = this.Album,
+                AnoLancamento = this.AnoLancamento,
+                CondicaoDisco = this.CondicaoDisco,
+                CondicaoCapa = this.CondicaoCapa,
+                Categoria = this.Categoria,
+                Duracao = this.Duracao,
+                Tamanho = this.Tamanho,
+                Rotacoes = this.Rotacoes,
+                Tipo = this.Tipo,
+                Gravadora = this.Gravadora,
+                EdicaoEspecial = this.EdicaoEspecial,
+                Remasterizado = this.Remasterizado,
+                FotosVinil = this.FotosVinil,
+                Cliente = this.Cliente,
+                Leilao = leilaoId
+            };
+        }
+
         // Clone method
         public Vinil Clone()
         {

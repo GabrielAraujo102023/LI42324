@@ -20,6 +20,8 @@ namespace SpinToWin
         private int curPagina = 0;
         private int maxPaginas = vinis.Count() / nItems;
         private List<Vinil> selectedVinis = new List<Vinil>();
+        private bool isEditing = false;
+        private Leilao leilao;
         public CriarLeilao_Form(Home_Form home_form)
         {
             InitializeComponent();
@@ -28,8 +30,29 @@ namespace SpinToWin
             this.home_form = home_form;
         }
 
+        public CriarLeilao_Form(Home_Form home_form, Leilao leilao)
+        {
+            InitializeComponent();
+            Refresh();
+            this.home_form = home_form;
+            this.leilao = leilao;
+            editarLeilao();
+            carregarVinis();
+        }
+
+        private void editarLeilao()
+        {
+            valorBase_textBox.Text = leilao.ValorBase.ToString();
+            valorMinimo_textBox.Text = leilao.ValorMinimo.ToString();
+            selectedVinis = vinilDAO.GetVinisByLeilao((int)leilao.IdLeilao);
+            criar_button.Text = "Editar";
+            isEditing = true;
+        }
+
         private void carregarVinis()
         {
+            vinis.RemoveAll(v => v.Leilao != null && (leilao == null || v.Leilao != leilao.IdLeilao));
+            
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
             if (start + nItems >= vinis.Count())
@@ -46,7 +69,10 @@ namespace SpinToWin
                 nome.Text = v.Artista + " - " + v.Album;
 
                 Button btn = new Button();
-                btn.Text = "+";
+                if (selectedVinis.Contains(v))
+                    btn.Text = "✓";
+                else
+                    btn.Text = "+";
                 btn.Size = new Size(28, 35);
                 btn.Click += (sender, e) => AddVinil_Click(sender, e, v);
                 tableLayoutPanel1.Controls.Add(nome);
@@ -104,6 +130,7 @@ namespace SpinToWin
         private void btn_leiloes_Click(object sender, EventArgs e)
         {
             home_form.Refresh();
+            home_form.reloadLeiloes();
             home_form.Show();
             Close();
         }
@@ -139,10 +166,25 @@ namespace SpinToWin
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
                     Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, valorBase, Global.accountID);
-                    if (new LeilaoDAO().InsertLeilao(leilao) != -1)
-                        MessageBox.Show("Leilão criado com sucesso!");
+                    if(!isEditing)
+                    {
+                        int id = new LeilaoDAO().InsertLeilao(leilao);
+                        if (id != -1)
+                        {
+                            foreach (Vinil v in selectedVinis)
+                            {
+                                vinilDAO.UpdateVinil((int)v.IdVinil, v.ChangeLeilao(id));
+                            }
+                            MessageBox.Show("Leilão criado com sucesso!");
+                        }
+                        else
+                            MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde."); 
+                    }
                     else
-                        MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde.");
+                    {
+                        new LeilaoDAO().UpdateLeilao((int)leilao.IdLeilao, leilao);
+                        MessageBox.Show("Leilão editado com sucesso!");
+                    }
                 }
             }
 
@@ -150,7 +192,7 @@ namespace SpinToWin
 
         private void pesquisar_button_Click(object sender, EventArgs e)
         {
-            vinis = !pesquisar_textBox.Text.IsNullOrEmpty() ? vinilDAO.GetListVinis().FindAll(matchesSearch) : vinilDAO.GetListVinis();
+            vinis = !pesquisar_textBox.Text.IsNullOrEmpty() ? vinilDAO.GetVinisByCliente(Global.accountID).FindAll(matchesSearch) : vinilDAO.GetVinisByCliente(Global.accountID);
             curPagina = 0;
             carregarVinis();
         }
