@@ -49,7 +49,7 @@ namespace SpinToWin
                 estado.Text = l.Estado;
                 estado.BackColor = colorText(estado.Text);
                 estado.Size = btn.Size;
-                estado.Margin = new Padding(50, 0, 0, 0); ; // Remove a margem ao redor do label
+                estado.Margin = new Padding(50, 0, 0, 0);
                 estado.TextAlign = ContentAlignment.MiddleCenter;
 
                 // Botao de Info
@@ -91,7 +91,7 @@ namespace SpinToWin
 
                 Label preco = new Label();
                 preco.Width = 270;
-                preco.Text = "                Preço: " + l.PrecoVenda +  "€";
+                preco.Text = "                Preço: " + l.PrecoVenda + "€";
                 preco.Margin = new Padding(0, 0, 0, 15);
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
@@ -218,9 +218,19 @@ namespace SpinToWin
         {
             leiloes = !txtBox_pesquisar.Text.IsNullOrEmpty() ? leilaoDAO.GetListLeiloes().FindAll(matchesSearch) : leilaoDAO.GetListLeiloes();
             ordenarLeiloes();
+            filtrarLeiloes();
             curPagina = 0;
             carregarLeiloes();
         }
+
+        private void filtrarLeiloes()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
 
         private bool matchesSearch(Leilao l)
         {
@@ -334,6 +344,31 @@ namespace SpinToWin
                     }
                 }
             }
+        }
+
+        private void ordenar_combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

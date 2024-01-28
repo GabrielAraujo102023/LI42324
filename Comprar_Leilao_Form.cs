@@ -74,6 +74,14 @@ namespace SpinToWin
                     button1.Visible = false;
                     break;
 
+                case "lastChance"://TODO lastchance na label home
+                    label2.Text = $"Preço Atual: {leilao.ValorBase}";
+                    label3.Text = $"Preço Mínimo: {leilao.ValorMinimo}";
+                    label4.Visible = false;
+                    label5.Visible = false;
+                    label6.Visible = false;
+                    break;
+
                 default:
                     break;
             }
