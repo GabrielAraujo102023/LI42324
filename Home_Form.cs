@@ -10,7 +10,8 @@ namespace SpinToWin
         private static ClientDAO clientDAO = new ClientDAO();
         private static LeilaoDAO leilaoDAO = new LeilaoDAO();
         private static VinilDAO vinilDAO = new VinilDAO();
-        private static List<Leilao> leiloes = leilaoDAO.GetListLeiloes();
+        private static List<Leilao> leiloesCompletos = leilaoDAO.GetListLeiloes();
+        private static List<Leilao> leiloes = new List<Leilao>(leiloesCompletos);
         private static int nItems = 12;
         private int curPagina = 0;
         private int maxPaginas = leiloes.Count() / nItems;
@@ -85,7 +86,7 @@ namespace SpinToWin
                 }
                 else
                 {
-                    loadedImage = LoadImageFromUrl("qualquer cena");
+                    loadedImage = LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU");
                 }
                 if (loadedImage != null)
                 {
@@ -94,7 +95,7 @@ namespace SpinToWin
 
                 Label titulo = new Label();
                 titulo.Width = 270;
-                titulo.Text = "               Leilão do " + emailVendedor;
+                titulo.Text = "               Vendedor: " + emailVendedor;
 
                 Label preco = new Label();
                 preco.Width = 270;
@@ -223,6 +224,11 @@ namespace SpinToWin
 
         private void pesquisar_button_Click(object sender, EventArgs e)
         {
+            processarLeiloes();
+        }
+
+        private void processarLeiloes()
+        {
             leiloes = !txtBox_pesquisar.Text.IsNullOrEmpty() ? leilaoDAO.GetListLeiloes().FindAll(matchesSearch) : leilaoDAO.GetListLeiloes();
             ordenarLeiloes();
             filtrarLeiloes();
@@ -232,7 +238,110 @@ namespace SpinToWin
 
         private void filtrarLeiloes()
         {
-            throw new NotImplementedException();
+            // Filtrar por estado
+            if (!Aberto.Checked)
+            {
+                leiloes = leiloes.FindAll(l => l.Estado != "aberto");
+            }
+            if (!Catalogado.Checked)
+            {
+                leiloes = leiloes.FindAll(l => l.Estado != "catalogado");
+            }
+            if (!Fechado.Checked)
+            {
+                leiloes = leiloes.FindAll(l => l.Estado != "fechado");
+            }
+            if (!lastChance.Checked)
+            {
+                leiloes = leiloes.FindAll(l => l.Estado != "lastChance");
+            }
+
+            // Filtrar por ano
+            if (a_partir_ano.Text != "")
+            {
+                int targetYear = int.Parse(a_partir_ano.Text);
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Any(v => v.AnoLancamento.HasValue && v.AnoLancamento.Value.Year >= targetYear);
+                }).ToList();
+            }
+
+            // Filtrar por categoria
+            if (genero_musical.Text != "")
+            {
+                string targetCategory = genero_musical.Text;
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Any(v => v.Categoria == targetCategory);
+                }).ToList();
+            }
+
+            // Filtrar por qualidade da capa
+            if (min_qualidade_capa.Text != "")
+            {
+                int targetCapa = int.Parse(min_qualidade_capa.Text);
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Any(v => v.CondicaoCapa >= targetCapa);
+                }).ToList();
+            }
+
+            //Filtra por qualidade do disco
+            if (min_qualidade_disco.Text != "")
+            {
+                int targetDisco = int.Parse(min_qualidade_disco.Text);
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Any(v => v.CondicaoDisco >= targetDisco);
+                }).ToList();
+            }
+
+            // Filtrar por preço minimo
+            if (preco_min.Text != "")
+            {
+                float targetPrice = float.Parse(preco_min.Text);
+
+                leiloes = leiloes.Where(l => l.PrecoVenda >= targetPrice).ToList();
+            }
+
+            // Filtrar por preço maximo
+            if (preco_max.Text != "")
+            {
+                float targetPrice = float.Parse(preco_max.Text);
+
+                leiloes = leiloes.Where(l => l.PrecoVenda <= targetPrice).ToList();
+            }
+
+            //Filtrar por numero de vinis
+            if(num_min_vinis.Text != "")
+            {
+                int targetNum = int.Parse(num_min_vinis.Text);
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Count >= targetNum;
+                }).ToList();
+            }
+
+            if(num_max_vinis.Text != "")
+            {
+                int targetNum = int.Parse(num_max_vinis.Text);
+
+                leiloes = leiloes.Where(l =>
+                {
+                    List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                    return vinis.Count <= targetNum;
+                }).ToList();
+            }
         }
 
 
@@ -362,4 +471,43 @@ namespace SpinToWin
             }
             }
         }
+
+        private void ordenar_combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            filtrarLeiloes();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void a_partir_ano_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
     }
