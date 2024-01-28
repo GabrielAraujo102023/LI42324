@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -73,6 +74,8 @@ namespace SpinToWin
                 return;
             if (vinilOUleilao == 'v')
                 new Vinil_Form(new VinilDAO().GetVinilById(id)).Show();
+            else
+                new CriarLeilao_Form(new LeilaoDAO().GetLeilaoById(id)).Show();
             Close();
         }
     }

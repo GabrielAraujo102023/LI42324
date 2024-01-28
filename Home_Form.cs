@@ -321,7 +321,7 @@ namespace SpinToWin
             }
 
             //Filtrar por numero de vinis
-            if(num_min_vinis.Text != "")
+            if (num_min_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_min_vinis.Text);
 
@@ -332,7 +332,7 @@ namespace SpinToWin
                 }).ToList();
             }
 
-            if(num_max_vinis.Text != "")
+            if (num_max_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_max_vinis.Text);
 
@@ -469,45 +469,8 @@ namespace SpinToWin
                 curPagina--;
                 carregarLeiloes();
             }
-            }
-        }
-
-        private void ordenar_combo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            leiloes = new List<Leilao>(leiloesCompletos);
-            filtrarLeiloes();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            leiloes = new List<Leilao>(leiloesCompletos);
-            processarLeiloes();
-        }
-
-        private void a_partir_ano_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
-    }
+
+    
