@@ -15,9 +15,11 @@ namespace SpinToWin
         private static int nItems = 12;
         private int curPagina = 0;
         private int maxPaginas = leiloes.Count() / nItems;
+
         public Home_Form()
         {
             InitializeComponent();
+            curr_time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             carregarLeiloes();
             Refresh();
         }
@@ -283,24 +285,22 @@ namespace SpinToWin
             // Filtrar por qualidade da capa
             if (min_qualidade_capa.Text != "")
             {
-                int targetCapa = int.Parse(min_qualidade_capa.Text);
-
+                int targetCapa = int.Parse(min_qualidade_capa.Text[0].ToString());
                 leiloes = leiloes.Where(l =>
                 {
                     List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                    return vinis.Any(v => v.CondicaoCapa >= targetCapa);
+                    return vinis.Any(v => v.CondicaoCapa <= targetCapa);
                 }).ToList();
             }
 
             //Filtra por qualidade do disco
             if (min_qualidade_disco.Text != "")
             {
-                int targetDisco = int.Parse(min_qualidade_disco.Text);
-
+                int targetDisco = int.Parse(min_qualidade_disco.Text[0].ToString());
                 leiloes = leiloes.Where(l =>
                 {
                     List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                    return vinis.Any(v => v.CondicaoDisco >= targetDisco);
+                    return vinis.Any(v => v.CondicaoDisco <= targetDisco);
                 }).ToList();
             }
 
@@ -321,7 +321,7 @@ namespace SpinToWin
             }
 
             //Filtrar por numero de vinis
-            if(num_min_vinis.Text != "")
+            if (num_min_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_min_vinis.Text);
 
@@ -331,8 +331,7 @@ namespace SpinToWin
                     return vinis.Count >= targetNum;
                 }).ToList();
             }
-
-            if(num_max_vinis.Text != "")
+            if (num_max_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_max_vinis.Text);
 
@@ -469,7 +468,6 @@ namespace SpinToWin
                 curPagina--;
                 carregarLeiloes();
             }
-            }
         }
 
         private void ordenar_combo_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,8 +487,7 @@ namespace SpinToWin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            leiloes = new List<Leilao>(leiloesCompletos);
-            filtrarLeiloes();
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -500,14 +497,47 @@ namespace SpinToWin
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            leiloes = new List<Leilao>(leiloesCompletos);
-            processarLeiloes();
+
         }
 
         private void a_partir_ano_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void aplicar_filtros_Click(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void Fechado_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void lastChance_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void Aberto_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void Catalogado_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void curr_time_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-    }

@@ -62,6 +62,7 @@ namespace SpinToWin
 
         private void registar_button_Click(object sender, EventArgs e)
         {
+            //TODO: check if email is valid with"@"
             if (areTextBoxesEmpty()) return;
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
             if (client != null)

@@ -73,6 +73,7 @@
             min_qualidade_capa = new ComboBox();
             min_qualidade_disco = new ComboBox();
             aplicar_filtros = new Button();
+            curr_time = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -139,7 +140,7 @@
             // 
             // editcl_button
             // 
-            editcl_button.Location = new Point(1264, 92);
+            editcl_button.Location = new Point(1260, 40);
             editcl_button.Name = "editcl_button";
             editcl_button.Size = new Size(80, 40);
             editcl_button.TabIndex = 5;
@@ -257,7 +258,7 @@
             label11.TabIndex = 23;
             label11.Text = "próxima";
             // 
-            // button2
+            // editvin_button
             // 
             editvin_button.Location = new Point(1178, 92);
             editvin_button.Name = "editvin_button";
@@ -309,7 +310,7 @@
             // genero_musical
             // 
             genero_musical.FormattingEnabled = true;
-            genero_musical.Items.AddRange(new object[] { "Rock", "Pop", "Folk", "Grunge", "Hard Rock", "Metal", "Alternative", "Reggae", "Punk", "Britpop", "Punk Rock" });
+            genero_musical.Items.AddRange(new object[] { "", "Rock", "Pop", "Folk", "Grunge", "Hard Rock", "Metal", "Alternative", "Reggae", "Punk", "Britpop", "Punk Rock" });
             genero_musical.Location = new Point(1311, 390);
             genero_musical.Name = "genero_musical";
             genero_musical.Size = new Size(121, 23);
@@ -346,6 +347,7 @@
             Aberto.TabIndex = 24;
             Aberto.Text = "Aberto";
             Aberto.UseVisualStyleBackColor = true;
+            Aberto.CheckedChanged += Aberto_CheckedChanged;
             // 
             // lastChance
             // 
@@ -358,6 +360,7 @@
             lastChance.TabIndex = 24;
             lastChance.Text = "Last Chance";
             lastChance.UseVisualStyleBackColor = true;
+            lastChance.CheckedChanged += lastChance_CheckedChanged;
             // 
             // Catalogado
             // 
@@ -370,6 +373,7 @@
             Catalogado.TabIndex = 24;
             Catalogado.Text = "Catalogado";
             Catalogado.UseVisualStyleBackColor = true;
+            Catalogado.CheckedChanged += Catalogado_CheckedChanged;
             // 
             // Fechado
             // 
@@ -382,6 +386,7 @@
             Fechado.TabIndex = 24;
             Fechado.Text = "Fechado";
             Fechado.UseVisualStyleBackColor = true;
+            Fechado.CheckedChanged += Fechado_CheckedChanged;
             // 
             // label3
             // 
@@ -494,7 +499,7 @@
             // min_qualidade_capa
             // 
             min_qualidade_capa.FormattingEnabled = true;
-            min_qualidade_capa.Items.AddRange(new object[] { "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
+            min_qualidade_capa.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
             min_qualidade_capa.Location = new Point(1311, 469);
             min_qualidade_capa.Name = "min_qualidade_capa";
             min_qualidade_capa.Size = new Size(121, 23);
@@ -503,7 +508,7 @@
             // min_qualidade_disco
             // 
             min_qualidade_disco.FormattingEnabled = true;
-            min_qualidade_disco.Items.AddRange(new object[] { "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
+            min_qualidade_disco.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
             min_qualidade_disco.Location = new Point(1311, 554);
             min_qualidade_disco.Name = "min_qualidade_disco";
             min_qualidade_disco.Size = new Size(121, 23);
@@ -517,6 +522,17 @@
             aplicar_filtros.TabIndex = 25;
             aplicar_filtros.Text = "Aplicar filtros";
             aplicar_filtros.UseVisualStyleBackColor = true;
+            aplicar_filtros.Click += aplicar_filtros_Click;
+            // 
+            // curr_time
+            // 
+            curr_time.AutoSize = true;
+            curr_time.Location = new Point(1432, 62);
+            curr_time.Name = "curr_time";
+            curr_time.Size = new Size(44, 15);
+            curr_time.TabIndex = 26;
+            curr_time.Text = "label13";
+            curr_time.Click += curr_time_Click;
             // 
             // Home_Form
             // 
@@ -524,6 +540,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1600, 1000);
+            Controls.Add(curr_time);
             Controls.Add(aplicar_filtros);
             Controls.Add(Fechado);
             Controls.Add(Catalogado);
@@ -621,5 +638,6 @@
         private Label label12;
         private Label label11;
         private Button aplicar_filtros;
+        private Label curr_time;
     }
 }

@@ -165,7 +165,7 @@ namespace SpinToWin
                 else
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
-                    Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, valorBase, Global.accountID);
+                    Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, DateTime.Now, valorBase, Global.accountID);
                     if(!isEditing)
                     {
                         int id = new LeilaoDAO().InsertLeilao(leilao);
