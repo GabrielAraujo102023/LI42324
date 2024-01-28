@@ -198,7 +198,7 @@
             panel2.Controls.Add(nextPage_button);
             panel2.Location = new Point(1216, 141);
             panel2.Name = "panel2";
-            panel2.Size = new Size(50, 599);
+            panel2.Size = new Size(52, 807);
             panel2.TabIndex = 16;
             // 
             // prevPage_button
@@ -243,6 +243,7 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.BackColor = Color.PaleTurquoise;
+            tableLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -255,7 +256,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Size = new Size(1151, 568);
+            tableLayoutPanel1.Size = new Size(1151, 776);
             tableLayoutPanel1.TabIndex = 19;
             // 
             // pictureBox2
@@ -273,7 +274,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1306, 752);
+            ClientSize = new Size(1600, 1000);
             Controls.Add(pictureBox2);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(button3);
