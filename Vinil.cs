@@ -138,5 +138,12 @@ namespace SpinToWin
                    $"EdicaoEspecial={EdicaoEspecial}, Remasterizado={Remasterizado}, FotosVinil={FotosVinil}, " +
                    $"Cliente={Cliente}, Leilao={Leilao}]";
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            Vinil? vinil = obj as Vinil;
+            return vinil.IdVinil == this.IdVinil;
+        }
     }
 }

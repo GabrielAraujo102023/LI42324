@@ -30,11 +30,16 @@ namespace SpinToWin
             this.home_form = home_form;
         }
 
-        public CriarLeilao_Form(Home_Form home_form, Leilao leilao)
+        public CriarLeilao_Form(Leilao leilao)
         {
             InitializeComponent();
             Refresh();
             this.home_form = home_form;
+            logout_button.Visible = false;
+            btn_leiloes.Visible = false;
+            btn_vender.Visible = false;
+            btn_comprar.Visible = false;
+            button5.Visible = false;
             this.leilao = leilao;
             editarLeilao();
             carregarVinis();
@@ -129,9 +134,12 @@ namespace SpinToWin
 
         private void btn_leiloes_Click(object sender, EventArgs e)
         {
-            home_form.Refresh();
-            home_form.reloadLeiloes();
-            home_form.Show();
+            if (!isEditing)
+            {
+                home_form.Refresh();
+                home_form.reloadLeiloes();
+                home_form.Show(); 
+            }
             Close();
         }
 
@@ -165,10 +173,10 @@ namespace SpinToWin
                 else
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
-                    Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, DateTime.Now, valorBase, Global.accountID);
+                    Leilao l = new Leilao("catalogado", null, valorBase, valorMinimo, DateTime.Now, valorBase, Global.accountID);
                     if(!isEditing)
                     {
-                        int id = new LeilaoDAO().InsertLeilao(leilao);
+                        int id = new LeilaoDAO().InsertLeilao(l);
                         if (id != -1)
                         {
                             foreach (Vinil v in selectedVinis)
@@ -182,8 +190,9 @@ namespace SpinToWin
                     }
                     else
                     {
-                        new LeilaoDAO().UpdateLeilao((int)leilao.IdLeilao, leilao);
+                        new LeilaoDAO().UpdateLeilao((int)leilao.IdLeilao, l);
                         MessageBox.Show("Leilão editado com sucesso!");
+                        Close();
                     }
                 }
             }
