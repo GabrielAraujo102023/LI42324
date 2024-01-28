@@ -46,8 +46,6 @@
             nextPage_button = new Button();
             label12 = new Label();
             label11 = new Label();
-            button2 = new Button();
-            button3 = new Button();
             editvin_button = new Button();
             editlei_button = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -187,7 +185,6 @@
             ordenar_combo.Size = new Size(121, 23);
             ordenar_combo.TabIndex = 12;
             ordenar_combo.Text = "Ordenar por";
-            ordenar_combo.SelectedIndexChanged += ordenar_combo_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -346,7 +343,6 @@
             Aberto.TabIndex = 24;
             Aberto.Text = "Aberto";
             Aberto.UseVisualStyleBackColor = true;
-            Aberto.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // lastChance
             // 
@@ -357,7 +353,6 @@
             lastChance.TabIndex = 24;
             lastChance.Text = "Last Chance";
             lastChance.UseVisualStyleBackColor = true;
-            lastChance.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // Catalogado
             // 
@@ -368,7 +363,6 @@
             Catalogado.TabIndex = 24;
             Catalogado.Text = "Catalogado";
             Catalogado.UseVisualStyleBackColor = true;
-            Catalogado.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // Fechado
             // 
@@ -379,7 +373,6 @@
             Fechado.TabIndex = 24;
             Fechado.Text = "Fechado";
             Fechado.UseVisualStyleBackColor = true;
-            Fechado.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // label3
             // 
@@ -406,7 +399,6 @@
             label4.Size = new Size(89, 15);
             label4.TabIndex = 23;
             label4.Text = "Género musical";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -416,7 +408,6 @@
             label5.Size = new Size(111, 15);
             label5.TabIndex = 23;
             label5.Text = "min qualidade capa";
-            label5.Click += label4_Click;
             // 
             // label6
             // 
@@ -426,7 +417,6 @@
             label6.Size = new Size(114, 15);
             label6.TabIndex = 23;
             label6.Text = "min qualidade disco";
-            label6.Click += label4_Click;
             // 
             // preco_min
             // 
@@ -452,7 +442,6 @@
             label8.Size = new Size(84, 15);
             label8.TabIndex = 23;
             label8.Text = "Preço máximo";
-            label8.Click += label4_Click;
             // 
             // preco_max
             // 
@@ -476,7 +465,6 @@
             label9.Size = new Size(102, 15);
             label9.TabIndex = 23;
             label9.Text = "Número min vinis";
-            label9.Click += label4_Click;
             // 
             // num_max_vinis
             // 
@@ -493,7 +481,6 @@
             label10.Size = new Size(104, 15);
             label10.TabIndex = 23;
             label10.Text = "Número max vinis";
-            label10.Click += label4_Click;
             // 
             // min_qualidade_capa
             // 
