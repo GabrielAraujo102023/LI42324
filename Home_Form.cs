@@ -70,8 +70,7 @@ namespace SpinToWin
                 // click event handler for the PictureBox
                 pict.Click += (sender, e) =>
                 {
-                    //TODO: por aqui o gajo que esta logado
-                    Client c = clientDAO.GetClientbyID(1);
+                    Client c = clientDAO.GetClientbyID(Global.accountID);
                     String emailVendedor = clientDAO.GetClientbyID(l.Vendedor).Email;
                     new Comprar_Leilao_Form(l, emailVendedor, c, vinis).Show();
                 };
@@ -79,11 +78,20 @@ namespace SpinToWin
                 //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
 
                 //Imagens por url. Mudar?
-                Image loadedImage = LoadImageFromUrl("https://media.licdn.com/dms/image/C4D03AQFV8KKpmds25w/profile-displayphoto-shrink_800_800/0/1517584979708?e=2147483647&v=beta&t=Z0ninSDSOLK5nre3h0cFjq7CkiQ7X42PhWkcVIkB7yM");
+                Image loadedImage;
+                if (vinis.Count > 0)
+                {
+                    loadedImage = LoadImageFromUrl(vinis.FirstOrDefault().FotosVinil);
+                }
+                else
+                {
+                    loadedImage = LoadImageFromUrl("qualquer cena");
+                }
                 if (loadedImage != null)
                 {
                     pict.Image = loadedImage;
                 }
+                
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(176, 190);

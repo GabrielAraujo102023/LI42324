@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,11 @@ namespace SpinToWin
     public partial class Vinil_Form : Form
     {
         private bool hasImage = false;
+        private string url;
         public Vinil_Form()
         {
             InitializeComponent();
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void sair_button_Click(object sender, EventArgs e)
@@ -40,28 +43,18 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            // Set the filter to allow only image files
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
-
-            // Set the title of the dialog
-            openFileDialog.Title = "Select Picture";
-
-            // Show the dialog and check if the user clicked OK
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (url_textBox.Text == "")
             {
-                nomeImagem_label.Text = openFileDialog.SafeFileName;
-                try
+                MessageBox.Show("Insira um URL.");
+            }
+            else
+            {
+                Image loadedImage = LoadImageFromUrl(url_textBox.Text);
+                if (loadedImage != null)
                 {
-                    // Load the selected image into the PictureBox
-                    pictureBox1.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                    pictureBox1.Image = loadedImage;
+                    url = url_textBox.Text;
                     hasImage = true;
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions that might occur during image loading
-                    MessageBox.Show("Erro a carregar imagem: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -123,17 +116,52 @@ namespace SpinToWin
             else
             {
                 try
-                { 
+                {
                     new VinilDAO().InsertVinil(new Vinil(artista_textBox.Text, nome_textBox.Text, new DateTime(int.Parse(ano_textBox.Text), 1, 1), disco_comboBo.SelectedIndex + 1
                         , capa_comboBox.SelectedIndex + 1, categoria_comboBox.SelectedText, int.Parse(duracao_textBox.Text), int.Parse((string)tamanho_comboBox.SelectedItem), int.Parse((string)rotacoes_comboBox.SelectedItem)
-                        , (string)tipo_comboBox.SelectedItem, gravadora_textBox.Text, edicaoEspecial_checkBox.Checked, remasterizado_checkBox.Checked, nomeImagem_label.Text, Global.accountID, null));
-                MessageBox.Show("Vinil adicionado com sucesso!");
+                        , (string)tipo_comboBox.SelectedItem, gravadora_textBox.Text, edicaoEspecial_checkBox.Checked, remasterizado_checkBox.Checked, url, Global.accountID, null));
+                    MessageBox.Show("Vinil adicionado com sucesso!");
                 }
                 finally
                 {
-                Close();
+                    Close();
+                }
+            }
+        }
+
+        private Image LoadImageFromUrl(string imageUrl)
+        {
+            try
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] data = webClient.DownloadData(imageUrl);
+                    using (MemoryStream ms = new MemoryStream(data))
+                    {
+                        // Load the image from the MemoryStream and return it
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // If an error occurs, return a default image or handle the error as needed
+                Console.WriteLine($"Error loading image: {ex.Message}");
+
+                // Example: Return a default image (you can replace it with your own default image)
+                using (WebClient webClient = new WebClient())
+                {
+                    // Corrected URL and encoded characters
+                    string defaultImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU";
+
+                    byte[] data = webClient.DownloadData(defaultImageUrl);
+                    using (MemoryStream ms = new MemoryStream(data))
+                    {
+                        // Load the default image from the MemoryStream and return it
+                        return Image.FromStream(ms);
+                    }
+                }
             }
         }
     }
-}
 }

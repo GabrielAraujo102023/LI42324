@@ -55,8 +55,8 @@
             remasterizado_checkBox = new CheckBox();
             pictureBox1 = new PictureBox();
             button1 = new Button();
-            nomeImagem_label = new Label();
             button3 = new Button();
+            url_textBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -291,22 +291,13 @@
             // 
             // button1
             // 
-            button1.Location = new Point(603, 223);
+            button1.Location = new Point(594, 249);
             button1.Name = "button1";
             button1.Size = new Size(101, 23);
             button1.TabIndex = 26;
-            button1.Text = "Selecionar foto";
+            button1.Text = "Carregar foto";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // nomeImagem_label
-            // 
-            nomeImagem_label.AutoSize = true;
-            nomeImagem_label.Location = new Point(572, 255);
-            nomeImagem_label.Name = "nomeImagem_label";
-            nomeImagem_label.Size = new Size(163, 15);
-            nomeImagem_label.TabIndex = 27;
-            nomeImagem_label.Text = "Nenhum ficheiro selecionado";
             // 
             // button3
             // 
@@ -319,13 +310,21 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // url_textBox
+            // 
+            url_textBox.Location = new Point(533, 223);
+            url_textBox.Name = "url_textBox";
+            url_textBox.PlaceholderText = "URL da imagem";
+            url_textBox.Size = new Size(241, 23);
+            url_textBox.TabIndex = 30;
+            // 
             // Vinil_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(url_textBox);
             Controls.Add(button3);
-            Controls.Add(nomeImagem_label);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(remasterizado_checkBox);
@@ -391,7 +390,7 @@
         private CheckBox remasterizado_checkBox;
         private PictureBox pictureBox1;
         private Button button1;
-        private Label nomeImagem_label;
         private Button button3;
+        private TextBox url_textBox;
     }
 }
