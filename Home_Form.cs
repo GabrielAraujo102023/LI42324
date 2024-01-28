@@ -41,10 +41,10 @@ namespace SpinToWin
             tableLayoutPanel1.Controls.Clear();
             foreach (Leilao l in leiloesPagina)
             {
-                //TODO: ADICIONAR IMAGENS
                 FlowLayoutPanel p = new FlowLayoutPanel();
                 p.Size = new Size(700, 700);
                 p.FlowDirection = FlowDirection.LeftToRight;
+                String emailVendedor = clientDAO.GetClientbyID(l.Vendedor).Email;
 
                 Button btn = new Button();
                 btn.Text = "Info";
@@ -56,10 +56,8 @@ namespace SpinToWin
                 estado.Text = l.Estado;
                 estado.BackColor = colorText(estado.Text);
                 estado.Size = btn.Size;
-                estado.Margin = new Padding(0); // Remove a margem ao redor do label
+                estado.Margin = new Padding(50, 0, 0, 0); ; // Remove a margem ao redor do label
                 estado.TextAlign = ContentAlignment.MiddleCenter;
-
-
 
                 // Botao de Info
                 btn.Click += (sender, e) =>
@@ -70,21 +68,16 @@ namespace SpinToWin
                 };
 
 
-
                 PictureBox pict = new PictureBox();
                 List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                // Set up a
-                // click event handler for the PictureBox
+
                 pict.Click += (sender, e) =>
                 {
                     Client c = clientDAO.GetClientbyID(Global.accountID);
-                    String emailVendedor = clientDAO.GetClientbyID(l.Vendedor).Email;
                     new Comprar_Leilao_Form(l, emailVendedor, c, vinis).Show();
                 };
 
-                //pict.Image = System.Drawing.Image.FromFile("../../../imagens/" + vinis.FirstOrDefault().FotosVinil);
 
-                //Imagens por url. Mudar?
                 Image loadedImage;
                 if (vinis.Count > 0)
                 {
@@ -99,14 +92,25 @@ namespace SpinToWin
                     pict.Image = loadedImage;
                 }
 
+                Label titulo = new Label();
+                titulo.Width = 270;
+                titulo.Text = "               Leilão do " + emailVendedor;
+
+                Label preco = new Label();
+                preco.Width = 270;
+                preco.Text = "                Preço: " + l.PrecoVenda + "€";
+                preco.Margin = new Padding(0, 0, 0, 15);
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
-                pict.Size = new Size(176, 190);
+                pict.Size = new Size(270, 170);
                 p.Controls.Add(estado);
                 pict.Location = estado.Location;
                 pict.Margin = new Padding(0); // Remove a margem ao redor do label
                 p.Controls.Add(btn);
                 p.Controls.Add(pict);
+
+                p.Controls.Add(titulo);
+                p.Controls.Add(preco);
                 tableLayoutPanel1.Controls.Add(p);
             }
         }
@@ -158,11 +162,20 @@ namespace SpinToWin
             {
                 logout_button.Text = "Logout";
                 perfil_button.Visible = true;
+                if (Global.accountID == 0)
+                {
+                    editlei_button.Visible = true;
+                    editvin_button.Visible = true;
+                    editcl_button.Visible = true;
+                }
             }
             else
             {
                 logout_button.Text = "Login";
                 perfil_button.Visible = false;
+                editlei_button.Visible = false;
+                editvin_button.Visible = false;
+                editcl_button.Visible = false;
             }
             base.Refresh();
         }

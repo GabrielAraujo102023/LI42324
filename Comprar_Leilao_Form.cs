@@ -46,6 +46,7 @@ namespace SpinToWin
             binding.DataSource = GetVinisInfo();
             Console.WriteLine(binding.DataSource.ToString());
             dataGridView1.DataSource = binding;
+            dataGridView1.Columns["IdVinil"].Visible = false;
         }
 
         private List<VinilInfo> GetVinisInfo()
@@ -131,6 +132,10 @@ namespace SpinToWin
             if (!Global.isLoggedIn)
             {
                 MessageBox.Show("Necessita de uma conta para comprar um leilão.");
+            }
+            if(Global.accountID == leilao.Vendedor)
+            {
+                MessageBox.Show("Não pode comprar os seus próprios leilões");
             }
             if (user.Dinheiro < leilao.ValorBase)
             {

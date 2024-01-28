@@ -8,6 +8,7 @@ namespace SpinToWin
 {
     public class VinilInfo
     {
+        public int IdVinil { get; private set; }
         public string Nome { get; private set; }
         public string Artista { get; private set; }
         public int Ano { get; private set; }
@@ -23,6 +24,7 @@ namespace SpinToWin
         public string Tipo { get; private set; }
         public VinilInfo(Vinil v)
         {
+            IdVinil = (int)v.IdVinil;
             Nome = v.Album;
             Artista = v.Artista;
             Ano = v.AnoLancamento.Value.Year;
@@ -38,7 +40,7 @@ namespace SpinToWin
             Tamanho = v.Tamanho.ToString() + "''";
         }
 
-        private string condicao(int cond)
+        public static string condicao(int cond)
         {
             switch (cond)
             {

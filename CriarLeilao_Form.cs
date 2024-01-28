@@ -20,6 +20,8 @@ namespace SpinToWin
         private int curPagina = 0;
         private int maxPaginas = vinis.Count() / nItems;
         private List<Vinil> selectedVinis = new List<Vinil>();
+        private bool isEditing = false;
+        private Leilao leilao;
         public CriarLeilao_Form(Home_Form home_form)
         {
             InitializeComponent();
@@ -28,9 +30,28 @@ namespace SpinToWin
             this.home_form = home_form;
         }
 
+        public CriarLeilao_Form(Home_Form home_form, Leilao leilao)
+        {
+            InitializeComponent();
+            Refresh();
+            this.home_form = home_form;
+            this.leilao = leilao;
+            editarLeilao();
+            carregarVinis();
+        }
+
+        private void editarLeilao()
+        {
+            valorBase_textBox.Text = leilao.ValorBase.ToString();
+            valorMinimo_textBox.Text = leilao.ValorMinimo.ToString();
+            selectedVinis = vinilDAO.GetVinisByLeilao((int)leilao.IdLeilao);
+            criar_button.Text = "Editar";
+            isEditing = true;
+        }
+
         private void carregarVinis()
         {
-            vinis.RemoveAll(v => v.Leilao != null);
+            vinis.RemoveAll(v => v.Leilao != null && (leilao == null || v.Leilao != leilao.IdLeilao));
             
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
@@ -145,17 +166,25 @@ namespace SpinToWin
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
                     Leilao leilao = new Leilao("catalogado", null, valorBase, valorMinimo, valorBase, Global.accountID);
-                    int id = new LeilaoDAO().InsertLeilao(leilao);
-                    if (id != -1)
+                    if(!isEditing)
                     {
-                        foreach (Vinil v in selectedVinis)
+                        int id = new LeilaoDAO().InsertLeilao(leilao);
+                        if (id != -1)
                         {
-                            vinilDAO.UpdateVinil((int)v.IdVinil, v.ChangeLeilao(id));
+                            foreach (Vinil v in selectedVinis)
+                            {
+                                vinilDAO.UpdateVinil((int)v.IdVinil, v.ChangeLeilao(id));
+                            }
+                            MessageBox.Show("Leilão criado com sucesso!");
                         }
-                        MessageBox.Show("Leilão criado com sucesso!");
+                        else
+                            MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde."); 
                     }
                     else
-                        MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde.");
+                    {
+                        new LeilaoDAO().UpdateLeilao((int)leilao.IdLeilao, leilao);
+                        MessageBox.Show("Leilão editado com sucesso!");
+                    }
                 }
             }
 

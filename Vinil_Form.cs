@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -14,11 +15,43 @@ namespace SpinToWin
     public partial class Vinil_Form : Form
     {
         private bool hasImage = false;
+        private bool isEditing = false;
         private string url;
+        private Vinil vinil;
         public Vinil_Form()
         {
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        public Vinil_Form(Vinil vinil)
+        {
+            InitializeComponent();
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            this.vinil = vinil;
+            isEditing = true;
+            editarVinilMode();
+        }
+
+        private void editarVinilMode()
+        {
+            artista_textBox.Text = vinil.Artista;
+            nome_textBox.Text = vinil.Album;
+            ano_textBox.Text = vinil.AnoLancamento.Value.Year.ToString();
+            duracao_textBox.Text = vinil.Duracao.ToString();
+            gravadora_textBox.Text = vinil.Gravadora;
+            edicaoEspecial_checkBox.Checked = (bool)vinil.EdicaoEspecial;
+            remasterizado_checkBox.Checked = (bool)vinil.Remasterizado;
+            url_textBox.Text = vinil.FotosVinil;
+            pictureBox1.Image = LoadImageFromUrl(vinil.FotosVinil);
+            hasImage = true;
+            disco_comboBo.SelectedItem = VinilInfo.condicao((int)vinil.CondicaoDisco);
+            capa_comboBox.SelectedItem = VinilInfo.condicao((int)vinil.CondicaoCapa);
+            tipo_comboBox.SelectedItem = vinil.Tipo;
+            rotacoes_comboBox.SelectedItem = vinil.Rotacoes.ToString();
+            categoria_comboBox.SelectedItem = vinil.Categoria;
+            tamanho_comboBox.SelectedItem = vinil.Tamanho.ToString();
+            button3.Text = "Editar";
         }
 
         private void sair_button_Click(object sender, EventArgs e)
@@ -117,10 +150,19 @@ namespace SpinToWin
             {
                 try
                 {
-                    new VinilDAO().InsertVinil(new Vinil(artista_textBox.Text, nome_textBox.Text, new DateTime(int.Parse(ano_textBox.Text), 1, 1), disco_comboBo.SelectedIndex + 1
+                    Vinil v = new Vinil(artista_textBox.Text, nome_textBox.Text, new DateTime(int.Parse(ano_textBox.Text), 1, 1), disco_comboBo.SelectedIndex + 1
                         , capa_comboBox.SelectedIndex + 1, (string)categoria_comboBox.SelectedItem, int.Parse(duracao_textBox.Text), int.Parse((string)tamanho_comboBox.SelectedItem), int.Parse((string)rotacoes_comboBox.SelectedItem)
-                        , (string)tipo_comboBox.SelectedItem, gravadora_textBox.Text, edicaoEspecial_checkBox.Checked, remasterizado_checkBox.Checked, url, Global.accountID, null));
-                    MessageBox.Show("Vinil adicionado com sucesso!");
+                        , (string)tipo_comboBox.SelectedItem, gravadora_textBox.Text, edicaoEspecial_checkBox.Checked, remasterizado_checkBox.Checked, url, Global.accountID, null);
+                    if (!isEditing) 
+                    {
+                        new VinilDAO().InsertVinil(v);
+                        MessageBox.Show("Vinil adicionado com sucesso!"); 
+                    }
+                    else
+                    {
+                        new VinilDAO().UpdateVinil((int)vinil.IdVinil, v);
+                        MessageBox.Show("Vinil editado com sucesso!");
+                    }
                 }
                 finally
                 {
