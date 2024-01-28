@@ -21,8 +21,15 @@ namespace SpinToWin
             Refresh();
         }
 
+        public void reloadLeiloes()
+        {
+            leilaoDAO = new LeilaoDAO();
+            leiloes = leilaoDAO.GetListLeiloes();
+            carregarLeiloes();
+        }
 
-        private void carregarLeiloes()
+
+        public void carregarLeiloes()
         {
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
@@ -91,7 +98,7 @@ namespace SpinToWin
                 {
                     pict.Image = loadedImage;
                 }
-                
+
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(176, 190);
@@ -201,15 +208,6 @@ namespace SpinToWin
             }
         }
 
-        private void prevPage_button_Click(object sender, EventArgs e)
-        {
-            if (curPagina > 0)
-            {
-                curPagina--;
-                carregarLeiloes();
-            }
-        }
-
         private void pesquisar_button_Click(object sender, EventArgs e)
         {
             leiloes = !txtBox_pesquisar.Text.IsNullOrEmpty() ? leilaoDAO.GetListLeiloes().FindAll(matchesSearch) : leilaoDAO.GetListLeiloes();
@@ -297,7 +295,7 @@ namespace SpinToWin
         {
 
         }
-        private Image LoadImageFromUrl(string imageUrl)
+        public static Image LoadImageFromUrl(string imageUrl)
         {
             try
             {
@@ -329,6 +327,15 @@ namespace SpinToWin
                         return Image.FromStream(ms);
                     }
                 }
+            }
+        }
+
+        private void prevPage_button_Click_1(object sender, EventArgs e)
+        {
+            if (curPagina > 0)
+            {
+                curPagina--;
+                carregarLeiloes();
             }
         }
     }

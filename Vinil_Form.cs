@@ -118,7 +118,7 @@ namespace SpinToWin
                 try
                 {
                     new VinilDAO().InsertVinil(new Vinil(artista_textBox.Text, nome_textBox.Text, new DateTime(int.Parse(ano_textBox.Text), 1, 1), disco_comboBo.SelectedIndex + 1
-                        , capa_comboBox.SelectedIndex + 1, categoria_comboBox.SelectedText, int.Parse(duracao_textBox.Text), int.Parse((string)tamanho_comboBox.SelectedItem), int.Parse((string)rotacoes_comboBox.SelectedItem)
+                        , capa_comboBox.SelectedIndex + 1, (string)categoria_comboBox.SelectedItem, int.Parse(duracao_textBox.Text), int.Parse((string)tamanho_comboBox.SelectedItem), int.Parse((string)rotacoes_comboBox.SelectedItem)
                         , (string)tipo_comboBox.SelectedItem, gravadora_textBox.Text, edicaoEspecial_checkBox.Checked, remasterizado_checkBox.Checked, url, Global.accountID, null));
                     MessageBox.Show("Vinil adicionado com sucesso!");
                 }
