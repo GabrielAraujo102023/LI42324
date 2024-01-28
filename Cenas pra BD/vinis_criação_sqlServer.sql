@@ -53,7 +53,7 @@ CREATE TABLE Vinil (
 	Gravadora VARCHAR(45) NULL,
     Edicao_especial TINYINT NULL,
 	Remasterizado TINYINT NULL,
-	Fotos_vinil VARCHAR(100) NULL,
+	Fotos_vinil VARCHAR(1024) NULL,
 	Cliente INT NOT NULL,
 	Leilao INT NULL,
 	CONSTRAINT fk_Vinil_Cliente1 FOREIGN KEY (Cliente)
