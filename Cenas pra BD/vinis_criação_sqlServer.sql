@@ -31,7 +31,8 @@ CREATE TABLE Leilao (
 	Comprador INT NULL,
     Valor_base FLOAT NOT NULL,
     Valor_minimo FLOAT NOT NULL,
-	Preco_venda FLOAT NULL,
+	TempoCriacao DATETIME NOT NULL,
+	Preco_venda FLOAT NOT NULL,
 	Vendedor INT NOT NULL,
 	CONSTRAINT fk_Leilao_Cliente1 FOREIGN KEY (Vendedor)
 		REFERENCES Cliente (idCliente)
