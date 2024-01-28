@@ -29,7 +29,7 @@ INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Ve
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('catalogado', NULL, 200, 160, 200, 5);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('fechado', 10, 250, 200, 200, 6);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('fechado', 2, 300, 240, 252, 8);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('aberto', 2, 300, 240, 252, 8);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('lastChance', 2, 300, 240, 252, 8);
 GO
 
 

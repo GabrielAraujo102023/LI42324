@@ -72,6 +72,7 @@
             label10 = new Label();
             min_qualidade_capa = new ComboBox();
             min_qualidade_disco = new ComboBox();
+            aplicar_filtros = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -221,7 +222,7 @@
             // 
             // prevPage_button
             // 
-            prevPage_button.Location = new Point(9, 340);
+            prevPage_button.Location = new Point(9, 446);
             prevPage_button.Name = "prevPage_button";
             prevPage_button.Size = new Size(34, 23);
             prevPage_button.TabIndex = 21;
@@ -230,7 +231,7 @@
             // 
             // nextPage_button
             // 
-            nextPage_button.Location = new Point(9, 269);
+            nextPage_button.Location = new Point(9, 375);
             nextPage_button.Name = "nextPage_button";
             nextPage_button.Size = new Size(34, 23);
             nextPage_button.TabIndex = 20;
@@ -241,7 +242,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(4, 322);
+            label12.Location = new Point(4, 428);
             label12.Name = "label12";
             label12.Size = new Size(48, 15);
             label12.TabIndex = 23;
@@ -250,7 +251,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(3, 252);
+            label11.Location = new Point(3, 358);
             label11.Name = "label11";
             label11.Size = new Size(51, 15);
             label11.TabIndex = 23;
@@ -337,6 +338,8 @@
             // Aberto
             // 
             Aberto.AutoSize = true;
+            Aberto.Checked = true;
+            Aberto.CheckState = CheckState.Checked;
             Aberto.Location = new Point(1312, 222);
             Aberto.Name = "Aberto";
             Aberto.Size = new Size(62, 19);
@@ -348,6 +351,8 @@
             // lastChance
             // 
             lastChance.AutoSize = true;
+            lastChance.Checked = true;
+            lastChance.CheckState = CheckState.Checked;
             lastChance.Location = new Point(1405, 222);
             lastChance.Name = "lastChance";
             lastChance.Size = new Size(90, 19);
@@ -359,6 +364,8 @@
             // Catalogado
             // 
             Catalogado.AutoSize = true;
+            Catalogado.Checked = true;
+            Catalogado.CheckState = CheckState.Checked;
             Catalogado.Location = new Point(1312, 247);
             Catalogado.Name = "Catalogado";
             Catalogado.Size = new Size(87, 19);
@@ -370,6 +377,8 @@
             // Fechado
             // 
             Fechado.AutoSize = true;
+            Fechado.Checked = true;
+            Fechado.CheckState = CheckState.Checked;
             Fechado.Location = new Point(1405, 247);
             Fechado.Name = "Fechado";
             Fechado.Size = new Size(71, 19);
@@ -394,6 +403,7 @@
             a_partir_ano.PlaceholderText = "Ano";
             a_partir_ano.Size = new Size(112, 23);
             a_partir_ano.TabIndex = 11;
+            a_partir_ano.TextChanged += a_partir_ano_TextChanged;
             // 
             // label4
             // 
@@ -510,12 +520,23 @@
             min_qualidade_disco.Size = new Size(121, 23);
             min_qualidade_disco.TabIndex = 22;
             // 
+            // aplicar_filtros
+            // 
+            aplicar_filtros.Location = new Point(1478, 759);
+            aplicar_filtros.Name = "aplicar_filtros";
+            aplicar_filtros.Size = new Size(86, 59);
+            aplicar_filtros.TabIndex = 25;
+            aplicar_filtros.Text = "Aplicar filtros";
+            aplicar_filtros.UseVisualStyleBackColor = true;
+            aplicar_filtros.Click += button4_Click_1;
+            // 
             // Home_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1600, 1000);
+            Controls.Add(aplicar_filtros);
             Controls.Add(Fechado);
             Controls.Add(Catalogado);
             Controls.Add(lastChance);
@@ -611,5 +632,6 @@
         public ComboBox min_qualidade_disco;
         private Label label12;
         private Label label11;
+        private Button aplicar_filtros;
     }
 }
