@@ -22,6 +22,7 @@ namespace SpinToWin
             curr_time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             carregarLeiloes();
             Refresh();
+            new TimeManager().Run();
         }
 
         public void reloadLeiloes()
