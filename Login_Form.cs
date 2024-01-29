@@ -26,6 +26,7 @@ namespace SpinToWin
         {
             if (areTextBoxesEmpty()) return;
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
+            if (client == null || PasswordHasher.VerifyPassword(client.Pass, PasswordHasher.HashPassword(textBox2.Text)))
             Console.WriteLine("User que fez login : " + client.Email);
             Console.WriteLine("Pass que fez login : " + client.Pass);
             Console.WriteLine("Pass introduzida : " + textBox2.Text);
