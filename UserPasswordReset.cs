@@ -30,7 +30,13 @@ namespace SpinToWin
         {
             if (textBox1.Text.Equals(textBox2.Text))
             {
-                //TODO Fazer reset da password na base de dados modo encrypt sha?
+                string pass = PasswordHasher.HashPassword(textBox1.Text);
+                ClientDAO clientDAO = new ClientDAO();
+                Client ant = clientDAO.GetClientByEmail(email);
+                ant.Pass = pass;
+                clientDAO.UpdateClient(ant);
+                MessageBox.Show($"Password alterada com sucesso");
+                this.Close();
             }
             else
             {
