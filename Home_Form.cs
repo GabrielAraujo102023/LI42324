@@ -108,8 +108,9 @@ namespace SpinToWin
 
                 Label preco = new Label();
                 preco.Width = 270;
-                preco.Text = "                Preço: " + l.PrecoVenda + "€";
-                preco.Margin = new Padding(0, 0, 0, 15);
+                preco.Text = "                               Preço: " + l.PrecoVenda + "€";
+                preco.Margin = new Padding(0, 0, 0, 10);
+                preco.Font = new Font(preco.Font, FontStyle.Bold);
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(270, 170);
