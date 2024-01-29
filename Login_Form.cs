@@ -28,7 +28,9 @@ namespace SpinToWin
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
             if (client == null || client.Pass != textBox2.Text)
             {
-                MessageBox.Show("Os dados inseridos não correspondem a nenhuma conta registada.");
+                PassRecovery passRecoveryForm = new PassRecovery("Credenciais não válidas! Deseja Receber um Email para fazer Reset á sua Password?", textBox1.Text);
+                passRecoveryForm.Show();
+
             }
             else
             {
