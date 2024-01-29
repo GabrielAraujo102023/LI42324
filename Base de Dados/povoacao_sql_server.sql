@@ -9,27 +9,33 @@ SELECT DB_NAME() AS CurrentDatabase;
 
 
 -- Insert data into Cliente
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('joao@example.com', 5, 150);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('maria@example.com', 8, 200);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('pedro@example.com', 3, 250);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ana@example.com', 10, 300);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('carlos@example.com', 6, 350);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('sofia@example.com', 1, 400);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ricardo@example.com', 9, 450);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('mariana@example.com', 4, 500);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('luis@example.com', 7, 550);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ines@example.com', 11, 600);
-INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('eduardo@example.com', 2, 650);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('joaonqferreira@gmail.com', '20f3765880a5c269b747e1e906054a4b4a3a991259f1e16b5dde4742cec2319a', 150); --pass = 54321
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('maria@example.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 200);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('pedro@example.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 250);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ana@example.com', '1c453256914c9869df19081ac3dc23aaeef19f290971b7346108ce4bec651708', 300);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('carlos@example.com', 'cb3293cff5abc2bbd6fa9472e7b4c01c20ec5700dd5881cbf4d80d6508e19f4b', 350);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('sofia@example.com', 'f85690ecc0931dd8edcea9cb8c58ffa4dab5e43b5a7ffa778558d71b31e8512e', 400);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ricardo@example.com', '75d872cc6878bc56bd5feb569a67d010d8c582dbf6da068c14f7897bda63141d', 450);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('mariana@example.com', '6c85e1199b2c802dac3b61eaab8271b1674107786092603c5e538ec3ff3709f6', 500);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('luis@example.com', 'baf06c744961daeb897023455efee0f1beca7c045cadacd4a61d819abbf6dd49', 550);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('ines@example.com', 'a447c51ca2808552fa28a95a3b440cc97d4cb3f1eeffea4a17af90410afdd83c', 600);
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('eduardo@example.com', 'c34ae04b892e736bd3b54da5d1a469184d2114e115c7ed9f3c9373204ca69b5a', 650);
 GO
 
 
--- Insert data into Leilao
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('aberto', NULL, 100, 80, 100, 3);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('aberto', NULL, 150, 120, 129, 4);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('catalogado', NULL, 200, 160, 200, 5);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('fechado', 10, 250, 200, 200, 6);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('fechado', 2, 300, 240, 252, 8);
-INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) VALUES ('lastChance', 2, 300, 240, 252, 8);
+-- Insert data into Leilao										 
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('lastChance', NULL, 100, 80, DATEADD(HOUR, -1, GETDATE()), 90, 5);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('aberto', NULL, 150, 120, DATEADD(HOUR, -4, GETDATE()), 140, 7);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('catalogado', NULL, 200, 160, DATEADD(HOUR, -13, GETDATE()), 180, 1);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('fechado', 10, 250, 200, DATEADD(HOUR, -17, GETDATE()), 200, 1);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('fechado', 2, 300, 240, DATEADD(HOUR, -10, GETDATE()), 252, 3);
+INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
+	VALUES ('aberto', NULL, 300, 200, DATEADD(HOUR, -6, GETDATE()), 230, 3);
 GO
 
 
@@ -146,5 +152,3 @@ INSERT INTO Vinil (Artista, Album, AnoLancamento, Condicao_disco, Condicao_capa,
 VALUES ('The Who', 'Quadrophenia', '1973-01-01', 1, 2, 'Rock', 81, 12, 33, 'LP', 'Track Records', 1, 1, 'https://upload.wikimedia.org/wikipedia/en/8/8a/Quadrophenia_%28album%29.jpg', 2, 4);
 
 GO
-
-

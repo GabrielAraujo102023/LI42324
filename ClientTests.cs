@@ -117,21 +117,26 @@ namespace SpinToWin
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             string email = textBox1.Text;
-            string pass = textBox2.Text;
+            string pass = PasswordHasher.HashPassword(textBox2.Text);
             double dinheiro = Convert.ToDouble(textBox3.Text);
+            Console.WriteLine(pass);
             Client clienttmp = new Client(email, pass, dinheiro);
             int idcliente = clientDAO.InsertClient(clienttmp);
             Client client = new Client(idcliente, email, pass, dinheiro);
+            Console.WriteLine(client.Pass.ToString());
             MessageBox.Show(client.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             string email = textBox1.Text;
-            string pass = textBox2.Text;
+            string pass = PasswordHasher.HashPassword(textBox2.Text);
+            Console.WriteLine(pass);
             double dinheiro = Convert.ToDouble(textBox3.Text);
             Client client = new Client(email, pass, dinheiro);
+            Console.WriteLine(client.Pass.ToString());
             clientDAO.UpdateClient(client);
         }
 
@@ -153,6 +158,11 @@ namespace SpinToWin
             string email = textBox5.Text;
             Client client = clientDAO.GetClientByEmail(email);
             MessageBox.Show(client.ToString());
+        }
+
+        private void hashed_pass_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

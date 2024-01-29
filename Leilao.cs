@@ -9,6 +9,7 @@ namespace SpinToWin
         public int? Comprador { get; set; }
         public float ValorBase { get; set; }
         public float ValorMinimo { get; set; }
+        public DateTime TempoCriacao { get; set; }
         public float PrecoVenda { get; set; }
         public int Vendedor { get; set; }
 
@@ -18,24 +19,26 @@ namespace SpinToWin
         }
 
         // Constructor without id
-        public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float precoVenda, int vendedor)
+        public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, DateTime tempoCriacao,  float precoVenda, int vendedor)
         {
             Estado = estado;
             Comprador = comprador;
             ValorBase = valorBase;
             ValorMinimo = valorMinimo;
+            TempoCriacao = tempoCriacao;
             PrecoVenda = precoVenda;
             Vendedor = vendedor;
         }
 
         // Constructor with id
-        public Leilao(int? idLeilao, string estado, int? comprador, float valorBase, float valorMinimo, float precoVenda, int vendedor)
+        public Leilao(int? idLeilao, string estado, int? comprador, float valorBase, float valorMinimo, DateTime tempoCriacao, float precoVenda, int vendedor)
         {
             IdLeilao = idLeilao;
             Estado = estado;
             Comprador = comprador;
             ValorBase = valorBase;
             ValorMinimo = valorMinimo;
+            TempoCriacao = tempoCriacao;
             PrecoVenda = precoVenda;
             Vendedor = vendedor;
         }
@@ -48,6 +51,7 @@ namespace SpinToWin
             Comprador = other.Comprador;
             ValorBase = other.ValorBase;
             ValorMinimo = other.ValorMinimo;
+            TempoCriacao = other.TempoCriacao;
             PrecoVenda = other.PrecoVenda;
             Vendedor = other.Vendedor;
         }
@@ -55,7 +59,7 @@ namespace SpinToWin
         public override string ToString()
         {
             return $"Id : {IdLeilao}, Estado: {Estado}, Comprador: {Comprador}, " +
-                   $"ValorBase: {ValorBase}, ValorMinimo: {ValorMinimo}, PrecoVenda: {PrecoVenda}, Vendedor: {Vendedor}";
+                   $"ValorBase: {ValorBase}, ValorMinimo: {ValorMinimo}, TempoCriacao: {TempoCriacao} PrecoVenda: {PrecoVenda}, Vendedor: {Vendedor}";
         }
     }
 }

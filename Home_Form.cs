@@ -15,15 +15,25 @@ namespace SpinToWin
         private static int nItems = 12;
         private int curPagina = 0;
         private int maxPaginas = leiloes.Count() / nItems;
+
         public Home_Form()
         {
             InitializeComponent();
+            curr_time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             carregarLeiloes();
             Refresh();
+            //new TimeManager().Run();
+        }
+
+        public void reloadLeiloes()
+        {
+            leilaoDAO = new LeilaoDAO();
+            leiloes = leilaoDAO.GetListLeiloes();
+            carregarLeiloes();
         }
 
 
-        private void carregarLeiloes()
+        public void carregarLeiloes()
         {
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
@@ -72,19 +82,25 @@ namespace SpinToWin
                 };
 
 
-                Image loadedImage;
-                if (vinis.Count > 0)
+                Image loadedImage = null;
+
+                foreach (Vinil vinil in vinis)
                 {
-                    loadedImage = LoadImageFromUrl(vinis.FirstOrDefault().FotosVinil);
+                    if (LoadImageFromUrl(vinil.FotosVinil, out loadedImage))
+                    {
+                        // If the image loads successfully, break out of the loop
+                        break;
+                    }
                 }
-                else
+
+                // If loadedImage is still null, use the default image
+                if (loadedImage == null)
                 {
-                    loadedImage = LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU");
+                    LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU", out loadedImage);
                 }
-                if (loadedImage != null)
-                {
-                    pict.Image = loadedImage;
-                }
+
+                // Assign the loaded or default image to pict.Image
+                pict.Image = loadedImage;
 
                 Label titulo = new Label();
                 titulo.Width = 270;
@@ -92,8 +108,9 @@ namespace SpinToWin
 
                 Label preco = new Label();
                 preco.Width = 270;
-                preco.Text = "                Preço: " + l.PrecoVenda + "€";
-                preco.Margin = new Padding(0, 0, 0, 15);
+                preco.Text = "                               Preço: " + l.PrecoVenda + "€";
+                preco.Margin = new Padding(0, 0, 0, 10);
+                preco.Font = new Font(preco.Font, FontStyle.Bold);
 
                 pict.SizeMode = PictureBoxSizeMode.Zoom;
                 pict.Size = new Size(270, 170);
@@ -119,6 +136,8 @@ namespace SpinToWin
                     return Color.Green;
                 case "catalogado":
                     return Color.Yellow;
+                case "lastChance":
+                    return Color.Orange;
                 default: return Color.Red;
             }
         }
@@ -156,11 +175,21 @@ namespace SpinToWin
             {
                 logout_button.Text = "Logout";
                 perfil_button.Visible = true;
+                if (Global.accountID == 0)
+                {
+                    editlei_button.Visible = true;
+                    editvin_button.Visible = true;
+                    editcl_button.Visible = true;
+                }
             }
             else
             {
+                //TODO por isto falso again
                 logout_button.Text = "Login";
                 perfil_button.Visible = false;
+                editlei_button.Visible = true;
+                editvin_button.Visible = true;
+                editcl_button.Visible = true;
             }
             base.Refresh();
         }
@@ -202,15 +231,6 @@ namespace SpinToWin
             if (curPagina < maxPaginas)
             {
                 curPagina++;
-                carregarLeiloes();
-            }
-        }
-
-        private void prevPage_button_Click(object sender, EventArgs e)
-        {
-            if (curPagina > 0)
-            {
-                curPagina--;
                 carregarLeiloes();
             }
         }
@@ -276,24 +296,22 @@ namespace SpinToWin
             // Filtrar por qualidade da capa
             if (min_qualidade_capa.Text != "")
             {
-                int targetCapa = int.Parse(min_qualidade_capa.Text);
-
+                int targetCapa = int.Parse(min_qualidade_capa.Text[0].ToString());
                 leiloes = leiloes.Where(l =>
                 {
                     List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                    return vinis.Any(v => v.CondicaoCapa >= targetCapa);
+                    return vinis.Any(v => v.CondicaoCapa <= targetCapa);
                 }).ToList();
             }
 
             //Filtra por qualidade do disco
             if (min_qualidade_disco.Text != "")
             {
-                int targetDisco = int.Parse(min_qualidade_disco.Text);
-
+                int targetDisco = int.Parse(min_qualidade_disco.Text[0].ToString());
                 leiloes = leiloes.Where(l =>
                 {
                     List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                    return vinis.Any(v => v.CondicaoDisco >= targetDisco);
+                    return vinis.Any(v => v.CondicaoDisco <= targetDisco);
                 }).ToList();
             }
 
@@ -314,7 +332,7 @@ namespace SpinToWin
             }
 
             //Filtrar por numero de vinis
-            if(num_min_vinis.Text != "")
+            if (num_min_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_min_vinis.Text);
 
@@ -324,8 +342,7 @@ namespace SpinToWin
                     return vinis.Count >= targetNum;
                 }).ToList();
             }
-
-            if(num_max_vinis.Text != "")
+            if (num_max_vinis.Text != "")
             {
                 int targetNum = int.Parse(num_max_vinis.Text);
 
@@ -420,8 +437,9 @@ namespace SpinToWin
         {
 
         }
-        private Image LoadImageFromUrl(string imageUrl)
+        public static bool LoadImageFromUrl(string imageUrl, out Image image)
         {
+            image = null;
             try
             {
                 using (WebClient webClient = new WebClient())
@@ -429,8 +447,9 @@ namespace SpinToWin
                     byte[] data = webClient.DownloadData(imageUrl);
                     using (MemoryStream ms = new MemoryStream(data))
                     {
-                        // Load the image from the MemoryStream and return it
-                        return Image.FromStream(ms);
+                        // Load the image from the MemoryStream
+                        image = Image.FromStream(ms);
+                        return true; // Image loaded successfully
                     }
                 }
             }
@@ -445,13 +464,35 @@ namespace SpinToWin
                     // Corrected URL and encoded characters
                     string defaultImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU";
 
-                    byte[] data = webClient.DownloadData(defaultImageUrl);
-                    using (MemoryStream ms = new MemoryStream(data))
+                    try
                     {
-                        // Load the default image from the MemoryStream and return it
-                        return Image.FromStream(ms);
+                        byte[] data = webClient.DownloadData(defaultImageUrl);
+                        using (MemoryStream ms = new MemoryStream(data))
+                        {
+                            // Load the default image from the MemoryStream and return it
+                            image = Image.FromStream(ms);
+                            Console.WriteLine("Loaded default image");
+                            return false;
+                        }
+                    }
+                    catch (Exception defaultEx)
+                    {
+                        Console.WriteLine($"Error loading default image: {defaultEx.Message}");
+                        return false;
                     }
                 }
+            }
+        }
+
+
+
+
+        private void prevPage_button_Click_1(object sender, EventArgs e)
+        {
+            if (curPagina > 0)
+            {
+                curPagina--;
+                carregarLeiloes();
             }
         }
 
@@ -472,8 +513,7 @@ namespace SpinToWin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            leiloes = new List<Leilao>(leiloesCompletos);
-            filtrarLeiloes();
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -483,11 +523,45 @@ namespace SpinToWin
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void a_partir_ano_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aplicar_filtros_Click(object sender, EventArgs e)
+        {
             leiloes = new List<Leilao>(leiloesCompletos);
             processarLeiloes();
         }
 
-        private void a_partir_ano_TextChanged(object sender, EventArgs e)
+        private void Fechado_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void lastChance_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void Aberto_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void Catalogado_CheckedChanged(object sender, EventArgs e)
+        {
+            leiloes = new List<Leilao>(leiloesCompletos);
+            processarLeiloes();
+        }
+
+        private void curr_time_Click(object sender, EventArgs e)
         {
 
         }

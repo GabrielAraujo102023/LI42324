@@ -30,12 +30,13 @@ namespace SpinToWin
                             int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                             float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                             float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                            DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("TempoCriacao"));
                             float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                             int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-                            leilao = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+                            leilao = new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor);
                             Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
-                                              $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
-                            
+                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, TempoCriacao: {TempoCriacao}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+
                             leiloes.Add(leilao);
                         }
                     }
@@ -58,7 +59,7 @@ namespace SpinToWin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, Preco_venda, Vendedor) OUTPUT INSERTED.idLeilao VALUES (@Estado, @Comprador, @Valor_base, @Valor_minimo, @Preco_venda, @Vendedor)";
+                    string query = "INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) OUTPUT INSERTED.idLeilao VALUES (@Estado, @Comprador, @Valor_base, @Valor_minimo, @TempoCriacao, @Preco_venda, @Vendedor)";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@Estado", leilao.Estado);
@@ -71,6 +72,7 @@ namespace SpinToWin
 
                         cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
                         cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
+                        cmd.Parameters.AddWithValue("@TempoCriacao", leilao.TempoCriacao);
 
                         cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
 
@@ -97,7 +99,7 @@ namespace SpinToWin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Leilao SET Estado = @Estado, Comprador = @Comprador, Valor_base = @Valor_base, Valor_minimo = @Valor_minimo, Preco_venda = @Preco_venda, Vendedor = @Vendedor WHERE idLeilao = @idLeilao";
+                    string query = "UPDATE Leilao SET Estado = @Estado, Comprador = @Comprador, Valor_base = @Valor_base, Valor_minimo = @Valor_minimo, TempoCriacao = @TempoCriacao, Preco_venda = @Preco_venda, Vendedor = @Vendedor WHERE idLeilao = @idLeilao";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@idLeilao", idLeilao);
@@ -111,10 +113,8 @@ namespace SpinToWin
 
                         cmd.Parameters.AddWithValue("@Valor_base", leilao.ValorBase);
                         cmd.Parameters.AddWithValue("@Valor_minimo", leilao.ValorMinimo);
-
-
+                        cmd.Parameters.AddWithValue("@TempoCriacao", leilao.TempoCriacao);
                         cmd.Parameters.AddWithValue("@Preco_venda", leilao.PrecoVenda);
-
                         cmd.Parameters.AddWithValue("@Vendedor", leilao.Vendedor);
                         cmd.ExecuteNonQuery();
                     }
@@ -196,11 +196,12 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-                                res = new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+                                res = new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor);
                                 Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
-                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
+                                            $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, TempoCriacao: {TempoCriacao}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
                             }
                         }
                     }
@@ -237,16 +238,16 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor));
+                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor));
                                 Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
                                             $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
                             }
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -278,9 +279,10 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
-                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor));
+                                res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor));
                                 Console.WriteLine($"Id: {id}, Estado: {estado}, Comprador: {comprador}, " +
                                             $"ValorBase: {valorBase}, ValorMinimo: {valorMinimo}, PrecoVenda: {precoVenda}, Vendedor: {vendedor}");
                             }

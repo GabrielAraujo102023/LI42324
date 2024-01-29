@@ -19,7 +19,7 @@ USE VinilDB;
 CREATE TABLE Cliente (
     idCliente INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Email VARCHAR(45) NOT NULL,
-    Pass VARCHAR(45) NOT NULL,
+    Pass VARCHAR(1024) NOT NULL,
     Dinheiro FLOAT NOT NULL    
 );
 
@@ -31,7 +31,8 @@ CREATE TABLE Leilao (
 	Comprador INT NULL,
     Valor_base FLOAT NOT NULL,
     Valor_minimo FLOAT NOT NULL,
-	Preco_venda FLOAT NULL,
+	TempoCriacao DATETIME NOT NULL,
+	Preco_venda FLOAT NOT NULL,
 	Vendedor INT NOT NULL,
 	CONSTRAINT fk_Leilao_Cliente1 FOREIGN KEY (Vendedor)
 		REFERENCES Cliente (idCliente)
@@ -41,7 +42,7 @@ CREATE TABLE Leilao (
 CREATE TABLE Vinil (
     idVinil INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Artista VARCHAR(45) NULL,
-    Album VARCHAR(45) NOT NULL,
+    Album VARCHAR(45) NULL,
     AnoLancamento DATE NULL,
 	Condicao_disco INT NULL,
 	Condicao_capa INT NULL,

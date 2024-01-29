@@ -34,7 +34,7 @@
             btn_vender = new Button();
             logout_button = new Button();
             perfil_button = new Button();
-            button6 = new Button();
+            editcl_button = new Button();
             label1 = new Label();
             pesquisar_button = new Button();
             txtBox_pesquisar = new TextBox();
@@ -46,8 +46,8 @@
             nextPage_button = new Button();
             label12 = new Label();
             label11 = new Label();
-            button2 = new Button();
-            button3 = new Button();
+            editvin_button = new Button();
+            editlei_button = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox2 = new PictureBox();
             genero_musical = new ComboBox();
@@ -73,6 +73,7 @@
             min_qualidade_capa = new ComboBox();
             min_qualidade_disco = new ComboBox();
             aplicar_filtros = new Button();
+            curr_time = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -137,15 +138,15 @@
             perfil_button.UseVisualStyleBackColor = true;
             perfil_button.Click += button5_Click;
             // 
-            // button6
+            // editcl_button
             // 
-            button6.Location = new Point(284, 23);
-            button6.Name = "button6";
-            button6.Size = new Size(80, 40);
-            button6.TabIndex = 5;
-            button6.Text = "testClienteDB";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            editcl_button.Location = new Point(1260, 40);
+            editcl_button.Name = "editcl_button";
+            editcl_button.Size = new Size(80, 40);
+            editcl_button.TabIndex = 5;
+            editcl_button.Text = "Editar Clientes";
+            editcl_button.UseVisualStyleBackColor = true;
+            editcl_button.Click += button6_Click;
             // 
             // label1
             // 
@@ -186,7 +187,6 @@
             ordenar_combo.Size = new Size(121, 23);
             ordenar_combo.TabIndex = 12;
             ordenar_combo.Text = "Ordenar por";
-            ordenar_combo.SelectedIndexChanged += ordenar_combo_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -228,6 +228,7 @@
             prevPage_button.TabIndex = 21;
             prevPage_button.Text = "<";
             prevPage_button.UseVisualStyleBackColor = true;
+            prevPage_button.Click += prevPage_button_Click_1;
             // 
             // nextPage_button
             // 
@@ -257,25 +258,25 @@
             label11.TabIndex = 23;
             label11.Text = "próxima";
             // 
-            // button2
+            // editvin_button
             // 
-            button2.Location = new Point(1178, 92);
-            button2.Name = "button2";
-            button2.Size = new Size(80, 38);
-            button2.TabIndex = 17;
-            button2.Text = "testVinilDB";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            editvin_button.Location = new Point(1178, 92);
+            editvin_button.Name = "editvin_button";
+            editvin_button.Size = new Size(80, 38);
+            editvin_button.TabIndex = 17;
+            editvin_button.Text = "Editar Vinis";
+            editvin_button.UseVisualStyleBackColor = true;
+            editvin_button.Click += button2_Click_1;
             // 
-            // button3
+            // editlei_button
             // 
-            button3.Location = new Point(1063, 91);
-            button3.Name = "button3";
-            button3.Size = new Size(109, 40);
-            button3.TabIndex = 18;
-            button3.Text = "testLeilaoDB";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            editlei_button.Location = new Point(1063, 91);
+            editlei_button.Name = "editlei_button";
+            editlei_button.Size = new Size(109, 40);
+            editlei_button.TabIndex = 18;
+            editlei_button.Text = "Editar Leilões";
+            editlei_button.UseVisualStyleBackColor = true;
+            editlei_button.Click += button3_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -309,7 +310,7 @@
             // genero_musical
             // 
             genero_musical.FormattingEnabled = true;
-            genero_musical.Items.AddRange(new object[] { "Rock", "Pop", "Folk", "Grunge", "Hard Rock", "Metal", "Alternative", "Reggae", "Punk", "Britpop", "Punk Rock" });
+            genero_musical.Items.AddRange(new object[] { "", "Rock", "Pop", "Folk", "Grunge", "Hard Rock", "Metal", "Alternative", "Reggae", "Punk", "Britpop", "Punk Rock" });
             genero_musical.Location = new Point(1311, 390);
             genero_musical.Name = "genero_musical";
             genero_musical.Size = new Size(121, 23);
@@ -346,7 +347,7 @@
             Aberto.TabIndex = 24;
             Aberto.Text = "Aberto";
             Aberto.UseVisualStyleBackColor = true;
-            Aberto.CheckedChanged += checkBox1_CheckedChanged;
+            Aberto.CheckedChanged += Aberto_CheckedChanged;
             // 
             // lastChance
             // 
@@ -359,7 +360,7 @@
             lastChance.TabIndex = 24;
             lastChance.Text = "Last Chance";
             lastChance.UseVisualStyleBackColor = true;
-            lastChance.CheckedChanged += checkBox1_CheckedChanged;
+            lastChance.CheckedChanged += lastChance_CheckedChanged;
             // 
             // Catalogado
             // 
@@ -372,7 +373,7 @@
             Catalogado.TabIndex = 24;
             Catalogado.Text = "Catalogado";
             Catalogado.UseVisualStyleBackColor = true;
-            Catalogado.CheckedChanged += checkBox1_CheckedChanged;
+            Catalogado.CheckedChanged += Catalogado_CheckedChanged;
             // 
             // Fechado
             // 
@@ -385,7 +386,7 @@
             Fechado.TabIndex = 24;
             Fechado.Text = "Fechado";
             Fechado.UseVisualStyleBackColor = true;
-            Fechado.CheckedChanged += checkBox1_CheckedChanged;
+            Fechado.CheckedChanged += Fechado_CheckedChanged;
             // 
             // label3
             // 
@@ -403,7 +404,6 @@
             a_partir_ano.PlaceholderText = "Ano";
             a_partir_ano.Size = new Size(112, 23);
             a_partir_ano.TabIndex = 11;
-            a_partir_ano.TextChanged += a_partir_ano_TextChanged;
             // 
             // label4
             // 
@@ -413,7 +413,6 @@
             label4.Size = new Size(89, 15);
             label4.TabIndex = 23;
             label4.Text = "Género musical";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -423,7 +422,6 @@
             label5.Size = new Size(111, 15);
             label5.TabIndex = 23;
             label5.Text = "min qualidade capa";
-            label5.Click += label4_Click;
             // 
             // label6
             // 
@@ -433,7 +431,6 @@
             label6.Size = new Size(114, 15);
             label6.TabIndex = 23;
             label6.Text = "min qualidade disco";
-            label6.Click += label4_Click;
             // 
             // preco_min
             // 
@@ -459,7 +456,6 @@
             label8.Size = new Size(84, 15);
             label8.TabIndex = 23;
             label8.Text = "Preço máximo";
-            label8.Click += label4_Click;
             // 
             // preco_max
             // 
@@ -483,7 +479,6 @@
             label9.Size = new Size(102, 15);
             label9.TabIndex = 23;
             label9.Text = "Número min vinis";
-            label9.Click += label4_Click;
             // 
             // num_max_vinis
             // 
@@ -500,12 +495,11 @@
             label10.Size = new Size(104, 15);
             label10.TabIndex = 23;
             label10.Text = "Número max vinis";
-            label10.Click += label4_Click;
             // 
             // min_qualidade_capa
             // 
             min_qualidade_capa.FormattingEnabled = true;
-            min_qualidade_capa.Items.AddRange(new object[] { "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
+            min_qualidade_capa.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
             min_qualidade_capa.Location = new Point(1311, 469);
             min_qualidade_capa.Name = "min_qualidade_capa";
             min_qualidade_capa.Size = new Size(121, 23);
@@ -514,7 +508,7 @@
             // min_qualidade_disco
             // 
             min_qualidade_disco.FormattingEnabled = true;
-            min_qualidade_disco.Items.AddRange(new object[] { "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
+            min_qualidade_disco.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
             min_qualidade_disco.Location = new Point(1311, 554);
             min_qualidade_disco.Name = "min_qualidade_disco";
             min_qualidade_disco.Size = new Size(121, 23);
@@ -528,7 +522,17 @@
             aplicar_filtros.TabIndex = 25;
             aplicar_filtros.Text = "Aplicar filtros";
             aplicar_filtros.UseVisualStyleBackColor = true;
-            aplicar_filtros.Click += button4_Click_1;
+            aplicar_filtros.Click += aplicar_filtros_Click;
+            // 
+            // curr_time
+            // 
+            curr_time.AutoSize = true;
+            curr_time.Location = new Point(1432, 62);
+            curr_time.Name = "curr_time";
+            curr_time.Size = new Size(44, 15);
+            curr_time.TabIndex = 26;
+            curr_time.Text = "label13";
+            curr_time.Click += curr_time_Click;
             // 
             // Home_Form
             // 
@@ -536,6 +540,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1600, 1000);
+            Controls.Add(curr_time);
             Controls.Add(aplicar_filtros);
             Controls.Add(Fechado);
             Controls.Add(Catalogado);
@@ -556,8 +561,8 @@
             Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(tableLayoutPanel1);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(editlei_button);
+            Controls.Add(editvin_button);
             Controls.Add(panel2);
             Controls.Add(num_max_vinis);
             Controls.Add(button1);
@@ -568,7 +573,7 @@
             Controls.Add(a_partir_ano);
             Controls.Add(txtBox_pesquisar);
             Controls.Add(label1);
-            Controls.Add(button6);
+            Controls.Add(editcl_button);
             Controls.Add(perfil_button);
             Controls.Add(logout_button);
             Controls.Add(btn_vender);
@@ -594,7 +599,7 @@
         private Button btn_vender;
         private Button logout_button;
         private Button perfil_button;
-        private Button button6;
+        private Button editcl_button;
         private Label label1;
         private Button pesquisar_button;
         private TextBox txtBox_pesquisar;
@@ -602,8 +607,8 @@
         private Button button1;
         private Panel panel1;
         private Panel panel2;
-        private Button button2;
-        private Button button3;
+        private Button editvin_button;
+        private Button editlei_button;
         private TableLayoutPanel tableLayoutPanel1;
         private Button prevPage_button;
         private Button nextPage_button;
@@ -633,5 +638,6 @@
         private Label label12;
         private Label label11;
         private Button aplicar_filtros;
+        private Label curr_time;
     }
 }
