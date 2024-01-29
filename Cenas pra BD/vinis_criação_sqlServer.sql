@@ -19,7 +19,7 @@ USE VinilDB;
 CREATE TABLE Cliente (
     idCliente INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Email VARCHAR(45) NOT NULL,
-    Pass VARCHAR(45) NOT NULL,
+    Pass VARCHAR(1024) NOT NULL,
     Dinheiro FLOAT NOT NULL    
 );
 

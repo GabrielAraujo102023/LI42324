@@ -26,7 +26,7 @@ namespace SpinToWin
         {
             if (areTextBoxesEmpty()) return;
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
-            if (client == null || client.Pass != textBox2.Text)
+            if (client == null || PasswordHasher.VerifyPassword(client.Pass, PasswordHasher.HashPassword(textBox2.Text)))
             {
                 MessageBox.Show("Os dados inseridos não correspondem a nenhuma conta registada.");
             }
@@ -70,7 +70,7 @@ namespace SpinToWin
                 MessageBox.Show("Já existe um registo com esse email.");
                 return;
             }
-            clientDAO.InsertClient(new Client(textBox1.Text, textBox2.Text, 0));
+            clientDAO.InsertClient(new Client(textBox1.Text, PasswordHasher.HashPassword(textBox2.Text), 0));
         }
 
         private bool areTextBoxesEmpty()

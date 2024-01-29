@@ -5,6 +5,7 @@ using System.Net;
 
 namespace SpinToWin
 {
+    //TODO: ideia: por 1º imagem que não de erro
     public partial class Home_Form : Form
     {
         private static ClientDAO clientDAO = new ClientDAO();
@@ -174,11 +175,12 @@ namespace SpinToWin
             }
             else
             {
+                //TODO por isto falso again
                 logout_button.Text = "Login";
                 perfil_button.Visible = false;
-                editlei_button.Visible = false;
-                editvin_button.Visible = false;
-                editcl_button.Visible = false;
+                editlei_button.Visible = true;
+                editvin_button.Visible = true;
+                editcl_button.Visible = true;
             }
             base.Refresh();
         }

@@ -174,5 +174,7 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private Button button5;
+        private Label label1;
+        private Label hashed_pass;
     }
 }
