@@ -130,7 +130,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(12, 364);
+            pictureBox1.Location = new Point(182, 364);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(295, 187);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -141,7 +141,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1068, 545);
+            ClientSize = new Size(1068, 559);
             Controls.Add(pictureBox1);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
