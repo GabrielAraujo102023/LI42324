@@ -26,7 +26,7 @@ namespace SpinToWin
         {
             if (areTextBoxesEmpty()) return;
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
-            if (client == null || client.Pass != textBox2.Text)
+            if (client == null || PasswordHasher.VerifyPassword(client.Pass, PasswordHasher.HashPassword(textBox2.Text)))
             {
                 PassRecovery passRecoveryForm = new PassRecovery("Credenciais não válidas! Deseja Receber um Email para fazer Reset á sua Password?", textBox1.Text);
                 passRecoveryForm.Show();
@@ -34,7 +34,7 @@ namespace SpinToWin
             }
             else
             {
-                Global.accountID = (int)client.Id;
+                Global.accountID = client.Email.Equals("admin") ? 0 : (int)client.Id;
                 showHomeForm(true);
             }
         }
@@ -62,6 +62,7 @@ namespace SpinToWin
 
         }
 
+
         private void registar_button_Click(object sender, EventArgs e)
         {
             if (areTextBoxesEmpty()) return;
@@ -71,7 +72,13 @@ namespace SpinToWin
                 MessageBox.Show("Já existe um registo com esse email.");
                 return;
             }
-            clientDAO.InsertClient(new Client(textBox1.Text, textBox2.Text, 0));
+            if (!textBox1.Text.Contains('@'))
+            {
+                MessageBox.Show("O email inserido não é válido.");
+                return;
+            }
+            clientDAO.InsertClient(new Client(textBox1.Text, PasswordHasher.HashPassword(textBox2.Text), 0));
+            MessageBox.Show("Registo efetuado com sucesso.");
         }
 
         private bool areTextBoxesEmpty()

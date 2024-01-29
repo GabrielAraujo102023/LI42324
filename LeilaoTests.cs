@@ -31,6 +31,7 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             leilaoBinding.DataSource = leilaoDAO.GetListLeiloes();
             dataGridView1.DataSource = leilaoBinding;
 
@@ -56,9 +57,9 @@ namespace SpinToWin
             float valorMinimo = float.Parse(textBox4.Text);
             float precoVenda = float.Parse(textBox5.Text);
             int vendedor = int.Parse(textBox6.Text);
-            Leilao leilaotmp = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+            Leilao leilaotmp = new Leilao(estado, comprador, valorBase, valorMinimo, DateTime.Now, precoVenda, vendedor);
             int leilaoid = leilaoDAO.InsertLeilao(leilaotmp);
-            Leilao leilao = new Leilao(leilaoid, estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+            Leilao leilao = new Leilao(leilaoid, estado, comprador, valorBase, valorMinimo, DateTime.Now, precoVenda, vendedor);
             MessageBox.Show(leilao.ToString());
         }
 
@@ -84,7 +85,7 @@ namespace SpinToWin
             float valorMinimo = float.Parse(textBox4.Text);
             float precoVenda = float.Parse(textBox5.Text);
             int vendedor = int.Parse(textBox6.Text);
-            Leilao leilao = new Leilao(estado, comprador, valorBase, valorMinimo, precoVenda, vendedor);
+            Leilao leilao = new Leilao(estado, comprador, valorBase, valorMinimo, DateTime.Now, precoVenda, vendedor);
             leilaoDAO.UpdateLeilao(idLeilao, leilao);
 
             //leilaoDAO.UpdateLeilaoComprado(idLeilao, 4, 30);

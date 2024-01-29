@@ -42,6 +42,8 @@
             Voltar_button = new Button();
             levantar_button = new Button();
             button1 = new Button();
+            editvinis_button = new Button();
+            editleiloes_button = new Button();
             SuspendLayout();
             // 
             // accountName_label
@@ -176,11 +178,33 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // editvinis_button
+            // 
+            editvinis_button.Location = new Point(673, 340);
+            editvinis_button.Name = "editvinis_button";
+            editvinis_button.Size = new Size(115, 46);
+            editvinis_button.TabIndex = 15;
+            editvinis_button.Text = "Editar Vinis";
+            editvinis_button.UseVisualStyleBackColor = true;
+            editvinis_button.Click += editvinis_button_Click;
+            // 
+            // editleiloes_button
+            // 
+            editleiloes_button.Location = new Point(673, 288);
+            editleiloes_button.Name = "editleiloes_button";
+            editleiloes_button.Size = new Size(115, 46);
+            editleiloes_button.TabIndex = 16;
+            editleiloes_button.Text = "Editar leilões";
+            editleiloes_button.UseVisualStyleBackColor = true;
+            editleiloes_button.Click += editleiloes_button_Click;
+            // 
             // Perfil_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(editleiloes_button);
+            Controls.Add(editvinis_button);
             Controls.Add(button1);
             Controls.Add(levantar_button);
             Controls.Add(Voltar_button);
@@ -218,5 +242,7 @@
         private Button Voltar_button;
         private Button levantar_button;
         private Button button1;
+        private Button editvinis_button;
+        private Button editleiloes_button;
     }
 }
