@@ -6,6 +6,7 @@ using System.Net;
 namespace SpinToWin
 {
     //TODO: ideia: por 1º imagem que não de erro
+    //registo devia logar logo?
     public partial class Home_Form : Form
     {
         private static ClientDAO clientDAO = new ClientDAO();
@@ -82,19 +83,25 @@ namespace SpinToWin
                 };
 
 
-                Image loadedImage;
-                if (vinis.Count > 0)
+                Image loadedImage = null;
+
+                foreach (Vinil vinil in vinis)
                 {
-                    loadedImage = LoadImageFromUrl(vinis.FirstOrDefault().FotosVinil);
+                    if (LoadImageFromUrl(vinil.FotosVinil, out loadedImage))
+                    {
+                        // If the image loads successfully, break out of the loop
+                        break;
+                    }
                 }
-                else
+
+                // If loadedImage is still null, use the default image
+                if (loadedImage == null)
                 {
-                    loadedImage = LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU");
+                    LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU", out loadedImage);
                 }
-                if (loadedImage != null)
-                {
-                    pict.Image = loadedImage;
-                }
+
+                // Assign the loaded or default image to pict.Image
+                pict.Image = loadedImage;
 
                 Label titulo = new Label();
                 titulo.Width = 270;
@@ -428,8 +435,9 @@ namespace SpinToWin
         {
 
         }
-        public static Image LoadImageFromUrl(string imageUrl)
+        public static bool LoadImageFromUrl(string imageUrl, out Image image)
         {
+            image = null;
             try
             {
                 using (WebClient webClient = new WebClient())
@@ -437,8 +445,9 @@ namespace SpinToWin
                     byte[] data = webClient.DownloadData(imageUrl);
                     using (MemoryStream ms = new MemoryStream(data))
                     {
-                        // Load the image from the MemoryStream and return it
-                        return Image.FromStream(ms);
+                        // Load the image from the MemoryStream
+                        image = Image.FromStream(ms);
+                        return true; // Image loaded successfully
                     }
                 }
             }
@@ -453,15 +462,28 @@ namespace SpinToWin
                     // Corrected URL and encoded characters
                     string defaultImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU";
 
-                    byte[] data = webClient.DownloadData(defaultImageUrl);
-                    using (MemoryStream ms = new MemoryStream(data))
+                    try
                     {
-                        // Load the default image from the MemoryStream and return it
-                        return Image.FromStream(ms);
+                        byte[] data = webClient.DownloadData(defaultImageUrl);
+                        using (MemoryStream ms = new MemoryStream(data))
+                        {
+                            // Load the default image from the MemoryStream and return it
+                            image = Image.FromStream(ms);
+                            Console.WriteLine("Loaded default image");
+                            return false;
+                        }
+                    }
+                    catch (Exception defaultEx)
+                    {
+                        Console.WriteLine($"Error loading default image: {defaultEx.Message}");
+                        return false;
                     }
                 }
             }
         }
+
+
+
 
         private void prevPage_button_Click_1(object sender, EventArgs e)
         {

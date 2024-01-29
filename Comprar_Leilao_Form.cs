@@ -172,7 +172,26 @@ namespace SpinToWin
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            pictureBox1.Image = Home_Form.LoadImageFromUrl(vinis.ElementAt(e.RowIndex).FotosVinil);
+            Image loadedImage;
+
+            if (Home_Form.LoadImageFromUrl(vinis.ElementAt(e.RowIndex).FotosVinil, out loadedImage))
+            {
+                pictureBox1.Image = loadedImage;
+            }
+            else
+            {
+                Console.WriteLine("Error loading image from URL");
+
+                if (!Home_Form.LoadImageFromUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b_QDl_iVc3fctFPnwbmZ9rq98UBk2vtdMw&usqp=CAU", out loadedImage))
+                {
+                    MessageBox.Show("Error loading default image");
+                }
+                else
+                {
+                    pictureBox1.Image = loadedImage;
+                }
+            }
         }
+
     }
 }
