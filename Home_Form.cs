@@ -134,6 +134,8 @@ namespace SpinToWin
                     return Color.Green;
                 case "catalogado":
                     return Color.Yellow;
+                case "lastChance":
+                    return Color.Orange;
                 default: return Color.Red;
             }
         }

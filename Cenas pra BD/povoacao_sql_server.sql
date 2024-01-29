@@ -25,7 +25,7 @@ GO
 
 -- Insert data into Leilao										 
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('aberto', NULL, 100, 80, DATEADD(HOUR, -1, GETDATE()), 90, 5);
+	VALUES ('lastChance', NULL, 100, 80, DATEADD(HOUR, -1, GETDATE()), 90, 5);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
 	VALUES ('aberto', NULL, 150, 120, DATEADD(HOUR, -4, GETDATE()), 140, 7);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
