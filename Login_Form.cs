@@ -60,9 +60,9 @@ namespace SpinToWin
 
         }
 
+
         private void registar_button_Click(object sender, EventArgs e)
         {
-            //TODO: check if email is valid with"@"
             if (areTextBoxesEmpty()) return;
             Client client = clientDAO.GetClientByEmail(textBox1.Text);
             if (client != null)
@@ -70,7 +70,13 @@ namespace SpinToWin
                 MessageBox.Show("Já existe um registo com esse email.");
                 return;
             }
+            if (!textBox1.Text.Contains('@'))
+            {
+                MessageBox.Show("O email inserido não é válido.");
+                return;
+            }
             clientDAO.InsertClient(new Client(textBox1.Text, PasswordHasher.HashPassword(textBox2.Text), 0));
+            MessageBox.Show("Registo efetuado com sucesso.");
         }
 
         private bool areTextBoxesEmpty()

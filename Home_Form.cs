@@ -5,8 +5,6 @@ using System.Net;
 
 namespace SpinToWin
 {
-    //TODO: ideia: por 1º imagem que não de erro
-    //registo devia logar logo?
     public partial class Home_Form : Form
     {
         private static ClientDAO clientDAO = new ClientDAO();
