@@ -26,17 +26,17 @@ GO
 
 -- Insert data into Leilao										 
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('lastChance', NULL, 100, 80, DATEADD(HOUR, -1, GETDATE()), 90, 5);
+	VALUES ('lastChance', NULL, 100, 80, DATEADD(HOUR, -20, GETDATE()), 80, 5);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('aberto', NULL, 150, 120, DATEADD(HOUR, -4, GETDATE()), 140, 7);
+	VALUES ('aberto', NULL, 150, 120, DATEADD(HOUR, -11, GETDATE()), 147, 7);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('catalogado', NULL, 200, 160, DATEADD(HOUR, -13, GETDATE()), 180, 1);
+	VALUES ('catalogado', NULL, 200, 160, DATEADD(HOUR, -1, GETDATE()), 180, 1);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
 	VALUES ('fechado', 10, 250, 200, DATEADD(HOUR, -17, GETDATE()), 200, 1);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('fechado', 2, 300, 240, DATEADD(HOUR, -10, GETDATE()), 252, 3);
+	VALUES ('fechado', 2, 300, 240, DATEADD(HOUR, -13, GETDATE()), 252, 3);
 INSERT INTO Leilao (Estado, Comprador, Valor_base, Valor_minimo, TempoCriacao, Preco_venda, Vendedor) 
-	VALUES ('aberto', NULL, 300, 200, DATEADD(HOUR, -6, GETDATE()), 230, 3);
+	VALUES ('aberto', NULL, 300, 200, DATEADD(HOUR, -22, GETDATE()), 228, 3);
 GO
 
 
