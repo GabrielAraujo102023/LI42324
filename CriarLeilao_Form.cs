@@ -197,7 +197,7 @@ namespace SpinToWin
                                         + "Obrigado,\nA Equipa Spin2Win";
 
 
-                            Google.Apis.Gmail.v1.Data.Message message = mail.CreateMessage("li4spin2win@gmail.com", vendedor.Email, "Leilão Concluido", corpo);
+                            Google.Apis.Gmail.v1.Data.Message message = mail.CreateMessage("li4spin2win@gmail.com", vendedor.Email, "Leilão criado com sucesso", corpo);
 
 
                             mail.SendMessage(mail.GmailService, "li4spin2win@gmail.com", message, 0);
