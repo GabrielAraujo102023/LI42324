@@ -140,6 +140,7 @@ namespace SpinToWin
             if (!Global.isLoggedIn)
             {
                 MessageBox.Show("Necessita de uma conta para comprar um leilão.");
+                return;
             }
             if(Global.accountID == leilao.Vendedor)
             {
