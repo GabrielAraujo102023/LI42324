@@ -34,8 +34,8 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             pictureBox2 = new PictureBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -90,17 +90,6 @@
             label5.TabIndex = 29;
             label5.Text = "Q: Como posso vender vinis?";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.Chocolate;
-            label6.Location = new Point(495, 29);
-            label6.Name = "label6";
-            label6.Size = new Size(343, 81);
-            label6.TabIndex = 31;
-            label6.Text = "Spin to Win";
-            // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -111,13 +100,24 @@
             pictureBox2.TabIndex = 32;
             pictureBox2.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Turquoise;
+            label1.Location = new Point(467, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(320, 81);
+            label1.TabIndex = 33;
+            label1.Text = "Spin 2 Win";
+            // 
             // Ajuda_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1306, 723);
+            Controls.Add(label1);
             Controls.Add(pictureBox2);
-            Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(label5);
             Controls.Add(label3);
@@ -143,7 +143,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
         private PictureBox pictureBox2;
     }
 }

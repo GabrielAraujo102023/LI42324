@@ -25,6 +25,7 @@ namespace SpinToWin
         public CriarLeilao_Form(Home_Form home_form)
         {
             InitializeComponent();
+            reloadedVinis();
             carregarVinis();
             Refresh();
             this.home_form = home_form;
@@ -217,5 +218,12 @@ namespace SpinToWin
             new Vinil_Form(this).Show();
             Hide();
         }
+
+        public void reloadedVinis ()
+        {
+            vinis = vinilDAO.GetVinisByCliente(Global.accountID);
+
+        }   
+
     }
 }
