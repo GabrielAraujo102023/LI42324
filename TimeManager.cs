@@ -76,6 +76,25 @@ namespace SpinToWin
                     if ((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(12))
                     {
                         l.Estado = "fechado";
+
+                        //==============================EMAIL NOTIFICATION VENDOR===========================
+                        
+                        ClientDAO clientDAO = new ClientDAO();
+                        Client vendedor = clientDAO.GetClientbyID(l.Vendedor);
+                        PassRecovery mail = new PassRecovery("null", vendedor.Email);
+
+                        string corpo = $"Prezado Usuário,\n\n"
+                                    + "O seu Leilão foi Fechado visto que não foi possivel Realizar a Venda\n\n"
+                                    + "Obrigado,\nA Equipa Spin2Win";
+
+
+                        Google.Apis.Gmail.v1.Data.Message message = mail.CreateMessage("li4spin2win@gmail.com", vendedor.Email, "Leilão Concluido", corpo);
+
+
+                        mail.SendMessage(mail.GmailService, "li4spin2win@gmail.com", message, 0);
+
+                        //===========================================================================
+
                         List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
                         vinis.ForEach(v => { v.Leilao = null; vinilDAO.UpdateVinil((int)v.IdVinil, v); });
                         leilaoDAO.UpdateLeilao((int)l.IdLeilao, l);
