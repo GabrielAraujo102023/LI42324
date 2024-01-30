@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KMFIq8rgViQqwSjU5oVi7QqbN110K3pkNEBDR8Nh4/lpCMv9uVbTm77/BedU5G12+zaTnfct1tm6dTZvrUieKA==",
+  "dgSpecHash": "ZCMDafgWpZwwUsLXAe82eJ+tTTSAUTuhUkDdcY2y+fZhtQLtXz0vTujxOA9kDjB1iBPlVDIIMKzIQdmITTYYPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\joaon\\source\\repos\\LI4 V1\\SpinToWin.csproj",
+  "projectFilePath": "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\SpinToWin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joaon\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\joaon\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

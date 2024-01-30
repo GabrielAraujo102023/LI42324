@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joaon\\source\\repos\\LI4 V1\\SpinToWin.csproj": {}
+    "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\SpinToWin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joaon\\source\\repos\\LI4 V1\\SpinToWin.csproj": {
+    "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\SpinToWin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaon\\source\\repos\\LI4 V1\\SpinToWin.csproj",
+        "projectUniqueName": "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\SpinToWin.csproj",
         "projectName": "SpinToWin",
-        "projectPath": "C:\\Users\\joaon\\source\\repos\\LI4 V1\\SpinToWin.csproj",
+        "projectPath": "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\SpinToWin.csproj",
         "packagesPath": "C:\\Users\\joaon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaon\\source\\repos\\LI4 V1\\obj\\",
+        "outputPath": "C:\\Users\\joaon\\source\\repos\\ProjectoLI4Final\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -35,12 +35,14 @@ namespace SpinToWin
 
         public void carregarLeiloes()
         {
+            maxPaginas = leiloes.Count() / nItems;
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
             if (start + nItems >= leiloes.Count())
             {
                 nGet = leiloes.Count() - start;
             }
+            
             List<Leilao> leiloesPagina = leiloes.GetRange(start, nGet);
             tableLayoutPanel1.Controls.Clear();
             foreach (Leilao l in leiloesPagina)
@@ -534,6 +536,7 @@ namespace SpinToWin
         private void aplicar_filtros_Click(object sender, EventArgs e)
         {
             leiloes = new List<Leilao>(leiloesCompletos);
+            curPagina = 0;
             processarLeiloes();
         }
 
