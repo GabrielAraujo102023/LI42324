@@ -19,7 +19,8 @@ namespace SpinToWin
         private static string? validacaocod;
         private static string[] Scopes = { GmailService.Scope.GmailSend };
         private static string ApplicationName = "Spin2Win";//TODO fix path
-        private static string CredentialsFilePath = "C:\\Users\\rcrd_\\Documents\\uni\\LI4\\Trabalho\\LI42324\\Base de Dados\\APIkey.json";
+        private static string CredentialsFileName = "APIkey.json";
+        private static string CredentialsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Base de Dados", CredentialsFileName);
 
         private GmailService gmailService;
 
@@ -39,7 +40,7 @@ namespace SpinToWin
             try
             {
                 UserCredential credential;
-
+                Console.WriteLine(CredentialsFilePath);
                 try
                 {
                     using (var stream = new FileStream(CredentialsFilePath, FileMode.Open, FileAccess.Read))
