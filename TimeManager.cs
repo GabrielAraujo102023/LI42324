@@ -12,6 +12,13 @@ namespace SpinToWin
         {
             new Thread(() =>
             {
+                // Stop and dispose of the existing timer, if any
+                if (timer != null)
+                {
+                    timer.Stop();
+                    timer.Dispose();
+                }
+
                 // Create a timer with a 10-minute interval
                 timer = new Timer();
                 timer.Interval = 10 * 60 * 1000; // 10 minutes in milliseconds
@@ -19,9 +26,10 @@ namespace SpinToWin
                 // Hook up the Elapsed event
                 timer.Elapsed += OnTimedEvent;
                 Console.WriteLine("Timer Inicializado.");
+
                 // Start the timer
                 timer.Start();
-                
+
             }).Start();
         }
 

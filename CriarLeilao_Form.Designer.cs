@@ -224,7 +224,7 @@
             addVinil_button.Name = "addVinil_button";
             addVinil_button.Size = new Size(105, 52);
             addVinil_button.TabIndex = 37;
-            addVinil_button.Text = "Adicionar Leilão";
+            addVinil_button.Text = "Adicionar Vinil";
             addVinil_button.UseVisualStyleBackColor = true;
             addVinil_button.Click += addVinil_button_Click;
             // 
