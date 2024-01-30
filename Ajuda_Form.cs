@@ -27,47 +27,31 @@ namespace SpinToWin
 
         private void btn_vender_Click(object sender, EventArgs e)
         {
-            if (Global.isLoggedIn)
-            {
-                new CriarLeilao_Form(home_form).Show();
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("Necessita de uma conta para criar um leilão.");
-            }
+
         }
 
         private void logout_button_Click(object sender, EventArgs e)
         {
-            Global.isLoggedIn = false;
-            new Login_Form(home_form).Show();
-            Close();
+
         }
 
         private void perfil_button_Click(object sender, EventArgs e)
         {
-            new Perfil_Form().Show();
         }
 
         public override void Refresh()
         {
-            if (Global.isLoggedIn)
-            {
-                logout_button.Text = "Logout";
-                perfil_button.Visible = true;
-            }
-            else
-            {
-                logout_button.Text = "Login";
-                perfil_button.Visible = false;
-            }
             base.Refresh();
         }
 
         private void btn_leiloes_Click(object sender, EventArgs e)
         {
             home_form.Show();
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

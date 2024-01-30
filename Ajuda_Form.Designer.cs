@@ -30,86 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ajuda_Form));
             button1 = new Button();
-            label1 = new Label();
-            perfil_button = new Button();
-            logout_button = new Button();
-            btn_vender = new Button();
-            ajuda_button = new Button();
-            btn_leiloes = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            pictureBox2 = new PictureBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(1263, 9);
+            button1.Location = new Point(1264, 12);
             button1.Name = "button1";
             button1.Size = new Size(30, 23);
             button1.TabIndex = 26;
             button1.Text = "X";
             button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(28, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(230, 54);
-            label1.TabIndex = 25;
-            label1.Text = "Spin to Win";
-            // 
-            // perfil_button
-            // 
-            perfil_button.Location = new Point(1178, 38);
-            perfil_button.Name = "perfil_button";
-            perfil_button.Size = new Size(58, 50);
-            perfil_button.TabIndex = 23;
-            perfil_button.Text = "Perfil";
-            perfil_button.UseVisualStyleBackColor = true;
-            perfil_button.Click += perfil_button_Click;
-            // 
-            // logout_button
-            // 
-            logout_button.Location = new Point(1057, 38);
-            logout_button.Name = "logout_button";
-            logout_button.Size = new Size(115, 50);
-            logout_button.TabIndex = 22;
-            logout_button.Text = "Login";
-            logout_button.UseVisualStyleBackColor = true;
-            logout_button.Click += logout_button_Click;
-            // 
-            // btn_vender
-            // 
-            btn_vender.Location = new Point(752, 38);
-            btn_vender.Name = "btn_vender";
-            btn_vender.Size = new Size(228, 50);
-            btn_vender.TabIndex = 21;
-            btn_vender.Text = "Criar leilão";
-            btn_vender.UseVisualStyleBackColor = true;
-            btn_vender.Click += btn_vender_Click;
-            // 
-            // ajuda_button
-            // 
-            ajuda_button.Location = new Point(518, 38);
-            ajuda_button.Name = "ajuda_button";
-            ajuda_button.Size = new Size(228, 50);
-            ajuda_button.TabIndex = 20;
-            ajuda_button.Text = "Ajuda";
-            ajuda_button.UseVisualStyleBackColor = true;
-            // 
-            // btn_leiloes
-            // 
-            btn_leiloes.Location = new Point(284, 38);
-            btn_leiloes.Name = "btn_leiloes";
-            btn_leiloes.Size = new Size(228, 50);
-            btn_leiloes.TabIndex = 19;
-            btn_leiloes.Text = "Leilões";
-            btn_leiloes.UseVisualStyleBackColor = true;
-            btn_leiloes.Click += btn_leiloes_Click;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
@@ -151,25 +90,43 @@
             label5.TabIndex = 29;
             label5.Text = "Q: Como posso vender vinis?";
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(968, 531);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(261, 124);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 32;
+            pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Turquoise;
+            label1.Location = new Point(467, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(320, 81);
+            label1.TabIndex = 33;
+            label1.Text = "Spin 2 Win";
+            // 
             // Ajuda_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1306, 723);
+            Controls.Add(label1);
+            Controls.Add(pictureBox2);
             Controls.Add(label4);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button1);
-            Controls.Add(label1);
-            Controls.Add(perfil_button);
-            Controls.Add(logout_button);
-            Controls.Add(btn_vender);
-            Controls.Add(ajuda_button);
-            Controls.Add(btn_leiloes);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Ajuda_Form";
             Text = "Ajuda_Form";
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,5 +143,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private PictureBox pictureBox2;
     }
 }

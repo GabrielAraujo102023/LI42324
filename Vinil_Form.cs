@@ -167,7 +167,7 @@ namespace SpinToWin
                     if (!isEditing) 
                     {
                         new VinilDAO().InsertVinil(v);
-                        MessageBox.Show("Vinil adicionado com sucesso!"); 
+                        MessageBox.Show("Vinil adicionado com sucesso!");
                     }
                     else
                     {
@@ -179,9 +179,11 @@ namespace SpinToWin
                 {
                     if(criarForm != null)
                     {
+                        criarForm.reloadedVinis();
                         criarForm.carregarVinis();
                         criarForm.Show();
                     }
+
                     Close();
                 }
             }

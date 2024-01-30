@@ -150,7 +150,6 @@ namespace SpinToWin
         private void button2_Click(object sender, EventArgs e)
         {
             new Ajuda_Form(this).Show();
-            Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -179,6 +178,8 @@ namespace SpinToWin
                     editlei_button.Visible = true;
                     editvin_button.Visible = true;
                     editcl_button.Visible = true;
+                    button2.Visible = true;
+                    textBox1.Visible = true;
                 }
             }
             else
@@ -188,6 +189,8 @@ namespace SpinToWin
                 editlei_button.Visible = false;
                 editvin_button.Visible = false;
                 editcl_button.Visible = false;
+                button2.Visible = false;
+                textBox1.Visible = false;
             }
             base.Refresh();
         }
@@ -195,7 +198,6 @@ namespace SpinToWin
         // BOTÃO DE LOGOUT
         private void button4_Click(object sender, EventArgs e)
         {
-            Hide();
             Global.isLoggedIn = false;
             new Login_Form(this).Show();
         }
@@ -416,7 +418,6 @@ namespace SpinToWin
         {
             if (Global.isLoggedIn)
             {
-                Hide();
                 new CriarLeilao_Form(this).Show();
             }
             else

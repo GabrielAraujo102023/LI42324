@@ -25,6 +25,7 @@ namespace SpinToWin
         public CriarLeilao_Form(Home_Form home_form)
         {
             InitializeComponent();
+            reloadedVinis();
             carregarVinis();
             Refresh();
             this.home_form = home_form;
@@ -129,7 +130,7 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void btn_leiloes_Click(object sender, EventArgs e)
@@ -184,6 +185,7 @@ namespace SpinToWin
                                 vinilDAO.UpdateVinil((int)v.IdVinil, v.ChangeLeilao(id));
                             }
                             MessageBox.Show("Leilão criado com sucesso!");
+                            presentVinis();
                         }
                         else
                             MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde.");
@@ -194,6 +196,7 @@ namespace SpinToWin
                         MessageBox.Show("Leilão editado com sucesso!");
                         Close();
                     }
+                    
                 }
             }
 
@@ -201,9 +204,7 @@ namespace SpinToWin
 
         private void pesquisar_button_Click(object sender, EventArgs e)
         {
-            vinis = !pesquisar_textBox.Text.IsNullOrEmpty() ? vinilDAO.GetVinisByCliente(Global.accountID).FindAll(matchesSearch) : vinilDAO.GetVinisByCliente(Global.accountID);
-            curPagina = 0;
-            carregarVinis();
+            presentVinis();
         }
 
         private bool matchesSearch(Vinil v)
@@ -217,5 +218,20 @@ namespace SpinToWin
             new Vinil_Form(this).Show();
             Hide();
         }
+
+        public void reloadedVinis ()
+        {
+            vinis = vinilDAO.GetVinisByCliente(Global.accountID);
+
+        }   
+
+
+        private void presentVinis()
+        {
+            vinis = !pesquisar_textBox.Text.IsNullOrEmpty() ? vinilDAO.GetVinisByCliente(Global.accountID).FindAll(matchesSearch) : vinilDAO.GetVinisByCliente(Global.accountID);
+            curPagina = 0;
+            carregarVinis();
+        }
+
     }
 }

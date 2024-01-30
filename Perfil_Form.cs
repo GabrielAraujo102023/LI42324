@@ -22,11 +22,24 @@ namespace SpinToWin
             List<Leilao> leiloesVendidos = leilaoDAO.GetLeilaoByVendedor(Global.accountID);
             leiloesVendidos.RemoveAll(x => x.Comprador == null);
             List<Leilao> leiloesComprados = leilaoDAO.GetLeilaoByComprador(Global.accountID);
-            accountName_label.Text = cliente.Email.Substring(0, cliente.Email.IndexOf('@'));
-            saldo_label.Text += cliente.Dinheiro.ToString();
-            leiloesComprados_label.Text += leiloesComprados.Count.ToString();
-            leiloesVendidos_label.Text += leiloesVendidos.Count.ToString();
+            if (Global.accountID != 0)
+            {
+                accountName_label.Text = cliente.Email.Substring(0, cliente.Email.IndexOf('@'));
+                saldo_label.Text += cliente.Dinheiro.ToString();
+                leiloesComprados_label.Text += leiloesComprados.Count.ToString();
+                leiloesVendidos_label.Text += leiloesVendidos.Count.ToString();
+            }
+
+            else
+            {
+                accountName_label.Text = "Admin";
+                saldo_label.Text = "1000000000000";
+            }
+
             float totalGasto = 0, totalGanho = 0;
+            
+            label1.Font = new Font(label1.Font.FontFamily, 14);
+            label1.Font = new Font(label1.Font, FontStyle.Bold);
             Dictionary<string, int> generosComprados = new Dictionary<string, int>();
             Dictionary<string, int> generosVendidos = new Dictionary<string, int>();
             if (leiloesVendidos.Count != 0)
@@ -116,6 +129,11 @@ namespace SpinToWin
         private void editvinis_button_Click(object sender, EventArgs e)
         {
             new editarEscolha_Form('v').Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
