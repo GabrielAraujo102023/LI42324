@@ -185,6 +185,25 @@ namespace SpinToWin
                                 vinilDAO.UpdateVinil((int)v.IdVinil, v.ChangeLeilao(id));
                             }
                             MessageBox.Show("Leilão criado com sucesso!");
+
+                            //==============================EMAIL NOTIFICATION VENDOR===========================
+
+                            ClientDAO clientDAO = new ClientDAO();
+                            Client vendedor = clientDAO.GetClientbyID(l.Vendedor);
+                            PassRecovery mail = new PassRecovery("null", vendedor.Email);
+
+                            string corpo = $"Prezado Usuário,\n\n"
+                                        + "O seu Leilão Foi Criado com Sucesso!\n\n"
+                                        + "Obrigado,\nA Equipa Spin2Win";
+
+
+                            Google.Apis.Gmail.v1.Data.Message message = mail.CreateMessage("li4spin2win@gmail.com", vendedor.Email, "Leilão Concluido", corpo);
+
+
+                            mail.SendMessage(mail.GmailService, "li4spin2win@gmail.com", message, 0);
+
+                            //==================================================================================
+
                             presentVinis();
                         }
                         else

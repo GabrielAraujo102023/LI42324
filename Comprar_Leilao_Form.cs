@@ -182,7 +182,7 @@ namespace SpinToWin
                 MessageBox.Show("Compra efetuada com sucesso");
                 leilao.Estado = "fechado";
 
-                //==============================EMAIL NOTIFICATION===========================
+                //==============================EMAIL NOTIFICATION VENDOR===========================
 
                 Client vendedor = clientDAO.GetClientbyID(leilao.Vendedor);
                 PassRecovery mail = new PassRecovery("null",vendedor.Email);
