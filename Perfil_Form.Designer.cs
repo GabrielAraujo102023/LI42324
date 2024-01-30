@@ -79,11 +79,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 182);
+            label1.Location = new Point(20, 172);
             label1.Name = "label1";
-            label1.Size = new Size(67, 15);
+            label1.Size = new Size(64, 15);
             label1.TabIndex = 4;
-            label1.Text = "Estatísticas:";
+            label1.Text = "Estatísticas";
+            label1.Click += label1_Click;
             // 
             // leiloesComprados_label
             // 
@@ -101,7 +102,7 @@
             leiloesVendidos_label.Name = "leiloesVendidos_label";
             leiloesVendidos_label.Size = new Size(97, 15);
             leiloesVendidos_label.TabIndex = 6;
-            leiloesVendidos_label.Text = "Leilões vendidos ";
+            leiloesVendidos_label.Text = "Leilões vendidos:";
             // 
             // generoComprado_label
             // 
