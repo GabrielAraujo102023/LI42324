@@ -74,6 +74,8 @@
             min_qualidade_disco = new ComboBox();
             aplicar_filtros = new Button();
             curr_time = new Label();
+            button2 = new Button();
+            textBox1 = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -534,12 +536,31 @@
             curr_time.Text = "label13";
             curr_time.Click += curr_time_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(331, 41);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 27;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_2;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(321, 12);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 28;
+            // 
             // Home_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1600, 1000);
+            Controls.Add(textBox1);
+            Controls.Add(button2);
             Controls.Add(curr_time);
             Controls.Add(aplicar_filtros);
             Controls.Add(Fechado);
@@ -639,5 +660,7 @@
         private Label label11;
         private Button aplicar_filtros;
         private Label curr_time;
+        private Button button2;
+        private TextBox textBox1;
     }
 }

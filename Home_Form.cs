@@ -565,5 +565,10 @@ namespace SpinToWin
         {
 
         }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            new TimeManager(int.Parse(textBox1.Text)).OnTimedEvent(null, null);
+        }
     }
 }
