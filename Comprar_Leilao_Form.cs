@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Apis.Gmail.v1.Data;
+using Google.Apis.Gmail.v1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -145,6 +147,7 @@ namespace SpinToWin
             if(Global.accountID == leilao.Vendedor)
             {
                 MessageBox.Show("Não pode comprar os seus próprios leilões");
+                return;
             }
             if (user.Dinheiro < leilao.ValorBase)
             {
@@ -157,6 +160,25 @@ namespace SpinToWin
                 clientDAO.UpdateClient(user);
                 MessageBox.Show("Compra efetuada com sucesso");
                 leilao.Estado = "fechado";
+
+                //==============================EMAIL NOTIFICATION===========================
+
+                Client vendedor = clientDAO.GetClientbyID(leilao.Vendedor);
+                PassRecovery mail = new PassRecovery("null",vendedor.Email);
+
+                string corpo = $"Prezado Usuário,\n\n"
+                            + "O seu Leilão foi Comprado com Sucesso\n\n"
+                            + "Obrigado,\nA Equipa Spin2Win";
+
+
+                Google.Apis.Gmail.v1.Data.Message message = mail.CreateMessage("li4spin2win@gmail.com", vendedor.Email, "Leilão Concluido", corpo);
+
+
+                mail.SendMessage(mail.GmailService, "li4spin2win@gmail.com", message,0);
+
+                //===========================================================================
+
+
                 leilao.Comprador = user.Id;
                 LeilaoDAO leilaoDAO = new LeilaoDAO();
                 leilaoDAO.UpdateLeilao((int)leilao.IdLeilao, leilao);

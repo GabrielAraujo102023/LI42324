@@ -24,6 +24,13 @@ namespace SpinToWin
 
         private GmailService gmailService;
 
+        public GmailService GmailService{
+            get 
+            {
+                return gmailService;
+            }
+        }
+
         private static readonly string DataStoreFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                                                             "Base de Dados",
                                                             "Store");
@@ -128,10 +135,10 @@ namespace SpinToWin
 
             Google.Apis.Gmail.v1.Data.Message message = CreateMessage("li4spin2win@gmail.com", recipientEmail, subject, body);
 
-            SendMessage(gmailService, "li4spin2win@gmail.com", message);
+            SendMessage(gmailService, "li4spin2win@gmail.com", message,1);
         }
 
-        private Google.Apis.Gmail.v1.Data.Message CreateMessage(string sender, string to, string subject, string body)
+        public Google.Apis.Gmail.v1.Data.Message CreateMessage(string sender, string to, string subject, string body)
         {
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(new MailboxAddress("", sender));
@@ -154,7 +161,7 @@ namespace SpinToWin
             };
         }
 
-        private void SendMessage(GmailService service, string userId, Google.Apis.Gmail.v1.Data.Message gmailMessage)
+        public void SendMessage(GmailService service, string userId, Google.Apis.Gmail.v1.Data.Message gmailMessage,int flag)
         {
 
             if (service == null)
@@ -169,20 +176,27 @@ namespace SpinToWin
                 return;
             }
 
-            try
-            {
+            if (flag == 0) {
                 service.Users.Messages.Send(gmailMessage, userId).Execute();
-                MessageBox.Show("Por favor confirme na sua caixa de email o código enviado...");
-                cancel.Hide();
-                recover.Hide();
-                msgtexto.Hide();
-                codverification.Show();
-                verify.Show();
-
             }
-            catch (Exception ex)
+
+            if (flag!=0)
             {
-                MessageBox.Show($"Erro a enviar o email: {ex.Message}");
+                try
+                {
+
+                    service.Users.Messages.Send(gmailMessage, userId).Execute();
+                    MessageBox.Show("Por favor confirme na sua caixa de email o código enviado...");
+                    cancel.Hide();
+                    recover.Hide();
+                    msgtexto.Hide();
+                    codverification.Show();
+                    verify.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro a enviar o email: {ex.Message}");
+                }
             }
         }
 
