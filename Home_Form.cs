@@ -22,6 +22,7 @@ namespace SpinToWin
             carregarLeiloes();
             Refresh();
             new TimeManager().Run();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public void reloadLeiloes()
