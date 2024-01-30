@@ -192,7 +192,7 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(1558, 12);
+            button1.Location = new Point(1824, 12);
             button1.Name = "button1";
             button1.Size = new Size(30, 23);
             button1.TabIndex = 14;
@@ -312,7 +312,7 @@
             // 
             genero_musical.FormattingEnabled = true;
             genero_musical.Items.AddRange(new object[] { "", "Rock", "Pop", "Folk", "Grunge", "Hard Rock", "Metal", "Alternative", "Reggae", "Punk", "Britpop", "Punk Rock" });
-            genero_musical.Location = new Point(1311, 390);
+            genero_musical.Location = new Point(1521, 390);
             genero_musical.Name = "genero_musical";
             genero_musical.Size = new Size(121, 23);
             genero_musical.TabIndex = 22;
@@ -322,7 +322,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 45F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Turquoise;
-            label2.Location = new Point(1315, 94);
+            label2.Location = new Point(1525, 94);
             label2.Name = "label2";
             label2.Size = new Size(195, 81);
             label2.TabIndex = 22;
@@ -331,7 +331,7 @@
             // estado_filtro
             // 
             estado_filtro.AutoSize = true;
-            estado_filtro.Location = new Point(1310, 204);
+            estado_filtro.Location = new Point(1520, 204);
             estado_filtro.Name = "estado_filtro";
             estado_filtro.Size = new Size(42, 15);
             estado_filtro.TabIndex = 23;
@@ -342,7 +342,7 @@
             Aberto.AutoSize = true;
             Aberto.Checked = true;
             Aberto.CheckState = CheckState.Checked;
-            Aberto.Location = new Point(1312, 222);
+            Aberto.Location = new Point(1522, 222);
             Aberto.Name = "Aberto";
             Aberto.Size = new Size(62, 19);
             Aberto.TabIndex = 24;
@@ -355,7 +355,7 @@
             lastChance.AutoSize = true;
             lastChance.Checked = true;
             lastChance.CheckState = CheckState.Checked;
-            lastChance.Location = new Point(1405, 222);
+            lastChance.Location = new Point(1615, 222);
             lastChance.Name = "lastChance";
             lastChance.Size = new Size(90, 19);
             lastChance.TabIndex = 24;
@@ -368,7 +368,7 @@
             Catalogado.AutoSize = true;
             Catalogado.Checked = true;
             Catalogado.CheckState = CheckState.Checked;
-            Catalogado.Location = new Point(1312, 247);
+            Catalogado.Location = new Point(1522, 247);
             Catalogado.Name = "Catalogado";
             Catalogado.Size = new Size(87, 19);
             Catalogado.TabIndex = 24;
@@ -381,7 +381,7 @@
             Fechado.AutoSize = true;
             Fechado.Checked = true;
             Fechado.CheckState = CheckState.Checked;
-            Fechado.Location = new Point(1405, 247);
+            Fechado.Location = new Point(1615, 247);
             Fechado.Name = "Fechado";
             Fechado.Size = new Size(71, 19);
             Fechado.TabIndex = 24;
@@ -392,7 +392,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1310, 292);
+            label3.Location = new Point(1520, 292);
             label3.Name = "label3";
             label3.Size = new Size(89, 15);
             label3.TabIndex = 23;
@@ -400,7 +400,7 @@
             // 
             // a_partir_ano
             // 
-            a_partir_ano.Location = new Point(1310, 324);
+            a_partir_ano.Location = new Point(1520, 324);
             a_partir_ano.Name = "a_partir_ano";
             a_partir_ano.PlaceholderText = "Ano";
             a_partir_ano.Size = new Size(112, 23);
@@ -409,7 +409,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1312, 372);
+            label4.Location = new Point(1522, 372);
             label4.Name = "label4";
             label4.Size = new Size(89, 15);
             label4.TabIndex = 23;
@@ -418,7 +418,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1310, 451);
+            label5.Location = new Point(1520, 451);
             label5.Name = "label5";
             label5.Size = new Size(111, 15);
             label5.TabIndex = 23;
@@ -427,7 +427,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(1310, 536);
+            label6.Location = new Point(1520, 536);
             label6.Name = "label6";
             label6.Size = new Size(114, 15);
             label6.TabIndex = 23;
@@ -435,7 +435,7 @@
             // 
             // preco_min
             // 
-            preco_min.Location = new Point(1310, 639);
+            preco_min.Location = new Point(1520, 639);
             preco_min.Name = "preco_min";
             preco_min.Size = new Size(112, 23);
             preco_min.TabIndex = 11;
@@ -443,7 +443,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1310, 621);
+            label7.Location = new Point(1520, 621);
             label7.Name = "label7";
             label7.Size = new Size(82, 15);
             label7.TabIndex = 23;
@@ -452,7 +452,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1312, 701);
+            label8.Location = new Point(1522, 701);
             label8.Name = "label8";
             label8.Size = new Size(84, 15);
             label8.TabIndex = 23;
@@ -460,14 +460,14 @@
             // 
             // preco_max
             // 
-            preco_max.Location = new Point(1310, 719);
+            preco_max.Location = new Point(1520, 719);
             preco_max.Name = "preco_max";
             preco_max.Size = new Size(112, 23);
             preco_max.TabIndex = 11;
             // 
             // num_min_vinis
             // 
-            num_min_vinis.Location = new Point(1310, 821);
+            num_min_vinis.Location = new Point(1520, 821);
             num_min_vinis.Name = "num_min_vinis";
             num_min_vinis.Size = new Size(112, 23);
             num_min_vinis.TabIndex = 11;
@@ -475,7 +475,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(1312, 803);
+            label9.Location = new Point(1522, 803);
             label9.Name = "label9";
             label9.Size = new Size(102, 15);
             label9.TabIndex = 23;
@@ -483,7 +483,7 @@
             // 
             // num_max_vinis
             // 
-            num_max_vinis.Location = new Point(1310, 886);
+            num_max_vinis.Location = new Point(1520, 886);
             num_max_vinis.Name = "num_max_vinis";
             num_max_vinis.Size = new Size(112, 23);
             num_max_vinis.TabIndex = 11;
@@ -491,7 +491,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(1310, 868);
+            label10.Location = new Point(1520, 868);
             label10.Name = "label10";
             label10.Size = new Size(104, 15);
             label10.TabIndex = 23;
@@ -501,7 +501,7 @@
             // 
             min_qualidade_capa.FormattingEnabled = true;
             min_qualidade_capa.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
-            min_qualidade_capa.Location = new Point(1311, 469);
+            min_qualidade_capa.Location = new Point(1521, 469);
             min_qualidade_capa.Name = "min_qualidade_capa";
             min_qualidade_capa.Size = new Size(121, 23);
             min_qualidade_capa.TabIndex = 22;
@@ -510,14 +510,14 @@
             // 
             min_qualidade_disco.FormattingEnabled = true;
             min_qualidade_disco.Items.AddRange(new object[] { "", "1 - Excelente", "2 - Boa", "3 - Razoável", "4 - Má", "5 - Terrível" });
-            min_qualidade_disco.Location = new Point(1311, 554);
+            min_qualidade_disco.Location = new Point(1521, 554);
             min_qualidade_disco.Name = "min_qualidade_disco";
             min_qualidade_disco.Size = new Size(121, 23);
             min_qualidade_disco.TabIndex = 22;
             // 
             // aplicar_filtros
             // 
-            aplicar_filtros.Location = new Point(1478, 759);
+            aplicar_filtros.Location = new Point(1688, 759);
             aplicar_filtros.Name = "aplicar_filtros";
             aplicar_filtros.Size = new Size(86, 59);
             aplicar_filtros.TabIndex = 25;
@@ -547,7 +547,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1600, 1000);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(textBox1);
             Controls.Add(button2);
             Controls.Add(aplicar_filtros);
