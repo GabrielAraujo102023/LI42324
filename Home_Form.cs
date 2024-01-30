@@ -19,7 +19,6 @@ namespace SpinToWin
         public Home_Form()
         {
             InitializeComponent();
-            curr_time.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             carregarLeiloes();
             Refresh();
             new TimeManager().Run();
@@ -184,12 +183,11 @@ namespace SpinToWin
             }
             else
             {
-                //TODO por isto falso again
                 logout_button.Text = "Login";
                 perfil_button.Visible = false;
-                editlei_button.Visible = true;
-                editvin_button.Visible = true;
-                editcl_button.Visible = true;
+                editlei_button.Visible = false;
+                editvin_button.Visible = false;
+                editcl_button.Visible = false;
             }
             base.Refresh();
         }
@@ -564,6 +562,11 @@ namespace SpinToWin
         private void curr_time_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            new TimeManager(int.Parse(textBox1.Text)).OnTimedEvent(null, null);
         }
     }
 }

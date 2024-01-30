@@ -72,16 +72,16 @@ namespace SpinToWin
                 case "catalogado":
                     label2.Text = $"Preço Inicial: {leilao.ValorBase}";
                     label3.Text = $"Preço Mínimo: {leilao.ValorMinimo}";
-                    label6.Text = $"Tempo até iniciar leilão: TODO";
+                    label6.Text = $"Tempo até iniciar leilão: " + calcularTempo(leilao);
                     label5.Visible = false;
                     label4.Visible = false;
                     button1.Visible = false;
                     break;
 
                 case "aberto":
-                    label2.Text = $"Preço Atual: {leilao.ValorBase}";
+                    label2.Text = $"Preço Atual: {leilao.PrecoVenda}";
                     label3.Text = $"Preço Mínimo: {leilao.ValorMinimo}";
-                    label4.Text = $"Tempo até próximo decremento: TODO";
+                    label4.Text = $"Tempo até próximo decremento: " + calcularTempo(leilao);
                     label5.Text = $"Preço após decremento: {proxPreco}";
                     label6.Visible = false;
                     break;
@@ -96,7 +96,7 @@ namespace SpinToWin
                     break;
 
                 case "lastChance":
-                    label2.Text = $"Preço Atual: {leilao.ValorBase}";
+                    label2.Text = $"Preço Atual: {leilao.PrecoVenda}";
                     label3.Text = $"Preço Mínimo: {leilao.ValorMinimo}";
                     label4.Visible = false;
                     label5.Visible = false;
@@ -106,6 +106,19 @@ namespace SpinToWin
                 default:
                     break;
             }
+        }
+
+        private string calcularTempo(Leilao l)
+        {
+            TimeSpan dif;
+            if(l.Estado == "lastChance")
+            {
+                dif = DateTime.Now - l.TempoCriacao;
+                return dif.TotalHours.ToString() + ":" + dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
+            }
+            int elapsedHours = TimeManager.calculateHoursElapsed(l.ValorBase, l.PrecoVenda, l.ValorBase * 0.02f);
+            dif = DateTime.Now - l.TempoCriacao.AddHours(elapsedHours);
+            return dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
         }
 
 
@@ -144,7 +157,7 @@ namespace SpinToWin
                 MessageBox.Show("Necessita de uma conta para comprar um leilão.");
                 return;
             }
-            if(Global.accountID == leilao.Vendedor)
+            if (Global.accountID == leilao.Vendedor)
             {
                 MessageBox.Show("Não pode comprar os seus próprios leilões");
                 return;

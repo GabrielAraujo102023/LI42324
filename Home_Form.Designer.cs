@@ -73,7 +73,8 @@
             min_qualidade_capa = new ComboBox();
             min_qualidade_disco = new ComboBox();
             aplicar_filtros = new Button();
-            curr_time = new Label();
+            button2 = new Button();
+            textBox1 = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -421,7 +422,7 @@
             label5.Name = "label5";
             label5.Size = new Size(111, 15);
             label5.TabIndex = 23;
-            label5.Text = "min qualidade capa";
+            label5.Text = "Min qualidade capa";
             // 
             // label6
             // 
@@ -430,7 +431,7 @@
             label6.Name = "label6";
             label6.Size = new Size(114, 15);
             label6.TabIndex = 23;
-            label6.Text = "min qualidade disco";
+            label6.Text = "Min qualidade disco";
             // 
             // preco_min
             // 
@@ -524,15 +525,22 @@
             aplicar_filtros.UseVisualStyleBackColor = true;
             aplicar_filtros.Click += aplicar_filtros_Click;
             // 
-            // curr_time
+            // button2
             // 
-            curr_time.AutoSize = true;
-            curr_time.Location = new Point(1432, 62);
-            curr_time.Name = "curr_time";
-            curr_time.Size = new Size(44, 15);
-            curr_time.TabIndex = 26;
-            curr_time.Text = "label13";
-            curr_time.Click += curr_time_Click;
+            button2.Location = new Point(321, 41);
+            button2.Name = "button2";
+            button2.Size = new Size(105, 23);
+            button2.TabIndex = 27;
+            button2.Text = "Avançar tempo";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_2;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(321, 12);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 28;
             // 
             // Home_Form
             // 
@@ -540,7 +548,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1600, 1000);
-            Controls.Add(curr_time);
+            Controls.Add(textBox1);
+            Controls.Add(button2);
             Controls.Add(aplicar_filtros);
             Controls.Add(Fechado);
             Controls.Add(Catalogado);
@@ -638,6 +647,7 @@
         private Label label12;
         private Label label11;
         private Button aplicar_filtros;
-        private Label curr_time;
+        private Button button2;
+        private TextBox textBox1;
     }
 }

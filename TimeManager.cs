@@ -8,6 +8,13 @@ namespace SpinToWin
         private static Timer timer;
         private static LeilaoDAO leilaoDAO;
         private static VinilDAO vinilDAO;
+        private int passar = 0;
+
+        public TimeManager() { }
+        public TimeManager(int passar)
+        {
+            this.passar = passar;
+        }
         public void Run()
         {
             new Thread(() =>
@@ -33,7 +40,7 @@ namespace SpinToWin
             }).Start();
         }
 
-        private static void OnTimedEvent(object sender, ElapsedEventArgs e)
+        public void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             Console.WriteLine("Timed Event Started");
             leilaoDAO = new LeilaoDAO();
@@ -41,13 +48,18 @@ namespace SpinToWin
             List<Leilao> leiloes = leilaoDAO.GetListLeiloes();
             leiloes.RemoveAll(l => l.Estado != "aberto" && l.Estado != "lastChance");
             DateTime now = DateTime.Now;
-            foreach(Leilao l in leiloes)
+            if (passar > 0)
+            {
+                now = now.AddHours(passar);
+                Console.WriteLine("AVANCEI {0} HORAS", passar);
+            }
+            foreach (Leilao l in leiloes)
             {
                 float decr = l.ValorBase * 0.02f;
                 int hoursElapsed = calculateHoursElapsed(l.ValorBase, l.PrecoVenda, decr);
-                if(l.Estado == "aberto")
+                if (l.Estado == "aberto")
                 {
-                    if((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(1))
+                    if ((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(1))
                     {
                         l.PrecoVenda -= decr;
                         if (l.PrecoVenda < l.ValorMinimo)
@@ -61,7 +73,7 @@ namespace SpinToWin
                 }
                 else
                 {
-                    if((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(12))
+                    if ((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(12))
                     {
                         l.Estado = "fechado";
                         List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
@@ -73,7 +85,7 @@ namespace SpinToWin
             }
         }
 
-        private static int calculateHoursElapsed(float vBase, float pVenda, float decr)
+        public static int calculateHoursElapsed(float vBase, float pVenda, float decr)
         {
             int hours = 0;
             if (vBase == pVenda)
