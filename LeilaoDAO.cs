@@ -196,7 +196,7 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
-                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("TempoCriacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
                                 res = new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor);
@@ -238,7 +238,7 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
-                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("TempoCriacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
                                 res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor));
@@ -279,7 +279,7 @@ namespace SpinToWin
                                 int? comprador = reader.IsDBNull(reader.GetOrdinal("Comprador")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Comprador"));
                                 float valorBase = (float)reader.GetDouble(reader.GetOrdinal("Valor_base"));
                                 float valorMinimo = (float)reader.GetDouble(reader.GetOrdinal("Valor_minimo"));
-                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("Tempo_criacao"));
+                                DateTime TempoCriacao = reader.GetDateTime(reader.GetOrdinal("TempoCriacao"));
                                 float precoVenda = (float)reader.GetDouble(reader.GetOrdinal("Preco_venda"));
                                 int vendedor = reader.GetInt32(reader.GetOrdinal("Vendedor"));
                                 res.Add(new Leilao(id, estado, comprador, valorBase, valorMinimo, TempoCriacao, precoVenda, vendedor));

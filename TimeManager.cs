@@ -8,7 +8,7 @@ namespace SpinToWin
         private static Timer timer;
         private static LeilaoDAO leilaoDAO;
         private static VinilDAO vinilDAO;
-        private int passar;
+        private int passar = 0;
 
         public TimeManager() { }
         public TimeManager(int passar)
@@ -48,7 +48,11 @@ namespace SpinToWin
             List<Leilao> leiloes = leilaoDAO.GetListLeiloes();
             leiloes.RemoveAll(l => l.Estado != "aberto" && l.Estado != "lastChance");
             DateTime now = DateTime.Now;
-            now.AddHours(passar);
+            if (passar > 0)
+            {
+                now = now.AddHours(passar);
+                Console.WriteLine("AVANCEI {0} HORAS", passar);
+            }
             foreach (Leilao l in leiloes)
             {
                 float decr = l.ValorBase * 0.02f;
