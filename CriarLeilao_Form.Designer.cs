@@ -45,6 +45,7 @@
             valorBase_textBox = new TextBox();
             label3 = new Label();
             criar_button = new Button();
+            addVinil_button = new Button();
             SuspendLayout();
             // 
             // button1
@@ -217,11 +218,22 @@
             criar_button.UseVisualStyleBackColor = true;
             criar_button.Click += criar_button_Click;
             // 
+            // addVinil_button
+            // 
+            addVinil_button.Location = new Point(1120, 221);
+            addVinil_button.Name = "addVinil_button";
+            addVinil_button.Size = new Size(105, 52);
+            addVinil_button.TabIndex = 37;
+            addVinil_button.Text = "Adicionar Leilão";
+            addVinil_button.UseVisualStyleBackColor = true;
+            addVinil_button.Click += addVinil_button_Click;
+            // 
             // CriarLeilao_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1290, 684);
+            Controls.Add(addVinil_button);
             Controls.Add(criar_button);
             Controls.Add(label3);
             Controls.Add(valorBase_textBox);
@@ -265,5 +277,6 @@
         private TextBox valorBase_textBox;
         private Label label3;
         private Button criar_button;
+        private Button addVinil_button;
     }
 }

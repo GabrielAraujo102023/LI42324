@@ -18,10 +18,17 @@ namespace SpinToWin
         private bool isEditing = false;
         private string url;
         private Vinil vinil;
+        private CriarLeilao_Form criarForm = null;
         public Vinil_Form()
         {
             InitializeComponent();
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+        public Vinil_Form(CriarLeilao_Form criarForm)
+        {
+            InitializeComponent();
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            this.criarForm = criarForm;
         }
 
         public Vinil_Form(Vinil vinil)
@@ -56,6 +63,10 @@ namespace SpinToWin
 
         private void sair_button_Click(object sender, EventArgs e)
         {
+            if(criarForm != null)
+            {
+                criarForm.Show();
+            }
             Close();
         }
 
@@ -166,6 +177,11 @@ namespace SpinToWin
                 }
                 finally
                 {
+                    if(criarForm != null)
+                    {
+                        criarForm.carregarVinis();
+                        criarForm.Show();
+                    }
                     Close();
                 }
             }

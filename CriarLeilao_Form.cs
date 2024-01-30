@@ -54,10 +54,10 @@ namespace SpinToWin
             isEditing = true;
         }
 
-        private void carregarVinis()
+        public void carregarVinis()
         {
             vinis.RemoveAll(v => v.Leilao != null && (leilao == null || v.Leilao != leilao.IdLeilao));
-            
+
             int start = 0 + (nItems * curPagina);
             int nGet = nItems;
             if (start + nItems >= vinis.Count())
@@ -138,7 +138,7 @@ namespace SpinToWin
             {
                 home_form.Refresh();
                 home_form.reloadLeiloes();
-                home_form.Show(); 
+                home_form.Show();
             }
             Close();
         }
@@ -174,7 +174,7 @@ namespace SpinToWin
                 {
                     //public Leilao(string estado, int? comprador, float valorBase, float valorMinimo, float? precoVenda, int vendedor)
                     Leilao l = new Leilao("catalogado", null, valorBase, valorMinimo, DateTime.Now, valorBase, Global.accountID);
-                    if(!isEditing)
+                    if (!isEditing)
                     {
                         int id = new LeilaoDAO().InsertLeilao(l);
                         if (id != -1)
@@ -186,7 +186,7 @@ namespace SpinToWin
                             MessageBox.Show("Leilão criado com sucesso!");
                         }
                         else
-                            MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde."); 
+                            MessageBox.Show("Ocorreu um erro a criar o seu leilão. Por favor, tente denovo mais tarde.");
                     }
                     else
                     {
@@ -210,6 +210,12 @@ namespace SpinToWin
         {
             string text = pesquisar_textBox.Text.ToLower();
             return v.Album.ToLower().Contains(text) || v.Artista.ToLower().Contains(text);
+        }
+
+        private void addVinil_button_Click(object sender, EventArgs e)
+        {
+            new Vinil_Form(this).Show();
+            Hide();
         }
     }
 }
