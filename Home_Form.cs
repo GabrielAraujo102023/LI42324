@@ -150,7 +150,6 @@ namespace SpinToWin
         private void button2_Click(object sender, EventArgs e)
         {
             new Ajuda_Form(this).Show();
-            Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -419,7 +418,6 @@ namespace SpinToWin
         {
             if (Global.isLoggedIn)
             {
-                Hide();
                 new CriarLeilao_Form(this).Show();
             }
             else

@@ -129,7 +129,7 @@ namespace SpinToWin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void btn_leiloes_Click(object sender, EventArgs e)
