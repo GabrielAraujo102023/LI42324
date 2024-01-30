@@ -9,6 +9,7 @@ SELECT DB_NAME() AS CurrentDatabase;
 
 
 -- Insert data into Cliente
+INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 10000000); --pass admin
 INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('joaonqferreira@gmail.com', '20f3765880a5c269b747e1e906054a4b4a3a991259f1e16b5dde4742cec2319a', 150); --pass = 54321
 INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('maria@example.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 200);
 INSERT INTO Cliente (Email, Pass, Dinheiro) VALUES ('pedro@example.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 250);

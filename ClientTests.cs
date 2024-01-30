@@ -121,7 +121,7 @@ namespace SpinToWin
             string email = textBox1.Text;
             string pass = PasswordHasher.HashPassword(textBox2.Text);
             double dinheiro = Convert.ToDouble(textBox3.Text);
-            Console.WriteLine(pass);
+            Console.WriteLine("Pass: " + pass);
             Client clienttmp = new Client(email, pass, dinheiro);
             int idcliente = clientDAO.InsertClient(clienttmp);
             Client client = new Client(idcliente, email, pass, dinheiro);
