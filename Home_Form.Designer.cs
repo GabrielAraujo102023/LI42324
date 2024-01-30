@@ -422,7 +422,7 @@
             label5.Name = "label5";
             label5.Size = new Size(111, 15);
             label5.TabIndex = 23;
-            label5.Text = "min qualidade capa";
+            label5.Text = "Min qualidade capa";
             // 
             // label6
             // 
@@ -431,7 +431,7 @@
             label6.Name = "label6";
             label6.Size = new Size(114, 15);
             label6.TabIndex = 23;
-            label6.Text = "min qualidade disco";
+            label6.Text = "Min qualidade disco";
             // 
             // preco_min
             // 
