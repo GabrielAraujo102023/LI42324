@@ -46,7 +46,7 @@ namespace SpinToWin
             leilaoDAO = new LeilaoDAO();
             vinilDAO = new VinilDAO();
             List<Leilao> leiloes = leilaoDAO.GetListLeiloes();
-            leiloes.RemoveAll(l => l.Estado != "aberto" && l.Estado != "lastChance");
+            leiloes.RemoveAll(l => l.Estado == "fechado");
             DateTime now = DateTime.Now;
             if (passar > 0)
             {
@@ -59,10 +59,10 @@ namespace SpinToWin
                 int hoursElapsed = calculateHoursElapsed(l.ValorBase, l.PrecoVenda, decr);
                 if (l.Estado == "aberto")
                 {
-                    if ((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(1))
+                    if ((now - l.TempoCriacao.AddHours(hoursElapsed + 11)) >= TimeSpan.FromHours(1))
                     {
                         l.PrecoVenda -= decr;
-                        if (l.PrecoVenda < l.ValorMinimo)
+                        if (l.PrecoVenda <= l.ValorMinimo)
                         {
                             l.PrecoVenda = l.ValorMinimo;
                             l.Estado = "lastChance";
@@ -71,15 +71,29 @@ namespace SpinToWin
                         Console.WriteLine("Diminuido preço de leilao {0}", l.IdLeilao);
                     }
                 }
-                else
+                else if (l.Estado == "lastChance")
                 {
-                    if ((now - l.TempoCriacao.AddHours(hoursElapsed)) >= TimeSpan.FromHours(12))
+                    if ((now - l.TempoCriacao.AddHours(hoursElapsed + 11)) >= TimeSpan.FromHours(12))
                     {
                         l.Estado = "fechado";
                         List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
-                        vinis.ForEach(v => { v.Leilao = null; vinilDAO.UpdateVinil((int)v.IdVinil, v); });
+                        vinis.ForEach(v => 
+                        { 
+                            v.Leilao = null; 
+                            vinilDAO.UpdateVinil((int)v.IdVinil, v); 
+                        });
                         leilaoDAO.UpdateLeilao((int)l.IdLeilao, l);
                         Console.WriteLine("Leilao {0} fechado", l.IdLeilao);
+                    }
+                }
+                else
+                {
+                    if ((now - l.TempoCriacao) >= TimeSpan.FromHours(12))
+                    {
+                        l.Estado = "aberto";
+                        List<Vinil> vinis = vinilDAO.GetVinisByLeilao((int)l.IdLeilao);
+                        leilaoDAO.UpdateLeilao((int)l.IdLeilao, l);
+                        Console.WriteLine("Leilao {0} aberto", l.IdLeilao);
                     }
                 }
             }

@@ -96,7 +96,7 @@ namespace SpinToWin
                 case "lastChance":
                     label2.Text = $"Preço Atual: {leilao.PrecoVenda}";
                     label3.Text = $"Preço Mínimo: {leilao.ValorMinimo}";
-                    label4.Visible = false;
+                    label4.Text = $"Tempo até fecho: " + calcularTempo(leilao);
                     label5.Visible = false;
                     label6.Visible = false;
                     break;
@@ -109,16 +109,24 @@ namespace SpinToWin
         private string calcularTempo(Leilao l)
         {
             TimeSpan dif;
-            if(l.Estado == "lastChance")
+            if(l.Estado == "catalogado")
             {
-                dif = DateTime.Now - l.TempoCriacao;
-                return dif.TotalHours.ToString() + ":" + dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
+                dif = l.TempoCriacao.AddHours(12) - DateTime.Now;
+                return dif.Hours.ToString() + ":" + dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
             }
-            int elapsedHours = TimeManager.calculateHoursElapsed(l.ValorBase, l.PrecoVenda, l.ValorBase * 0.02f);
-            dif = DateTime.Now - l.TempoCriacao.AddHours(elapsedHours);
-            return dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
+            else if (l.Estado == "aberto")
+            {
+                int elapsedHours = TimeManager.calculateHoursElapsed(l.ValorBase, l.PrecoVenda, l.ValorBase * 0.02f) + 11;
+                dif = l.TempoCriacao.AddHours(elapsedHours) - DateTime.Now;
+                return dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
+            }
+            else
+            {
+                int elapsedHours = TimeManager.calculateHoursElapsed(l.ValorBase, l.PrecoVenda, l.ValorBase * 0.02f) + 11;
+                dif = l.TempoCriacao.AddHours(elapsedHours) - DateTime.Now;
+                return dif.Hours.ToString() + ":" + dif.Minutes.ToString() + ":" + dif.Seconds.ToString();
+            }
         }
-
 
 
         private void label1_Click(object sender, EventArgs e)
